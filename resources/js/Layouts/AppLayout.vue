@@ -1,28 +1,46 @@
 <template>
     <div>
         <jet-banner />
-
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+
+        <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
+                                <inertia-link :href="route('home')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                <jet-nav-link :href="route('home')" :active="route().current('home')">
+                                    Home
                                 </jet-nav-link>
+                                <template v-if="$page.props.user">
+                                    <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                        Dashboard
+                                    </jet-nav-link>
+                                    <jet-nav-link :href="route('meetings.index')" :active="route().current('meetings.index')">
+                                        Your Meetings
+                                    </jet-nav-link>
+                                </template>
+                                <template v-else>
+                                    <jet-nav-link :href="route('login')">
+                                        Login
+                                    </jet-nav-link>
+                                    <jet-nav-link :href="route('register')">
+                                        Register
+                                    </jet-nav-link>
+                                </template>
                             </div>
+
                         </div>
 
+                        <template v-if="$page.props.user">
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
@@ -124,6 +142,7 @@
                                 </jet-dropdown>
                             </div>
                         </div>
+                        </template>
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
@@ -140,11 +159,33 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <jet-responsive-nav-link :href="route('home')" :active="route().current('home')">
+                            Home
                         </jet-responsive-nav-link>
+                        <template v-if="$page.props.user">
+                            <!-- When signed in -->
+                            <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                Dashboard
+                            </jet-responsive-nav-link>
+                            <jet-responsive-nav-link :href="route('meetings.index')" :active="route().current('meetings.index')">
+                                Your Meetings
+                            </jet-responsive-nav-link>
+                        </template>
+                        <template v-else>
+                            <!-- Not logged in -->
+                            <!-- <jet-responsive-nav-link :href="route('meetings.create')" :active="route().current('meetings.create')">
+                                Create Meeting
+                            </jet-responsive-nav-link> -->
+                            <jet-responsive-nav-link :href="route('login')" :active="route().current('login')">
+                                Login
+                            </jet-responsive-nav-link>
+                            <jet-responsive-nav-link :href="route('register')" :active="route().current('register')">
+                                Register
+                            </jet-responsive-nav-link>
+                        </template>
                     </div>
 
+                    <template v-if="$page.props.user">
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="flex items-center px-4">
@@ -211,6 +252,7 @@
                             </template>
                         </div>
                     </div>
+                    </template>
                 </div>
             </nav>
 
@@ -232,6 +274,92 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    .sizzling-red {
+        color: #f05d5e;
+    }
+
+    .skobeloff {
+        color: #0f7173;
+    }
+
+    .alice-blue {
+        color: #e7ecef;
+    }
+
+    .raisin-black {
+        color: #272932;
+    }
+
+    .tumbleweed {
+        color: #d8a47f;
+    }
+
+
+/* {"Sizzling Red":"f05d5e","Skobeloff":"0f7173","Alice Blue":"e7ecef","Raisin Black":"272932","Tumbleweed":"d8a47f"} */
+    .bg-gray-100 {
+        background-color: #f7fafc;
+        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));
+    }
+
+    .border-gray-200 {
+        border-color: #edf2f7;
+        border-color: rgba(237, 242, 247, var(--tw-border-opacity));
+    }
+
+    .text-gray-400 {
+        color: #cbd5e0;
+        color: rgba(203, 213, 224, var(--tw-text-opacity));
+    }
+
+    .text-gray-500 {
+        color: #a0aec0;
+        color: rgba(160, 174, 192, var(--tw-text-opacity));
+    }
+
+    .text-gray-600 {
+        color: #718096;
+        color: rgba(113, 128, 150, var(--tw-text-opacity));
+    }
+
+    .text-gray-700 {
+        color: #4a5568;
+        color: rgba(74, 85, 104, var(--tw-text-opacity));
+    }
+
+    .text-gray-900 {
+        color: #1a202c;
+        color: rgba(26, 32, 44, var(--tw-text-opacity));
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .dark\:bg-gray-800 {
+            background-color: #2d3748;
+            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));
+        }
+
+        .dark\:bg-gray-900 {
+            background-color: #1a202c;
+            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));
+        }
+
+        .dark\:border-gray-700 {
+            border-color: #4a5568;
+            border-color: rgba(74, 85, 104, var(--tw-border-opacity));
+        }
+
+        .dark\:text-white {
+            color: #fff;
+            color: rgba(255, 255, 255, var(--tw-text-opacity));
+        }
+
+        .dark\:text-gray-400 {
+            color: #cbd5e0;
+            color: rgba(203, 213, 224, var(--tw-text-opacity));
+        }
+    }
+</style>
 
 <script>
     import JetApplicationMark from '@/Jetstream/ApplicationMark'
