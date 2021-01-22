@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class MeetingController extends Controller
@@ -20,7 +21,11 @@ class MeetingController extends Controller
             'meeting_reference' => 'XYZABCDE'
         ];
 
-        return Inertia::render('Meeting/Index', $data);
+        $meetings = DB::table('meetings')->where('user_id', auth()->id())->get();
+
+
+
+        return Inertia::render('Meeting/Index', ['meetings' => $meetings]);
     }
 
     /**
@@ -42,6 +47,15 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
+        $this->validateMeeting();
+
+        $meeting = new Meeting(request(['name', 'meeting_date', 'start_time', 'end_time']));
+        $meeting->meeting_reference = 'abcdef';
+        $meeting->user_id = auth()->id();
+        $meeting->save();
+
+        return redirect(route('meetings.index'));
     }
 
     /**
@@ -87,5 +101,15 @@ class MeetingController extends Controller
     public function destroy(Meeting $meeting)
     {
         //
+    }
+
+    protected function validateMeeting()
+    {
+        return request()->validate([
+            'name' => 'required|max:255',
+            'meeting_date' => 'required|date',
+            'start_time' => 'required',
+            'end_time' => 'required|after:start_time',
+        ]);
     }
 }

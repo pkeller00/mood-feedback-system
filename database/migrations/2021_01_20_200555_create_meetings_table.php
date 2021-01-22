@@ -21,7 +21,7 @@ class CreateMeetingsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
 
             // need to assign a date and times for the meetings
-            $table->dateTime('meeting_date');
+            $table->date('meeting_date');
             $table->time('start_time');
             $table->time('end_time');
 
