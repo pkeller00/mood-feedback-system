@@ -13,6 +13,7 @@
                     dashboard content goes here
                     <!-- <welcome /> -->
                     a little change is welcome
+                    another change is on the way
                 </div>
             </div>
         </div>
