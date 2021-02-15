@@ -1,8 +1,12 @@
 # These instructions should work
 
 ## Setting up environment
-Install Docker for your OS: [Mac](https://docs.docker.com/docker-for-mac/install/) or
-[Windows with WSL](https://docs.docker.com/docker-for-windows/wsl/). Or for those comfortable with Linux, there is documentation on the Docker website as well!
+If you're on Windows: [Setup Windows WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps)
+
+Install Docker for your OS: [Docker Mac](https://docs.docker.com/docker-for-mac/install/) or
+[Docker Windows with WSL](https://docs.docker.com/docker-for-windows/wsl/). Or for those using Linux, there is documentation on the Docker website.
+
+This probably won't work on the DCS machines
 
 If you are using Windows WSL, you'll want to `cd ~` to use the Linux home directory rather than the Windows bindings. To access this in VSCode, there is the [Remote WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 plugin.
