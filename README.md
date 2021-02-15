@@ -38,6 +38,8 @@ To access the website, visit:
     
     localhost:8888 
 
+You'll probably be told an `APP_KEY` does not exist, press the button to generate one.
+
 If you want to stop the system running at any point:
 
     sail down
