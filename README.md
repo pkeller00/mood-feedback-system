@@ -9,7 +9,6 @@ plugin.
 
 Clone the project into a suitable place on your computer, you'll need `git` for this; for Windows you want to be doing this in the WSL Subsystem.
 
-
 ## Cloning Project
 Once you have cloned this project, enter the root directory of the project.
     
@@ -23,7 +22,7 @@ Run the following command to install dependencies that aren't shared on GitHub
 
     docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest composer install
 ## Starting System
-Make an alias to the `sail` command
+Make an alias to the `sail` command; this should be in your `~/.bashrc` or `~/.zshrc` configuration file.
 
     alias sail='bash vendor/bin/sail'
 
