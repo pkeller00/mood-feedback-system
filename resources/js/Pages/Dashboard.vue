@@ -12,6 +12,7 @@
 
                     dashboard content goes here
                     <!-- <welcome /> -->
+                    a little change is welcome
                 </div>
             </div>
         </div>
