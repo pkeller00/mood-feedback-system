@@ -30,7 +30,7 @@ Make an alias to the `sail` command; this should be in your `~/.bashrc` or `~/.z
 
     alias sail='bash vendor/bin/sail'
 
-Then to start the system:
+Then to start the system (in detached mode):
 
     sail up -d
 
@@ -44,6 +44,15 @@ To access the website, visit:
 
 You'll probably be told an `APP_KEY` does not exist, press the button to generate one.
 
+
+For the development server to recompile the assets (front-end):
+
+    sail npm run watch
+
 If you want to stop the system running at any point:
+    
+    sail stop
+
+If you want to stop the system and remove the Docker containers:
 
     sail down
