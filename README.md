@@ -1,7 +1,7 @@
-# These instructions should work
-
+# Instructions for Contributing
+Understanding `git` is a good place to start
 ## Setting up environment
-If you're on Windows: [Setup Windows WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps)
+If you're on Windows (and don't have Linux): [Setup Windows WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps)
 
 Install Docker for your OS: [Docker Mac](https://docs.docker.com/docker-for-mac/install/) or
 [Docker Windows with WSL](https://docs.docker.com/docker-for-windows/wsl/). Or for those using Linux, there is documentation on the Docker website.
@@ -14,6 +14,10 @@ plugin.
 Clone the project into a suitable place on your computer, you'll need `git` for this; for Windows you want to be doing this in the WSL Subsystem.
 
 ## Cloning Project
+Please **`clone`** the project into your WSL or , don't just download it
+(https://git-scm.com/docs/git-clone)
+(https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+
 Once you have cloned this project, enter the root directory of the project.
     
     cd mood-feedback-system
@@ -44,10 +48,16 @@ To access the website, visit:
 
 You'll probably be told an `APP_KEY` does not exist, press the button to generate one.
 
+## Making changes to the system
 
-For the development server to recompile the assets (front-end):
+To install the node dependencies to allow for development:
+
+    sail npm install
+
+For the development server to watch for changes and recompile the assets (you'll need to do the above first):
 
     sail npm run watch
+## Stopping System
 
 If you want to stop the system running at any point:
     
