@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Create Meeting
+                Edit Meeting
             </h2>
         </template>
 
@@ -14,26 +14,26 @@
                     <form @submit.prevent="submit">
                         <div class="mt-4" >
                             <jet-label for="name" value="Meeting Name" />
-                            <jet-input id="name" type="text" class="mt-1 block w-full" v-model="meeting.name" required autofocus />
+                            <jet-input id="name" type="text" class="mt-1 block w-full" v-model="meeting.name" :value="meeting.name" required autofocus />
                             <div v-if="errors.name" class="mt-3 text-sm text-red-600">{{ errors.name }}</div>
                         </div>
 
                         <div class="mt-4">
                             <jet-label for="meeting-start" value="Meeting Start" />
-                            <jet-input id="meeting-start" type="datetime-local" class="mt-1 block w-full" placeholder="dd/mm/yyyy 00:00" pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}" v-model="meeting.meeting_start" required />
+                            <jet-input id="meeting-start" type="datetime-local" class="mt-1 block w-full" pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}" v-model="meeting.meeting_start" :value="meeting.meeting_start" required />
                             <div v-if="errors.meeting_start" class="mt-3 text-sm text-red-600">{{ errors.meeting_start }}</div>
                         </div>
 
                         <div class="mt-4">
                             <jet-label for="meeting-end" value="Meeting End" />
-                            <jet-input id="meeting-end" type="datetime-local" class="mt-1 block w-full" placeholder="dd/mm/yyyy 00:00" pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}" v-model="meeting.meeting_end" required />
+                            <jet-input id="meeting-end" type="datetime-local" class="mt-1 block w-full" pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}" v-model="meeting.meeting_end" :value="meeting.meeting_end" required />
                             <div v-if="errors.meeting_end" class="mt-3 text-sm text-red-600">{{ errors.meeting_end }}</div>
                         </div>
 
                         <div class="flex items-center justify-center mt-4">
                             <jet-button class="ml-4">
                             <!-- <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"> -->
-                                Create Meeting
+                                Update
                             </jet-button>
                         </div>
                     </form>
@@ -63,6 +63,7 @@
         },
 
         props: {
+            meeting: Object,
             errors: Object
         },
 
@@ -79,7 +80,7 @@
         methods: {
             submit() {
                 this.meeting
-                    .post(this.route('meetings.store'))
+                    .post(this.route('meetings.update', $meeting))
                     // .transform(data => ({
                     //     ... data,
                     //     remember: this.form.remember ? 'on' : ''

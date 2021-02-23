@@ -25,12 +25,15 @@ class MeetingFactory extends Factory
     public function definition()
     {
         return [
-            'meeting_reference' => Str::random(10),
+            'meeting_reference' => Str::upper(Str::random(7)),
             'name' => $this->faker->sentence,
             'user_id' => 11,
-            'meeting_date' => $this->faker->date(),
-            'start_time' => $this->faker->time('11:00:00'),
-            'end_time' => $this->faker->time('12:00:00'),
+            'meeting_start' => $this->faker->dateTimeInInterval($date='-1 week', $interval='+1 day'),
+            'meeting_end' => $this->faker->dateTimeInInterval($date='-6 days', $interval='+1 day'),
+            // 'meeting_end' => $this->faker->date(),
+            // 'meeting_date' => $this->faker->date(),
+            // 'start_time' => $this->faker->time('11:00:00'),
+            // 'end_time' => $this->faker->time('12:00:00'),
         ];
     }
 }

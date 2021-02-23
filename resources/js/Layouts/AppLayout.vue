@@ -25,7 +25,7 @@
                                         Dashboard
                                     </jet-nav-link>
                                     <jet-nav-link :href="route('meetings.index')" :active="route().current('meetings.index')">
-                                        Your Meetings
+                                        Your Events
                                     </jet-nav-link>
                                 </template>
                                 <template v-else>
@@ -168,7 +168,7 @@
                                 Dashboard
                             </jet-responsive-nav-link>
                             <jet-responsive-nav-link :href="route('meetings.index')" :active="route().current('meetings.index')">
-                                Your Meetings
+                                Your Events
                             </jet-responsive-nav-link>
                         </template>
                         <template v-else>

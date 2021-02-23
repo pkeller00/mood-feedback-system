@@ -4538,11 +4538,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
  // import FormSection from '@/Jetstream/FormSection'
 
 
@@ -4566,15 +4561,120 @@ __webpack_require__.r(__webpack_exports__);
     return {
       meeting: this.$inertia.form({
         name: '',
-        meeting_date: '',
-        start_time: '',
-        end_time: ''
+        meeting_start: '',
+        meeting_end: ''
       })
     };
   },
   methods: {
     submit: function submit() {
       this.meeting.post(this.route('meetings.store')); // .transform(data => ({
+      //     ... data,
+      //     remember: this.form.remember ? 'on' : ''
+      // }))
+      // .post(this.route('meetings.store'), {
+      //     onFinish: () => this.form.reset('password'),
+      // })
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ // import FormSection from '@/Jetstream/FormSection'
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default
+  },
+  props: {
+    meeting: Object,
+    errors: Object
+  },
+  data: function data() {
+    return {
+      meeting: this.$inertia.form({
+        name: '',
+        meeting_start: '',
+        meeting_end: ''
+      })
+    };
+  },
+  methods: {
+    submit: function submit() {
+      this.meeting.post(this.route('meetings.update', $meeting)); // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''
       // }))
@@ -4643,25 +4743,96 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
- // import JetInput from '@/Jetstream/Input'
-// import JetCheckbox from '@/Jetstream/Checkbox'
-// import JetLabel from '@/Jetstream/Label'
-// import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default // JetInput,
-    // JetCheckbox,
-    // JetLabel,
-    // JetValidationErrors
-
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
-    meetings: Array // name: String,
-    // meeting_reference: String
+    meetings: Array
+  }
+});
 
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  props: {
+    meeting: Object
   }
 });
 
@@ -26614,6 +26785,45 @@ component.options.__file = "resources/js/Pages/Meeting/Create.vue"
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Meeting/Edit.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Meeting/Edit.vue ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=838106b2& */ "./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Meeting/Edit.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Meeting/Index.vue":
 /*!**********************************************!*\
   !*** ./resources/js/Pages/Meeting/Index.vue ***!
@@ -26649,6 +26859,45 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/Pages/Meeting/Index.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Meeting/Show.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/Meeting/Show.vue ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=4a90381a& */ "./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a&");
+/* harmony import */ var _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Meeting/Show.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -27509,6 +27758,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Meeting/Index.vue?vue&type=script&lang=js&":
 /*!***********************************************************************!*\
   !*** ./resources/js/Pages/Meeting/Index.vue?vue&type=script&lang=js& ***!
@@ -27522,6 +27787,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Index.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -28346,6 +28627,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2& ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_838106b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Edit.vue?vue&type=template&id=838106b2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2&");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Meeting/Index.vue?vue&type=template&id=4b67d205&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/Pages/Meeting/Index.vue?vue&type=template&id=4b67d205& ***!
@@ -28359,6 +28657,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_4b67d205___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_4b67d205___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=4b67d205& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Index.vue?vue&type=template&id=4b67d205&");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a& ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_4a90381a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Show.vue?vue&type=template&id=4a90381a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a&");
 
 
 /***/ }),
@@ -30478,7 +30793,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                    Your Meetings\n                                "
+                                      "\n                                    Your Events\n                                "
                                     )
                                   ]
                                 )
@@ -31108,7 +31423,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                            Your Meetings\n                        "
+                                "\n                            Your Events\n                        "
                               )
                             ]
                           )
@@ -33371,32 +33686,32 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "meeting-date", value: "Meeting Date" }
+                        attrs: { for: "meeting-start", value: "Meeting Start" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
                         staticClass: "mt-1 block w-full",
                         attrs: {
-                          id: "meeting-date",
-                          type: "date",
-                          placeholder: "dd/mm/yyyy",
+                          id: "meeting-start",
+                          type: "datetime-local",
+                          placeholder: "dd/mm/yyyy 00:00",
                           pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
                           required: ""
                         },
                         model: {
-                          value: _vm.meeting.meeting_date,
+                          value: _vm.meeting.meeting_start,
                           callback: function($$v) {
-                            _vm.$set(_vm.meeting, "meeting_date", $$v)
+                            _vm.$set(_vm.meeting, "meeting_start", $$v)
                           },
-                          expression: "meeting.meeting_date"
+                          expression: "meeting.meeting_start"
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors.meeting_date
+                      _vm.errors.meeting_start
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.meeting_date))]
+                            [_vm._v(_vm._s(_vm.errors.meeting_start))]
                           )
                         : _vm._e()
                     ],
@@ -33408,67 +33723,32 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "start-time", value: "Start Time" }
+                        attrs: { for: "meeting-end", value: "Meeting End" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
                         staticClass: "mt-1 block w-full",
                         attrs: {
-                          id: "start-time",
-                          type: "time",
-                          placeholder: "hh:mm",
+                          id: "meeting-end",
+                          type: "datetime-local",
+                          placeholder: "dd/mm/yyyy 00:00",
+                          pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
                           required: ""
                         },
                         model: {
-                          value: _vm.meeting.start_time,
+                          value: _vm.meeting.meeting_end,
                           callback: function($$v) {
-                            _vm.$set(_vm.meeting, "start_time", $$v)
+                            _vm.$set(_vm.meeting, "meeting_end", $$v)
                           },
-                          expression: "meeting.start_time"
+                          expression: "meeting.meeting_end"
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors.start_time
+                      _vm.errors.meeting_end
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.start_time))]
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "mt-4" },
-                    [
-                      _c("jet-label", {
-                        attrs: { for: "end-time", value: "End Time" }
-                      }),
-                      _vm._v(" "),
-                      _c("jet-input", {
-                        staticClass: "mt-1 block w-full",
-                        attrs: {
-                          id: "end-time",
-                          type: "time",
-                          placeholder: "hh:mm",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.meeting.end_time,
-                          callback: function($$v) {
-                            _vm.$set(_vm.meeting, "end_time", $$v)
-                          },
-                          expression: "meeting.end_time"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.end_time
-                        ? _c(
-                            "div",
-                            { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.end_time))]
+                            [_vm._v(_vm._s(_vm.errors.meeting_end))]
                           )
                         : _vm._e()
                     ],
@@ -33482,6 +33762,205 @@ var render = function() {
                       _c("jet-button", { staticClass: "ml-4" }, [
                         _vm._v(
                           "\n                            Create Meeting\n                        "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Edit.vue?vue&type=template&id=838106b2& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* binding */ render,
+/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "app-layout",
+    {
+      scopedSlots: _vm._u([
+        {
+          key: "header",
+          fn: function() {
+            return [
+              _c(
+                "h2",
+                {
+                  staticClass:
+                    "font-semibold text-xl text-gray-800 leading-tight"
+                },
+                [_vm._v("\n            Edit Meeting\n        ")]
+              )
+            ]
+          },
+          proxy: true
+        }
+      ])
+    },
+    [
+      _vm._v(" "),
+      _c("div", { staticClass: "py-12" }, [
+        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+            },
+            [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit($event)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "mt-4" },
+                    [
+                      _c("jet-label", {
+                        attrs: { for: "name", value: "Meeting Name" }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-input", {
+                        staticClass: "mt-1 block w-full",
+                        attrs: {
+                          id: "name",
+                          type: "text",
+                          value: _vm.meeting.name,
+                          required: "",
+                          autofocus: ""
+                        },
+                        model: {
+                          value: _vm.meeting.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.meeting, "name", $$v)
+                          },
+                          expression: "meeting.name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.name
+                        ? _c(
+                            "div",
+                            { staticClass: "mt-3 text-sm text-red-600" },
+                            [_vm._v(_vm._s(_vm.errors.name))]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mt-4" },
+                    [
+                      _c("jet-label", {
+                        attrs: { for: "meeting-start", value: "Meeting Start" }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-input", {
+                        staticClass: "mt-1 block w-full",
+                        attrs: {
+                          id: "meeting-start",
+                          type: "datetime-local",
+                          pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
+                          value: _vm.meeting.meeting_start,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.meeting.meeting_start,
+                          callback: function($$v) {
+                            _vm.$set(_vm.meeting, "meeting_start", $$v)
+                          },
+                          expression: "meeting.meeting_start"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.meeting_start
+                        ? _c(
+                            "div",
+                            { staticClass: "mt-3 text-sm text-red-600" },
+                            [_vm._v(_vm._s(_vm.errors.meeting_start))]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mt-4" },
+                    [
+                      _c("jet-label", {
+                        attrs: { for: "meeting-end", value: "Meeting End" }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-input", {
+                        staticClass: "mt-1 block w-full",
+                        attrs: {
+                          id: "meeting-end",
+                          type: "datetime-local",
+                          pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
+                          value: _vm.meeting.meeting_end,
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.meeting.meeting_end,
+                          callback: function($$v) {
+                            _vm.$set(_vm.meeting, "meeting_end", $$v)
+                          },
+                          expression: "meeting.meeting_end"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.meeting_end
+                        ? _c(
+                            "div",
+                            { staticClass: "mt-3 text-sm text-red-600" },
+                            [_vm._v(_vm._s(_vm.errors.meeting_end))]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex items-center justify-center mt-4" },
+                    [
+                      _c("jet-button", { staticClass: "ml-4" }, [
+                        _vm._v(
+                          "\n                            Update\n                        "
                         )
                       ])
                     ],
@@ -33533,7 +34012,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            My events\n        ")]
+                [_vm._v("\n      My events\n    ")]
               )
             ]
           },
@@ -33557,9 +34036,7 @@ var render = function() {
                   { attrs: { href: _vm.route("meetings.create") } },
                   [
                     _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
-                      _vm._v(
-                        "\n                    Create Meeting\n                "
-                      )
+                      _vm._v(" Create Event ")
                     ])
                   ],
                   1
@@ -33578,54 +34055,185 @@ var render = function() {
                 },
                 [
                   _c(
-                    "div",
-                    {
-                      staticClass:
-                        "p-4 sm:px-20 bg-white border-b border-gray-200"
-                    },
+                    "inertia-link",
+                    { attrs: { href: _vm.route("meetings.show", meeting.id) } },
                     [
-                      _c("div", { staticClass: "mt-2 text-2xl" }, [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(meeting.name) +
-                            "\n                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-6 text-gray-500" }, [
-                        _c("p", [
-                          _vm._v("\n                        Access code: "),
-                          _c("span", { staticClass: "raisin-black" }, [
-                            _vm._v(_vm._s(meeting.meeting_reference))
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "p-4 sm:px-20 bg-white border-b border-gray-200"
+                        },
+                        [
+                          _c("div", { staticClass: "mt-2 text-2xl" }, [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(meeting.name) +
+                                "\n          "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mt-6 text-gray-500" }, [
+                            _c("p", [
+                              _vm._v(
+                                "\n              Access code:\n              "
+                              ),
+                              _c(
+                                "span",
+                                { staticClass: "raisin-black font-mono" },
+                                [_vm._v(_vm._s(meeting.meeting_reference))]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "raisin-black" }, [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(meeting.meeting_start) +
+                                  " to " +
+                                  _vm._s(meeting.meeting_end) +
+                                  "\n            "
+                              )
+                            ])
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "raisin-black" }, [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(meeting.meeting_date) +
-                              "\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "raisin-black" }, [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(meeting.start_time) +
-                              " - " +
-                              _vm._s(meeting.end_time) +
-                              "\n                    "
-                          )
-                        ])
-                      ])
+                        ]
+                      )
                     ]
                   )
-                ]
+                ],
+                1
               )
             })
           ],
           2
         )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Meeting/Show.vue?vue&type=template&id=4a90381a& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => /* binding */ render,
+/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "app-layout",
+    {
+      scopedSlots: _vm._u([
+        {
+          key: "header",
+          fn: function() {
+            return [
+              _c(
+                "h2",
+                {
+                  staticClass:
+                    "font-semibold text-xl text-gray-800 leading-tight"
+                },
+                [_vm._v("\n      Event Details\n    ")]
+              )
+            ]
+          },
+          proxy: true
+        }
+      ])
+    },
+    [
+      _vm._v(" "),
+      _c("div", { staticClass: "py-12" }, [
+        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+          _c(
+            "div",
+            { staticClass: "flex items-center justify-start mt-4" },
+            [
+              _c(
+                "inertia-link",
+                { attrs: { href: _vm.route("meetings.index") } },
+                [
+                  _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
+                    _vm._v(" Back to view")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+            },
+            [
+              _c("div", { staticClass: "mt-2 text-2xl" }, [
+                _vm._v("\n          " + _vm._s(_vm.meeting.name) + "\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-6 text-gray-500" }, [
+                _c("p", [
+                  _vm._v("\n            Access code:\n            "),
+                  _c("span", { staticClass: "raisin-black font-mono" }, [
+                    _vm._v(_vm._s(_vm.meeting.meeting_reference))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "raisin-black" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.meeting.meeting_start) +
+                      " to " +
+                      _vm._s(_vm.meeting.meeting_end) +
+                      "\n          "
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "flex items-center justify-end sm:space-x-4 mt-4" },
+            [
+              _c(
+                "jet-button",
+                {
+                  staticClass:
+                    "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
+                },
+                [_vm._v("Edit Event")]
+              ),
+              _vm._v(" "),
+              _c(
+                "jet-button",
+                {
+                  staticClass:
+                    "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
+                },
+                [_vm._v("Delete Event")]
+              )
+            ],
+            1
+          )
+        ])
       ])
     ]
   )
@@ -47137,8 +47745,12 @@ var map = {
 	"./Home.vue": "./resources/js/Pages/Home.vue",
 	"./Meeting/Create": "./resources/js/Pages/Meeting/Create.vue",
 	"./Meeting/Create.vue": "./resources/js/Pages/Meeting/Create.vue",
+	"./Meeting/Edit": "./resources/js/Pages/Meeting/Edit.vue",
+	"./Meeting/Edit.vue": "./resources/js/Pages/Meeting/Edit.vue",
 	"./Meeting/Index": "./resources/js/Pages/Meeting/Index.vue",
 	"./Meeting/Index.vue": "./resources/js/Pages/Meeting/Index.vue",
+	"./Meeting/Show": "./resources/js/Pages/Meeting/Show.vue",
+	"./Meeting/Show.vue": "./resources/js/Pages/Meeting/Show.vue",
 	"./PrivacyPolicy": "./resources/js/Pages/PrivacyPolicy.vue",
 	"./PrivacyPolicy.vue": "./resources/js/Pages/PrivacyPolicy.vue",
 	"./Profile/DeleteUserForm": "./resources/js/Pages/Profile/DeleteUserForm.vue",

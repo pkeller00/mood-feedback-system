@@ -23,6 +23,8 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+// Route::get('/attend-meeting/{$slug}');
+
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
