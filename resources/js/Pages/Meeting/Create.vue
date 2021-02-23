@@ -45,7 +45,6 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    // import FormSection from '@/Jetstream/FormSection'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetCheckbox from '@/Jetstream/Checkbox'

@@ -17,15 +17,10 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        // $data = [
-        //     'name' => 'Hello world',
-        //     'meeting_reference' => 'XYZABCDE'
-        // ];
-
         $meetings = DB::table('meetings')->where('user_id', auth()->id())->orderByDesc('meeting_start')->get();
         // $meetings = DB::table('meetings')->where('user_id', auth()->id())->orderByDesc('meeting_date')->get();
 
-        return Inertia::render('Meeting/Index', ['meetings' => $meetings]);
+        return Inertia::render('Meeting/Index', compact('meetings'));
     }
 
     /**
@@ -67,8 +62,8 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
-        // dd($meeting);
-        return Inertia::render('Meeting/Show', ['meeting' => $meeting->only('meeting_reference', 'name', 'meeting_start', 'meeting_end')]);
+        // return Inertia::render('Meeting/Show', ['meeting' => $meeting->only(meeting_reference', 'name', 'meeting_start', 'meeting_end')]);
+        return Inertia::render('Meeting/Show', compact('meeting'));
     }
 
     /**
@@ -79,9 +74,7 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        // dd($meeting);
-
-        return Inertia::render('Meeting/Edit', ['meeting' => $meeting->only('meeting_reference', 'name', 'meeting_start', 'meeting_end')]);
+        return Inertia::render('Meeting/Edit', ['meeting' => $meeting]);
     }
 
     /**
@@ -94,7 +87,7 @@ class MeetingController extends Controller
     public function update(Request $request, Meeting $meeting)
     {
         $meeting->update($this->validateMeeting());
-        return redirect($meeting->path());
+        return redirect(route('meetings.show', $meeting));
     }
 
     /**

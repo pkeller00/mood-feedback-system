@@ -4538,7 +4538,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
- // import FormSection from '@/Jetstream/FormSection'
 
 
 
@@ -4597,7 +4596,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
 //
 //
 //
@@ -4643,12 +4641,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
- // import FormSection from '@/Jetstream/FormSection'
+//
+//
 
 
 
 
-
+ // import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -4656,8 +4655,8 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default // JetValidationErrors
+
   },
   props: {
     meeting: Object,
@@ -4665,16 +4664,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      meeting: this.$inertia.form({
-        name: '',
-        meeting_start: '',
-        meeting_end: ''
+      // return_meeting: this.meetings
+      return_meeting: this.$inertia.form({
+        id: this.meeting.id,
+        name: this.meeting.name,
+        meeting_start: this.meeting.meeting_start,
+        meeting_end: this.meeting.meeting_end
       })
     };
   },
   methods: {
     submit: function submit() {
-      this.meeting.post(this.route('meetings.update', $meeting)); // .transform(data => ({
+      this.$inertia.put("/meetings/".concat(this.meeting.id), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
+      // console.log(this.return_meeting);
+      // this.return_meeting
+      // .post(this.route('meetings.update', this.return_meeting))
+      // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''
       // }))
@@ -33835,6 +33840,7 @@ var render = function() {
               _c(
                 "form",
                 {
+                  key: _vm.meeting.id,
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
@@ -33861,11 +33867,11 @@ var render = function() {
                           autofocus: ""
                         },
                         model: {
-                          value: _vm.meeting.name,
+                          value: _vm.return_meeting.name,
                           callback: function($$v) {
-                            _vm.$set(_vm.meeting, "name", $$v)
+                            _vm.$set(_vm.return_meeting, "name", $$v)
                           },
-                          expression: "meeting.name"
+                          expression: "return_meeting.name"
                         }
                       }),
                       _vm._v(" "),
@@ -33898,11 +33904,11 @@ var render = function() {
                           required: ""
                         },
                         model: {
-                          value: _vm.meeting.meeting_start,
+                          value: _vm.return_meeting.meeting_start,
                           callback: function($$v) {
-                            _vm.$set(_vm.meeting, "meeting_start", $$v)
+                            _vm.$set(_vm.return_meeting, "meeting_start", $$v)
                           },
-                          expression: "meeting.meeting_start"
+                          expression: "return_meeting.meeting_start"
                         }
                       }),
                       _vm._v(" "),
@@ -33935,11 +33941,11 @@ var render = function() {
                           required: ""
                         },
                         model: {
-                          value: _vm.meeting.meeting_end,
+                          value: _vm.return_meeting.meeting_end,
                           callback: function($$v) {
-                            _vm.$set(_vm.meeting, "meeting_end", $$v)
+                            _vm.$set(_vm.return_meeting, "meeting_end", $$v)
                           },
-                          expression: "meeting.meeting_end"
+                          expression: "return_meeting.meeting_end"
                         }
                       }),
                       _vm._v(" "),
@@ -34214,21 +34220,19 @@ var render = function() {
             { staticClass: "flex items-center justify-end sm:space-x-4 mt-4" },
             [
               _c(
-                "jet-button",
-                {
-                  staticClass:
-                    "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-                },
-                [_vm._v("Edit Event")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jet-button",
-                {
-                  staticClass:
-                    "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
-                },
-                [_vm._v("Delete Event")]
+                "inertia-link",
+                { attrs: { href: _vm.route("meetings.edit", _vm.meeting) } },
+                [
+                  _c(
+                    "jet-button",
+                    {
+                      staticClass:
+                        "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
+                    },
+                    [_vm._v("Edit Event")]
+                  )
+                ],
+                1
               )
             ],
             1

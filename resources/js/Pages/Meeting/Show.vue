@@ -40,10 +40,10 @@
           </div>
         </div>
         <div class="flex items-center justify-end sm:space-x-4 mt-4">
-          <!-- <inertia-link :href="route('meetings.edit', meeting)"> -->
+          <inertia-link :href="route('meetings.edit', meeting)">
             <jet-button class="mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900">Edit Event</jet-button>
-            <jet-button class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900">Delete Event</jet-button>
-          <!-- </inertia-link> -->
+          </inertia-link>
+            <!-- <jet-button class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900">Delete Event</jet-button> -->
         </div>
       </div>
     </div>
