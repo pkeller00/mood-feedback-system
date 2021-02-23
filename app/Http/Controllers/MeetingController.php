@@ -23,8 +23,6 @@ class MeetingController extends Controller
 
         $meetings = DB::table('meetings')->where('user_id', auth()->id())->get();
 
-
-
         return Inertia::render('Meeting/Index', ['meetings' => $meetings]);
     }
 

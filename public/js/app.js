@@ -4420,6 +4420,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -33190,6 +33192,9 @@ var render = function() {
             [
               _vm._v(
                 "\n\n                dashboard content goes here\n                "
+              ),
+              _vm._v(
+                "\n                a little change is welcome\n                another change is on the way\n            "
               )
             ]
           )
