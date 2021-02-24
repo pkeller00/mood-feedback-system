@@ -2918,42 +2918,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
  // import JetCheckbox from '@/Jetstream/Checkbox'
@@ -4675,7 +4639,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.put("/meetings/".concat(this.meeting.id), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
+      this.$inertia.put("/meetings/".concat(this.meeting.meeting_reference), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
       // console.log(this.return_meeting);
       // this.return_meeting
       // .post(this.route('meetings.update', this.return_meeting))
@@ -4777,6 +4741,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -30501,7 +30469,7 @@ var render = function() {
               },
               [
                 _c("inertia-link", { attrs: { href: _vm.route("home") } }, [
-                  _vm._v("Got a meeting to join?")
+                  _vm._v("Got an event to join?")
                 ])
               ],
               1
@@ -30547,7 +30515,7 @@ var render = function() {
                   [
                     _c("jet-button", { staticClass: "ml-4" }, [
                       _vm._v(
-                        "\n                            Join Meeting\n                        "
+                        "\n                            Join Event\n                        "
                       )
                     ])
                   ],
@@ -30604,7 +30572,7 @@ var render = function() {
                   { staticClass: "mt-2 text-sm text-gray-500" },
                   [
                     _vm._v(
-                      "\n                    Have an upcoming meeting? Go ahead and create a meeting, customise your templates and be prepared for hosting your session.\n                    If you have not done so already,\n                    "
+                      "\n                    Have an upcoming event? Go ahead and create an event, customise your templates and be prepared for hosting your session.\n                    If you have not done so already,\n                    "
                     ),
                     _c(
                       "inertia-link",
@@ -30633,7 +30601,7 @@ var render = function() {
                       [
                         _c("jet-button", { staticClass: "ml-4" }, [
                           _vm._v(
-                            "\n                            Create Meeting\n                        "
+                            "\n                            Create Event\n                        "
                           )
                         ])
                       ],
@@ -34055,14 +34023,14 @@ var render = function() {
               return _c(
                 "div",
                 {
-                  key: meeting.id,
+                  key: meeting.meeting_reference,
                   staticClass:
                     "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
                 },
                 [
                   _c(
                     "inertia-link",
-                    { attrs: { href: _vm.route("meetings.show", meeting.id) } },
+                    { attrs: { href: _vm.route("meetings.show", meeting) } },
                     [
                       _c(
                         "div",
@@ -34173,8 +34141,8 @@ var render = function() {
                 "inertia-link",
                 { attrs: { href: _vm.route("meetings.index") } },
                 [
-                  _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
-                    _vm._v(" Back to view")
+                  _c("jet-button", { staticClass: "ml-4 sm:ml-0" }, [
+                    _vm._v("Back to your events")
                   ])
                 ],
                 1
@@ -34230,6 +34198,27 @@ var render = function() {
                         "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
                     },
                     [_vm._v("Edit Event")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "inertia-link",
+                {
+                  attrs: {
+                    method: "delete",
+                    href: _vm.route("meetings.destroy", _vm.meeting)
+                  }
+                },
+                [
+                  _c(
+                    "jet-button",
+                    {
+                      staticClass:
+                        "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
+                    },
+                    [_vm._v("Delete Event")]
                   )
                 ],
                 1

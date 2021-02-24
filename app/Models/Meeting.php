@@ -25,4 +25,9 @@ class Meeting extends Model
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'meeting_reference';
+    }
 }

@@ -18,7 +18,6 @@ class MeetingController extends Controller
     public function index()
     {
         $meetings = DB::table('meetings')->where('user_id', auth()->id())->orderByDesc('meeting_start')->get();
-        // $meetings = DB::table('meetings')->where('user_id', auth()->id())->orderByDesc('meeting_date')->get();
 
         return Inertia::render('Meeting/Index', compact('meetings'));
     }
@@ -41,12 +40,9 @@ class MeetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($request);
         $this->validateMeeting();
 
         $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
-        // $meeting = new Meeting(request(['name', 'meeting_date', 'start_time', 'end_time']));
         $meeting->meeting_reference = Str::upper(Str::random(7));
         $meeting->user_id = auth()->id();
         $meeting->save();
@@ -62,7 +58,6 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
-        // return Inertia::render('Meeting/Show', ['meeting' => $meeting->only(meeting_reference', 'name', 'meeting_start', 'meeting_end')]);
         return Inertia::render('Meeting/Show', compact('meeting'));
     }
 
@@ -74,7 +69,7 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        return Inertia::render('Meeting/Edit', ['meeting' => $meeting]);
+        return Inertia::render('Meeting/Edit', compact('meeting'));
     }
 
     /**
@@ -87,6 +82,7 @@ class MeetingController extends Controller
     public function update(Request $request, Meeting $meeting)
     {
         $meeting->update($this->validateMeeting());
+
         return redirect(route('meetings.show', $meeting));
     }
 
@@ -98,7 +94,9 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
-        //
+        $meeting->delete();
+
+        return redirect(route('meetings.index'));
     }
 
     protected function validateMeeting()

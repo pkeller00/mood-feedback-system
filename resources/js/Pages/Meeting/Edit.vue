@@ -82,7 +82,7 @@
 
         methods: {
             submit() {
-                this.$inertia.put(`/meetings/${this.meeting.id}`, this.return_meeting)
+                this.$inertia.put(`/meetings/${this.meeting.meeting_reference}`, this.return_meeting)
                 // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
                 // console.log(this.return_meeting);
                 // this.return_meeting

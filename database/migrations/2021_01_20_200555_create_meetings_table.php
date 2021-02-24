@@ -15,7 +15,7 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->string('meeting_reference');
+            $table->string('meeting_reference')->unique();
             $table->text('name');
             // need to assign a meeting to the author that has created it
             $table->bigInteger('user_id')->unsigned();

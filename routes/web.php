@@ -23,7 +23,6 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-// Route::get('/attend-meeting/{$slug}');
 
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
@@ -31,6 +30,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('meetings', MeetingController::class);//->only(['index', 'create']);
+    Route::get('/events', [MeetingController::class, 'index'])->name('meetings.index');
+    Route::post('/events', [MeetingController::class, 'store'])->name('meetings.store');
+    Route::get('/events/create', [MeetingController::class, 'create'])->name('meetings.create');
+    Route::get('/events/{meeting}', [MeetingController::class, 'show'])->name('meetings.show');
+    Route::match(array('PUT', "PATCH"),'/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
+    Route::delete('/events/{meeting}', [MeetingController::class, 'destroy'])->name('meetings.destroy');
+    Route::get('/events/{meeting}/edit', [MeetingController::class, 'edit'])->name('meetings.edit');
+
+    // Route::get('/attend-meeting')
 
 });

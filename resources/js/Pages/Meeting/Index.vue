@@ -16,9 +16,9 @@
         <div
           class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
           v-for="meeting in meetings"
-          :key="meeting.id"
+          :key="meeting.meeting_reference"
         >
-        <inertia-link :href="route('meetings.show', meeting.id)">
+        <inertia-link :href="route('meetings.show', meeting)">
           <div class="p-4 sm:px-20 bg-white border-b border-gray-200">
             <div class="mt-2 text-2xl">
               {{ meeting.name }}
