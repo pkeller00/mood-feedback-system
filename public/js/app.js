@@ -4607,6 +4607,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4628,9 +4661,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // return_meeting: this.meetings
       return_meeting: this.$inertia.form({
-        id: this.meeting.id,
+        meeting_reference: this.meeting.meeting_reference,
         name: this.meeting.name,
         meeting_start: this.meeting.meeting_start,
         meeting_end: this.meeting.meeting_end
@@ -4639,7 +4671,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.put("/meetings/".concat(this.meeting.meeting_reference), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
+      this.$inertia.put("/events/".concat(this.meeting.meeting_reference), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
       // console.log(this.return_meeting);
       // this.return_meeting
       // .post(this.route('meetings.update', this.return_meeting))
@@ -4741,6 +4773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+//
 //
 //
 //
@@ -33786,7 +33819,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Edit Meeting\n        ")]
+                [_vm._v("\n      Edit Meeting\n    ")]
               )
             ]
           },
@@ -33847,7 +33880,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.name))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.name) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33884,7 +33923,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.meeting_start))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.meeting_start) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33921,7 +33966,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.meeting_end))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.meeting_end) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33933,9 +33984,7 @@ var render = function() {
                     { staticClass: "flex items-center justify-center mt-4" },
                     [
                       _c("jet-button", { staticClass: "ml-4" }, [
-                        _vm._v(
-                          "\n                            Update\n                        "
-                        )
+                        _vm._v("\n              Update\n            ")
                       ])
                     ],
                     1
@@ -34208,6 +34257,7 @@ var render = function() {
                 {
                   attrs: {
                     method: "delete",
+                    as: "button",
                     href: _vm.route("meetings.destroy", _vm.meeting)
                   }
                 },

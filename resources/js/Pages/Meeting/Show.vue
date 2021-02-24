@@ -41,6 +41,7 @@
           </inertia-link>
           <inertia-link
             method="delete"
+            as="button"
             :href="route('meetings.destroy', meeting)"
           >
             <jet-button
@@ -69,6 +70,3 @@ export default {
   },
 };
 </script>
-
-
-

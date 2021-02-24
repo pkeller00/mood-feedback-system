@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class MeetingController extends Controller
@@ -42,8 +42,19 @@ class MeetingController extends Controller
     {
         $this->validateMeeting();
 
+        // Event access code generator
+        $isUnique = true;
+        $code = "";
+        do {
+            $isUnique = true;
+            $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
+            if (Meeting::where('meeting_reference', $code)->exists()) {
+                $isUnique = false;
+            }
+        } while ($isUnique == false);
+
         $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
-        $meeting->meeting_reference = Str::upper(Str::random(7));
+        $meeting->meeting_reference = $code;
         $meeting->user_id = auth()->id();
         $meeting->save();
 
