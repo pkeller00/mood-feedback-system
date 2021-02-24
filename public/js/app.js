@@ -2838,6 +2838,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2922,14 +2962,49 @@ __webpack_require__.r(__webpack_exports__);
 
  // import JetCheckbox from '@/Jetstream/Checkbox'
 
- // import JetValidationErrors from '@/Jetstream/ValidationErrors'
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     JetApplicationLogo: _Jetstream_ApplicationLogo__WEBPACK_IMPORTED_MODULE_0__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__.default
+  },
+  //   props: {
+  //     errors: Object,
+  //   },
+  data: function data() {
+    return {
+      access_code: this.$inertia.form({
+        code: ""
+      })
+    };
+  },
+  computed: {
+    errors: function errors() {
+      return this.$page.props.errors;
+    },
+    badAccessCode: function badAccessCode() {
+      return Object.keys(this.errors).length > 0;
+    }
+  },
+  methods: {
+    submit_attend: function submit_attend() {
+      this.access_code.post(this.route('attendevents.attend')); //   this.$inertia.post(
+      //     `/attend-event/${this.access_code.code}`,
+      //     this.access_code
+      //   );
+      //   this.access_code.post(this.route("attendevents.attend"));
+      // .transform(data => ({
+      //     ... data,
+      //     remember: this.form.remember ? 'on' : ''
+      // }))
+      // .post(this.route('meetings.store'), {
+      //     onFinish: () => this.form.reset('password'),
+      // })
+    }
   }
 });
 
@@ -4502,6 +4577,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4523,15 +4632,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       meeting: this.$inertia.form({
-        name: '',
-        meeting_start: '',
-        meeting_end: ''
+        name: "",
+        meeting_start: "",
+        meeting_end: ""
       })
     };
   },
   methods: {
     submit: function submit() {
-      this.meeting.post(this.route('meetings.store')); // .transform(data => ({
+      this.meeting.post(this.route("meetings.store")); // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''
       // }))
@@ -30516,7 +30625,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.submit($event)
+                    return _vm.submit_attend($event)
                   }
                 }
               },
@@ -30526,18 +30635,37 @@ var render = function() {
                   { staticClass: "mt-4" },
                   [
                     _c("jet-label", {
-                      attrs: { for: "meeting-code", value: "Enter access code" }
+                      attrs: { for: "code", value: "Enter access code" }
                     }),
                     _vm._v(" "),
                     _c("jet-input", {
                       staticClass: "mt-1 block w-full",
                       attrs: {
-                        id: "meeting-code",
+                        id: "code",
                         type: "text",
                         required: "",
                         autofocus: ""
+                      },
+                      model: {
+                        value: _vm.access_code.code,
+                        callback: function($$v) {
+                          _vm.$set(_vm.access_code, "code", $$v)
+                        },
+                        expression: "access_code.code"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm.badAccessCode
+                      ? _c("div", [
+                          _vm.errors.code
+                            ? _c(
+                                "div",
+                                { staticClass: "mt-3 text-sm text-red-600" },
+                                [_vm._v(_vm._s(_vm.errors.code))]
+                              )
+                            : _vm._e()
+                        ])
+                      : _vm._e()
                   ],
                   1
                 ),
@@ -30547,9 +30675,7 @@ var render = function() {
                   { staticClass: "flex items-center justify-end mt-4" },
                   [
                     _c("jet-button", { staticClass: "ml-4" }, [
-                      _vm._v(
-                        "\n                            Join Event\n                        "
-                      )
+                      _vm._v("\n              Join Event\n            ")
                     ])
                   ],
                   1
@@ -30587,6 +30713,7 @@ var render = function() {
                         "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                     }
                   }),
+                  _vm._v(" "),
                   _c("path", {
                     attrs: { d: "M15 13a3 3 0 11-6 0 3 3 0 016 0z" }
                   })
@@ -30605,7 +30732,7 @@ var render = function() {
                   { staticClass: "mt-2 text-sm text-gray-500" },
                   [
                     _vm._v(
-                      "\n                    Have an upcoming event? Go ahead and create an event, customise your templates and be prepared for hosting your session.\n                    If you have not done so already,\n                    "
+                      "\n          Have an upcoming event? Go ahead and create an event, customise your\n          templates and be prepared for hosting your session. If you have not\n          done so already,\n          "
                     ),
                     _c(
                       "inertia-link",
@@ -30613,13 +30740,9 @@ var render = function() {
                         staticClass: "text-indigo-700",
                         attrs: { href: _vm.route("register") }
                       },
-                      [
-                        _vm._v(
-                          "\n                        register an account\n                    "
-                        )
-                      ]
+                      [_vm._v("\n            register an account\n          ")]
                     ),
-                    _vm._v("\n                     with us.\n                ")
+                    _vm._v("\n          with us.\n        ")
                   ],
                   1
                 ),
@@ -30633,9 +30756,7 @@ var render = function() {
                       { staticClass: "flex items-center justify-end mt-4" },
                       [
                         _c("jet-button", { staticClass: "ml-4" }, [
-                          _vm._v(
-                            "\n                            Create Event\n                        "
-                          )
+                          _vm._v(" Create Event ")
                         ])
                       ],
                       1
@@ -30662,13 +30783,13 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "mt-8 text-2xl" }, [
           _vm._v(
-            "\n            Are your audience as engaged as you would hope?\n        "
+            "\n      Are your audience as engaged as you would hope?\n    "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mt-6 text-gray-500" }, [
           _vm._v(
-            "\n            Use the Mood Feedback System to host your next meeting. Receive live analysis of your audience and improve your\n            engagement levels. With live feedback you can now tailor your sessions to your audience. Feedback is guaranteed\n            to be better quality than traditional methods.\n\n        "
+            "\n      Use the Mood Feedback System to host your next meeting. Receive live\n      analysis of your audience and improve your engagement levels. With live\n      feedback you can now tailor your sessions to your audience. Feedback is\n      guaranteed to be better quality than traditional methods.\n    "
           )
         ])
       ]
@@ -33621,7 +33742,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Create Meeting\n        ")]
+                [_vm._v("\n      Create Meeting\n    ")]
               )
             ]
           },
@@ -33680,7 +33801,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.name))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.name) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33717,7 +33844,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.meeting_start))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.meeting_start) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33754,7 +33887,13 @@ var render = function() {
                         ? _c(
                             "div",
                             { staticClass: "mt-3 text-sm text-red-600" },
-                            [_vm._v(_vm._s(_vm.errors.meeting_end))]
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(_vm.errors.meeting_end) +
+                                  "\n            "
+                              )
+                            ]
                           )
                         : _vm._e()
                     ],
@@ -33766,9 +33905,7 @@ var render = function() {
                     { staticClass: "flex items-center justify-center mt-4" },
                     [
                       _c("jet-button", { staticClass: "ml-4" }, [
-                        _vm._v(
-                          "\n                            Create Meeting\n                        "
-                        )
+                        _vm._v("\n              Create Meeting\n            ")
                       ])
                     ],
                     1

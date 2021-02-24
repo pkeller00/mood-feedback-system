@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\AttendEventController;
+use App\Models\Meeting;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,7 +25,7 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/attend-event/{access_code}', [AttendEventController::class, 'show']);
+Route::post('/attend-event', [AttendEventController::class, 'attend'])->name('attendevents.attend');
 
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
