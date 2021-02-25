@@ -26,7 +26,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/attend-event', [AttendEventController::class, 'attend'])->name('attendevents.attend');
-// Route::post('/feedback', [AttendEventController::class, 'generate'])->name('attendevents.generate');
+Route::get('/attend-event/{meeting}', [AttendEventController::class, 'create'])->name('attendevents.create');
+Route::post('/submit-feedback', [AttendEventController::class, 'store'])->name('attendevents.store');
 
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
