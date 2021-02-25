@@ -47,7 +47,7 @@ class MeetingController extends Controller
             $this->validateMeeting();
             $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
             //need to let user create a form first
-            return Inertia::render('Meeting/Create2', compact('meeting')); 
+            return Inertia::render('Meeting/CreateForm', compact('meeting')); 
          }else{
             // Event access code generator
             $isUnique = true;
