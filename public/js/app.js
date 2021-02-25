@@ -5021,6 +5021,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5030,7 +5031,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     meetings: Array
-  }
+  } //Making a deep copy of a prop for return, will use later for pops etc if needed
+  // data() {
+  //   return {
+  //     counter: JSON.parse(JSON.stringify(this.meetings))
+  //   };
+  // },
+
 });
 
 /***/ }),
@@ -34633,7 +34640,9 @@ var render = function() {
                                   _vm._s(meeting.meeting_end) +
                                   "\n            "
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c("pre", [_vm._v(_vm._s(_vm.$data))])
                           ])
                         ]
                       )
