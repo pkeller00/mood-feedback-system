@@ -34,11 +34,11 @@
           <!-- For each question in form lets user answer them -->
           <div
             class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-            v-for="(question, i) in questions"
-            :key="i"
+            v-for="(question, i) in feedback_response.questions"
+            :key="question.id"
           >
             <div class="mt-4">
-              This is the question:
+              Question {{ i }}.
               <jet-label :for="i" :value="question.question" />
               This is the type of question :
               <p class="block font-medium text-sm text-gray-700">
@@ -51,7 +51,7 @@
                 type="text"
                 class="mt-1 block w-full"
                 required
-                v-model="responses.resp[i]"
+                v-model="feedback_response.resp[i]"
                 autofocus
               />
               <!-- <div v-if="errors.name" class="mt-3 text-sm text-red-600">
@@ -89,13 +89,14 @@ export default {
 
   props: {
     meeting: Object,
-    questions: Array,
+    // questions: Array,
     errors: Object,
   },
 
   data() {
     return {
-      responses: this.$inertia.form({
+      feedback_response: this.$inertia.form({
+        questions: this.$page.props.questions,
         resp: [],
         // meeting_start: "",
         // meeting_end: "",
@@ -105,7 +106,8 @@ export default {
 
   methods: {
     submit() {
-      //   this.meeting.post(this.route("meetings.store"));
+      this.$inertia.post(`/submit-feedback`, this.feedback_response);
+    //   this.feedback_response.post(this.route("attendevents.store"));
       // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''

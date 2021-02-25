@@ -2992,7 +2992,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit_attend: function submit_attend() {
-      this.access_code.post(this.route('attendevents.create')); //   this.$inertia.post(
+      this.$inertia.post("/attend-event", this.access_code); // this.access_code.get(
+      //     this.route('attendevents.create')
+      // );
+      //   this.$inertia.post(
       //     `/attend-event/${this.access_code.code}`,
       //     this.access_code
       //   );
@@ -3855,12 +3858,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     meeting: Object,
-    questions: Array,
+    // questions: Array,
     errors: Object
   },
   data: function data() {
     return {
-      responses: this.$inertia.form({
+      feedback_response: this.$inertia.form({
+        questions: this.$page.props.questions,
         resp: [] // meeting_start: "",
         // meeting_end: "",
 
@@ -3868,7 +3872,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    submit: function submit() {//   this.meeting.post(this.route("meetings.store"));
+    submit: function submit() {
+      this.$inertia.post("/submit-feedback", this.feedback_response); //   this.feedback_response.post(this.route("attendevents.store"));
       // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''
@@ -32786,11 +32791,11 @@ var render = function() {
               }
             },
             [
-              _vm._l(_vm.questions, function(question, i) {
+              _vm._l(_vm.feedback_response.questions, function(question, i) {
                 return _c(
                   "div",
                   {
-                    key: i,
+                    key: question.id,
                     staticClass:
                       "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
                   },
@@ -32800,7 +32805,9 @@ var render = function() {
                       { staticClass: "mt-4" },
                       [
                         _vm._v(
-                          "\n            This is the question:\n            "
+                          "\n            Question " +
+                            _vm._s(i) +
+                            ".\n            "
                         ),
                         _c("jet-label", {
                           attrs: { for: i, value: question.question }
@@ -32835,11 +32842,11 @@ var render = function() {
                             autofocus: ""
                           },
                           model: {
-                            value: _vm.responses.resp[i],
+                            value: _vm.feedback_response.resp[i],
                             callback: function($$v) {
-                              _vm.$set(_vm.responses.resp, i, $$v)
+                              _vm.$set(_vm.feedback_response.resp, i, $$v)
                             },
-                            expression: "responses.resp[i]"
+                            expression: "feedback_response.resp[i]"
                           }
                         })
                       ],
