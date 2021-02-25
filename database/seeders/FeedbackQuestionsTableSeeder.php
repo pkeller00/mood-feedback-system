@@ -15,18 +15,23 @@ class FeedbackQuestionsTableSeeder extends Seeder
     public function run()
     {
         FeedbackQuestion::create([
-            'question' => 'question 1',
+            'question' => 'What came first, the chicken or the egg? - text input question',
             'question_type' => 1,
             'meeting_id' => 11,
         ]);
         FeedbackQuestion::create([
-            'question' => 'question 2',
+            'question' => 'Are you happy? - emoji picker question',
             'question_type' => 3,
             'meeting_id' => 11,
         ]);
         FeedbackQuestion::create([
-            'question' => 'question 3',
+            'question' => 'This should be a rating slider',
             'question_type' => 2,
+            'meeting_id' => 11,
+        ]);
+        FeedbackQuestion::create([
+            'question' => 'This should be a text input question',
+            'question_type' => 1,
             'meeting_id' => 11,
         ]);
     }

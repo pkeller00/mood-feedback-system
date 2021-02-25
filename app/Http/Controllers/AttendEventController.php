@@ -10,7 +10,7 @@ use Inertia\Inertia;
 
 class AttendEventController extends Controller
 {
-    public function attend(Request $request)
+    public function create(Request $request)
     {
         $this->validateAccessCode();
 
@@ -19,7 +19,7 @@ class AttendEventController extends Controller
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get();
         // ddd($meeting, $questions);
 
-        return Inertia::render('AttendEvent/Generate', [
+        return Inertia::render('AttendEvent/Create', [
             'meeting' => $meeting,
             'questions' => $questions,
         ]);

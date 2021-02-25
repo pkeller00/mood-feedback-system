@@ -159,7 +159,7 @@ export default {
   methods: {
     submit_attend() {
         this.access_code.post(
-            this.route('attendevents.attend')
+            this.route('attendevents.create')
         );
     //   this.$inertia.post(
     //     `/attend-event/${this.access_code.code}`,
