@@ -67,7 +67,7 @@
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4">
                 <!-- <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"> -->
-                Create Meeting
+                Add Event Form
               </jet-button>
             </div>
           </form>

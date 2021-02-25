@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meeting;
+use App\Models\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Str;
@@ -39,26 +40,47 @@ class MeetingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validateMeeting();
-
-        // Event access code generator
-        $isUnique = true;
-        $code = "";
-        do {
+    {   
+        //general field only added once form has been made => if not there then need to make a form before storing    
+        $hasForm = request('general');
+        if($hasForm === null){
+            $this->validateMeeting();
+            $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
+            //need to let user create a form first
+            return Inertia::render('Meeting/Create2', compact('meeting')); 
+         }else{
+            // Event access code generator
             $isUnique = true;
-            $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
-            if (Meeting::where('meeting_reference', $code)->exists()) {
-                $isUnique = false;
+            $code = "";
+            do {
+                $isUnique = true;
+                $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
+                if (Meeting::where('meeting_reference', $code)->exists()) {
+                    $isUnique = false;
+                }
+            } while ($isUnique == false);
+            $meeting = new Meeting();
+            $meeting->name = $hasForm['name'];
+            $meeting->meeting_start = $hasForm['meeting_start'];
+            $meeting->meeting_end = $hasForm['meeting_end'];
+            $meeting->meeting_reference = $code;
+            $meeting->user_id = auth()->id();
+            $meeting->save();
+
+            $saved_meeting = DB::table('meetings')->where('meeting_reference', $meeting->meeting_reference)->first();
+            $questions = request('questions');
+            foreach($questions as $item){
+                
+                $question = new FeedbackQuestion();
+                $question->question = $item['question'];
+                $question->question_type = $item['type'];
+                $question->meeting_id = $saved_meeting->id;
+                $question->save();
             }
-        } while ($isUnique == false);
-
-        $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
-        $meeting->meeting_reference = $code;
-        $meeting->user_id = auth()->id();
-        $meeting->save();
-
-        return redirect(route('meetings.index'));
+            return redirect(route('meetings.index'));
+            
+         }
+  
     }
 
     /**
