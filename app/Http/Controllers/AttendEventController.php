@@ -49,7 +49,6 @@ class AttendEventController extends Controller
         //
 
         $meeting = Meeting::where('meeting_reference', $access_code)->first();
-        ddd($meeting);
     }
 
     /**
