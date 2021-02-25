@@ -9,7 +9,9 @@ class FeedbackQuestion extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'response' => 'array'
-    ];
+    protected $fillable = ['question', 'question_type'];
+
+    // protected $casts = [
+    //     'response' => 'array'
+    // ];
 }

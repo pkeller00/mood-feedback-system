@@ -2,7 +2,7 @@
   <app-layout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Meeting
+        Leave Feedback
       </h2>
     </template>
 
@@ -12,8 +12,36 @@
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
           <!-- <jet-validation-errors class="mb-4" /> -->
-
+            {{ meeting }}
           <form @submit.prevent="submit">
+            <!-- For each question in form lets user answer them -->
+            <div
+              class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+              v-for="(question, i) in questions"
+              :key="question.id"
+            >
+              <div class="mt-4">
+                <jet-label for="0" :value="question.question" />
+                <jet-input
+                  :id="i"
+                  type="text"
+                  class="mt-1 block w-full"
+                  v-model="meeting.name[i]"
+                  required
+                  autofocus
+                />
+                <div v-if="errors.name" class="mt-3 text-sm text-red-600">
+                  {{ errors.name }}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-center mt-4">
+              <jet-button class="ml-4"> Submit Feedback </jet-button>
+            </div>
+          </form>
+
+          <!-- <form @submit.prevent="submit">
             <div class="mt-4">
               <jet-label for="name" value="Meeting Name" />
               <jet-input
@@ -66,11 +94,10 @@
 
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4">
-                <!-- <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"> -->
                 Create Meeting
               </jet-button>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
@@ -96,22 +123,24 @@ export default {
   },
 
   props: {
+    meeting: Object,
+    questions: Array,
     errors: Object,
   },
 
   data() {
-    return {
-      meeting: this.$inertia.form({
-        name: "",
-        meeting_start: "",
-        meeting_end: "",
-      }),
-    };
+    // return {
+    //   meeting: this.$inertia.form({
+    //     name: "",
+    //     meeting_start: "",
+    //     meeting_end: "",
+    //   }),
+    // };
   },
 
   methods: {
     submit() {
-      this.meeting.post(this.route("meetings.store"));
+      //   this.meeting.post(this.route("meetings.store"));
       // .transform(data => ({
       //     ... data,
       //     remember: this.form.remember ? 'on' : ''
