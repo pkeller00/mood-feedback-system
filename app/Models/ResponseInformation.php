@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResponseInformation extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'email'];
+
 }

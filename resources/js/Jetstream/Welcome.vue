@@ -1,8 +1,6 @@
 <template>
   <div>
     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-
-
       <!-- <div>
                 <jet-application-logo class="block h-12 w-auto" />
             </div> -->
@@ -60,7 +58,9 @@
                 autofocus
               />
               <div v-if="badAccessCode">
-                <div v-if="errors.code" class="mt-3 text-sm text-red-600">{{ errors.code }}</div>
+                <div v-if="errors.code" class="mt-3 text-sm text-red-600">
+                  {{ errors.code }}
+                </div>
               </div>
             </div>
 
@@ -123,7 +123,7 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 // import JetCheckbox from '@/Jetstream/Checkbox'
 import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
   components: {
@@ -134,10 +134,6 @@ export default {
     JetValidationErrors,
   },
 
-//   props: {
-//     errors: Object,
-//   },
-
   data() {
     return {
       access_code: this.$inertia.form({
@@ -147,33 +143,18 @@ export default {
   },
 
   computed: {
-            errors() {
-                return this.$page.props.errors
-            },
+    errors() {
+      return this.$page.props.errors;
+    },
 
-            badAccessCode() {
-                return Object.keys(this.errors).length > 0;
-            },
-        },
+    badAccessCode() {
+      return Object.keys(this.errors).length > 0;
+    },
+  },
 
   methods: {
     submit_attend() {
-        this.$inertia.post(`/attend-event`, this.access_code);
-        // this.access_code.get(
-        //     this.route('attendevents.create')
-        // );
-    //   this.$inertia.post(
-    //     `/attend-event/${this.access_code.code}`,
-    //     this.access_code
-    //   );
-    //   this.access_code.post(this.route("attendevents.attend"));
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
+      this.$inertia.post(`/attend-event`, this.access_code);
     },
   },
 };

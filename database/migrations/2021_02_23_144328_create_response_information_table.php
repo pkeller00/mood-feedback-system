@@ -17,7 +17,7 @@ class CreateResponseInformationTable extends Migration
             $table->id();
             // user name gets stored here
             $table->string('name')->nullable();
-
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <!-- general meeting information -->
+        <!-- General meeting information can be formatted here -->
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <!-- <jet-validation-errors class="mb-4" /> -->
+        <jet-validation-errors class="mb-4" />
         <form @submit.prevent="submit">
           <!-- For each question in form lets user answer them -->
           <div
@@ -44,19 +44,50 @@
               <p class="block font-medium text-sm text-gray-700">
                 {{ question.question_type }}
               </p>
-              <!-- different form question types should go here through a v-if -->
+              <!-- Different form question types should go here through a v-if -->
               Place response here:
               <jet-input
                 :id="i"
                 type="text"
                 class="mt-1 block w-full"
                 required
-                v-model="feedback_response.resp[i]"
+                v-model="feedback_response.responses[i]"
                 autofocus
               />
-              <!-- <div v-if="errors.name" class="mt-3 text-sm text-red-600">
-                  {{ errors.name }}
-                </div> -->
+              <div v-if="hasErrors" class="mt-3 text-sm text-red-600">
+                {{ errors }}
+              </div>
+            </div>
+          </div>
+
+          <!-- User can input their user information here - if the user is signed in it puts their email address by default -->
+          <div
+            class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+          >
+            <div class="mt-4">
+              User information (anonymity)
+              <jet-label
+                for="user_name"
+                value="Enter your name (or blank to remain anonymous)"
+              />
+              <jet-input
+                id="user_name"
+                type="text"
+                class="mt-1 block w-full"
+                v-model="feedback_response.name"
+                autofocus
+              />
+              <jet-label
+                for="user_email"
+                value="Enter your email (or blank to remain anonymous)"
+              />
+              <jet-input
+                id="user_email"
+                type="text"
+                class="mt-1 block w-full"
+                v-model="feedback_response.email"
+                autofocus
+              />
             </div>
           </div>
 
@@ -89,32 +120,45 @@ export default {
 
   props: {
     meeting: Object,
-    // questions: Array,
-    errors: Object,
   },
 
   data() {
     return {
       feedback_response: this.$inertia.form({
         questions: this.$page.props.questions,
-        resp: [],
-        // meeting_start: "",
-        // meeting_end: "",
+        responses: [],
+        name: "",
+        email: "",
       }),
     };
+  },
+
+  computed: {
+    user_name_comp() {
+      return this.feedback_response.name;
+    },
+
+    user_email_comp() {
+      return this.feedback_response.email;
+    },
+
+    errors() {
+      return this.$page.props.errors;
+    },
+
+    hasErrors() {
+      return Object.keys(this.errors).length > 0;
+    },
+  },
+
+  created() {
+    this.feedback_response.name = this.$page.props.user.name;
+    this.feedback_response.email = this.$page.props.user.email;
   },
 
   methods: {
     submit() {
       this.$inertia.post(`/submit-feedback`, this.feedback_response);
-    //   this.feedback_response.post(this.route("attendevents.store"));
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
     },
   },
 };
