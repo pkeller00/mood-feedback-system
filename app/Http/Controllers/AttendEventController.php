@@ -26,11 +26,6 @@ class AttendEventController extends Controller
     }
 
 
-<<<<<<< HEAD
-        $meeting = Meeting::where('meeting_reference', $access_code)->first();
-    }
-=======
->>>>>>> 975ca10246f2a28d6daf2ae2d66f39b2b96814cf
 
     protected function validateAccessCode()
     {
