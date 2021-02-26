@@ -34,7 +34,6 @@
               <p class="raisin-black">
                 {{ meeting.meeting_start }} to {{ meeting.meeting_end }}
               </p>
-              <pre>{{ $data }}</pre>
             </div>
           </div>
         </inertia-link>
@@ -58,12 +57,6 @@ export default {
   props: {
     meetings: Array,
   },
-  //Making a deep copy of a prop for return, will use later for pops etc if needed
-  // data() {
-  //   return {
-  //     counter: JSON.parse(JSON.stringify(this.meetings))
-  //   };
-  // },
 };
 </script>
 

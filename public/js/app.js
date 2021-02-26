@@ -4892,7 +4892,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form_data: this.$inertia.form({
         questions: [],
-        general: JSON.parse(JSON.stringify(this.meeting))
+        general: JSON.parse(JSON.stringify(this.meeting)) //Copy from previous page
+
       })
     };
   },
@@ -4901,24 +4902,18 @@ __webpack_require__.r(__webpack_exports__);
       this.form_data.questions.splice($index, 1);
     },
     submit: function submit() {
+      //If list is empty then doesn't have a first element so don't submit
       if (this.form_data.questions[0] == null) {
         alert("Cannot submit a form without questions");
       } else {
         this.form_data.post(this.route("meetings.store"));
-      } // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
-
+      }
     },
     addQuestion: function addQuestion() {
       var user_question = document.getElementById("myQ");
 
       if (user_question.value === '') {
-        alert("add some data");
+        alert("Can't add empty question");
       } else {
         this.form_data.questions.push({
           question: user_question.value,
@@ -5134,7 +5129,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5144,13 +5138,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     meetings: Array
-  } //Making a deep copy of a prop for return, will use later for pops etc if needed
-  // data() {
-  //   return {
-  //     counter: JSON.parse(JSON.stringify(this.meetings))
-  //   };
-  // },
-
+  }
 });
 
 /***/ }),
@@ -34750,9 +34738,7 @@ var render = function() {
                   },
                   [_vm._v("New Question")]
                 )
-              ]),
-              _vm._v(" "),
-              _c("pre", [_vm._v(_vm._s(_vm.$data))])
+              ])
             ]
           )
         ])
@@ -35094,9 +35080,7 @@ var render = function() {
                                   _vm._s(meeting.meeting_end) +
                                   "\n            "
                               )
-                            ]),
-                            _vm._v(" "),
-                            _c("pre", [_vm._v(_vm._s(_vm.$data))])
+                            ])
                           ])
                         ]
                       )

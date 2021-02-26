@@ -37,8 +37,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/events', [MeetingController::class, 'index'])->name('meetings.index');
     Route::post('/events/create', [MeetingController::class, 'store'])->name('meetings.store');
-    //Route::get('/events/create/test', [MeetingController::class, 'fillform'])->name('meetings.fillform');
-    //Route::post('/events/create/test', [MeetingController::class, 'final'])->name('meetings.final');
     Route::get('/events/create', [MeetingController::class, 'create'])->name('meetings.create');
     Route::get('/events/{meeting}', [MeetingController::class, 'show'])->name('meetings.show');
     Route::match(array('PUT', 'PATCH'),'/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
@@ -47,6 +45,3 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
 
 });
-
-
-//Route::post('/events/create', [FeedbackFormController::class, 'store'])->name('feedbackforms.store');

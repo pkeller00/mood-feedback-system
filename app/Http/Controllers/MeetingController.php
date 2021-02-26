@@ -59,6 +59,8 @@ class MeetingController extends Controller
                     $isUnique = false;
                 }
             } while ($isUnique == false);
+
+            //Create a meeting object
             $meeting = new Meeting();
             $meeting->name = $hasForm['name'];
             $meeting->meeting_start = $hasForm['meeting_start'];
@@ -69,8 +71,8 @@ class MeetingController extends Controller
 
             $saved_meeting = DB::table('meetings')->where('meeting_reference', $meeting->meeting_reference)->first();
             $questions = request('questions');
+            
             foreach($questions as $item){
-                
                 $question = new FeedbackQuestion();
                 $question->question = $item['question'];
                 $question->question_type = $item['type'];

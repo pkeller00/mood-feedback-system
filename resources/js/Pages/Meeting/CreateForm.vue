@@ -16,8 +16,8 @@
           <form @submit.prevent="submit">
             <h2>Your Form</h2>
             <div class="mt-4" v-for="(question,i) in form_data.questions" :key="question.id">
+              <!-- Show question added with a remove question button -->
               <p>Question: {{ question.question }}</p>
-              <!-- <button @click="deleteQuestion(i) >Remove Question</button> -->
               <button @click="deleteQuestion(i)" type="button"> Remove Question </button>
             </div>
             <div class="flex items-center justify-center mt-4">
@@ -28,9 +28,9 @@
           </form>
           <div>
             <input id="myQ" name="myQ" type="text">
+             <!-- Will need to add in a seperate notification form or something -->
             <button @click="addQuestion()">New Question</button>
           </div>
-          <pre>{{ $data }}</pre>            
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@ export default {
     return {
       form_data: this.$inertia.form({
         questions: [],
-        general: JSON.parse(JSON.stringify(this.meeting))
+        general: JSON.parse(JSON.stringify(this.meeting)) //Copy from previous page
       }),
     };
   },
@@ -74,23 +74,17 @@ export default {
         this.form_data.questions.splice($index,1);
     },
     submit() {
+      //If list is empty then doesn't have a first element so don't submit
       if(this.form_data.questions[0] == null){
         alert("Cannot submit a form without questions");
       }else{
         this.form_data.post(this.route("meetings.store"));
       }
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
     },
     addQuestion: function () {
         var user_question = document.getElementById("myQ");
         if (user_question.value === ''){
-            alert("add some data");
+            alert("Can't add empty question");
         }else{
             this.form_data.questions.push({ question: user_question.value, type:3 });
             user_question.value = '';    
