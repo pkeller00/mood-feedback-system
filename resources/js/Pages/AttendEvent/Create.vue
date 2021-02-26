@@ -40,20 +40,110 @@
             <div class="mt-4">
               Question {{ i }}.
               <jet-label :for="i" :value="question.question" />
-              This is the type of question :
-              <p class="block font-medium text-sm text-gray-700">
-                {{ question.question_type }}
-              </p>
+              <!-- This is the type of question : -->
+              <p v-if="question.question_type == 0">short text input</p>
+              <p v-if="question.question_type == 1">long text input</p>
+              <p v-if="question.question_type == 2">rating slider</p>
+              <p v-if="question.question_type == 3">emoji picker</p>
+              <p v-if="question.question_type == 4">multiple choice</p>
+
+              <template v-if="question.question_type == 0">
+                <!-- short text -->
+                <jet-input
+                  :id="i"
+                  v-model.trim="feedback_response.responses[i]"
+                  type="text"
+                  class="mt-1 block w-full"
+                  required
+                  autofocus
+                />
+              </template>
+              <template v-else-if="question.question_type == 1">
+                <!-- long text -->
+                <textarea
+                  :id="i"
+                  v-model.trim="feedback_response.responses[i]"
+                  placeholder="add multiple lines"
+                  class="mt-1 block w-full"
+                  required
+                  autofocus
+                ></textarea>
+              </template>
+              <template v-else-if="question.question_type == 2">
+                <!-- rating slider -->
+                <input
+                  :id="i"
+                  v-model="feedback_response.responses[i]"
+                  type="range"
+                  name=""
+                  min="-1"
+                  max="1"
+                  step="0.25"
+                  value="0"
+                  list="tickmarks"
+                  required
+                  autofocus
+                />
+                <datalist id="tickmarks" class="text-black">
+                  <option value="-1" label="Really bad"></option>
+                  <option value="-0.75"></option>
+                  <option value="-0.5"></option>
+                  <option value="-0.25"></option>
+                  <option value="0" label="Average"></option>
+                  <option value="0.25"></option>
+                  <option value="0.5"></option>
+                  <option value="0.75"></option>
+                  <option value="1" label="Really good"></option>
+                </datalist>
+              </template>
+              <template v-else-if="question.question_type == 3">
+                <!-- emoji picker -->
+                <label>
+                  <input
+                    id="sad"
+                    v-model="feedback_response.responses[i]"
+                    type="radio"
+                    name="emojipicker"
+                    value="-1"
+                    required
+                    autofocus
+                  />
+                  sad
+                </label>
+                <label>
+                  <input
+                    id="neutral"
+                    v-model="feedback_response.responses[i]"
+                    type="radio"
+                    name="emojipicker"
+                    value="0"
+                  />
+                  neutral
+                </label>
+                <label>
+                  <input
+                    id="happy"
+                    v-model="feedback_response.responses[i]"
+                    type="radio"
+                    name="emojipicker"
+                    value="1"
+                  />
+                  happy
+                </label>
+              </template>
+              <template v-if="question.question_type == 4">
+                <!-- multiple choice input -->
+                <jet-input
+                  :id="i"
+                  v-model.trim="feedback_response.responses[i]"
+                  type="text"
+                  class="mt-1 block w-full"
+                  required
+                  autofocus
+                />
+              </template>
+
               <!-- Different form question types should go here through a v-if -->
-              Place response here:
-              <jet-input
-                :id="i"
-                type="text"
-                class="mt-1 block w-full"
-                required
-                v-model="feedback_response.responses[i]"
-                autofocus
-              />
               <div v-if="hasErrors" class="mt-3 text-sm text-red-600">
                 {{ errors }}
               </div>
@@ -137,7 +227,6 @@ export default {
     user_name_comp() {
       return this.feedback_response.name;
     },
-
     user_email_comp() {
       return this.feedback_response.email;
     },
@@ -145,7 +234,6 @@ export default {
     errors() {
       return this.$page.props.errors;
     },
-
     hasErrors() {
       return Object.keys(this.errors).length > 0;
     },
@@ -164,5 +252,5 @@ export default {
 };
 </script>
 
-
-
+<style scoped>
+</style>

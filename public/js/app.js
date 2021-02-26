@@ -3855,6 +3855,96 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -26795,7 +26885,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=677cadd4& */ "./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&");
+/* harmony import */ var _Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=677cadd4&scoped=true& */ "./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true&");
 /* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/Pages/AttendEvent/Create.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -26807,11 +26897,11 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  null,
+  "677cadd4",
   null
   
 )
@@ -28956,19 +29046,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true& ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=template&id=677cadd4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_677cadd4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Create.vue?vue&type=template&id=677cadd4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true&");
 
 
 /***/ }),
@@ -32921,10 +33011,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/AttendEvent/Create.vue?vue&type=template&id=677cadd4&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33034,47 +33124,318 @@ var render = function() {
                           _c("jet-label", {
                             attrs: { for: i, value: question.question }
                           }),
-                          _vm._v(
-                            "\n            This is the type of question :\n            "
-                          ),
-                          _c(
-                            "p",
-                            {
-                              staticClass:
-                                "block font-medium text-sm text-gray-700"
-                            },
-                            [
-                              _vm._v(
-                                "\n              " +
-                                  _vm._s(question.question_type) +
-                                  "\n            "
-                              )
-                            ]
-                          ),
                           _vm._v(" "),
-                          _vm._v(
-                            "\n            Place response here:\n            "
-                          ),
-                          _c("jet-input", {
-                            staticClass: "mt-1 block w-full",
-                            attrs: {
-                              id: i,
-                              type: "text",
-                              required: "",
-                              autofocus: ""
-                            },
-                            model: {
-                              value: _vm.feedback_response.responses[i],
-                              callback: function($$v) {
-                                _vm.$set(
-                                  _vm.feedback_response.responses,
-                                  i,
-                                  $$v
+                          question.question_type == 0
+                            ? _c("p", [_vm._v("short text input")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 1
+                            ? _c("p", [_vm._v("long text input")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 2
+                            ? _c("p", [_vm._v("rating slider")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 3
+                            ? _c("p", [_vm._v("emoji picker")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 4
+                            ? _c("p", [_vm._v("multiple choice")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 0
+                            ? [
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: {
+                                    id: i,
+                                    type: "text",
+                                    required: "",
+                                    autofocus: ""
+                                  },
+                                  model: {
+                                    value: _vm.feedback_response.responses[i],
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.feedback_response.responses,
+                                        i,
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "feedback_response.responses[i]"
+                                  }
+                                })
+                              ]
+                            : question.question_type == 1
+                            ? [
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model.trim",
+                                      value: _vm.feedback_response.responses[i],
+                                      expression:
+                                        "feedback_response.responses[i]",
+                                      modifiers: { trim: true }
+                                    }
+                                  ],
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: {
+                                    id: i,
+                                    placeholder: "add multiple lines",
+                                    required: "",
+                                    autofocus: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.feedback_response.responses[i]
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.feedback_response.responses,
+                                        i,
+                                        $event.target.value.trim()
+                                      )
+                                    },
+                                    blur: function($event) {
+                                      return _vm.$forceUpdate()
+                                    }
+                                  }
+                                })
+                              ]
+                            : question.question_type == 2
+                            ? [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.feedback_response.responses[i],
+                                      expression:
+                                        "feedback_response.responses[i]"
+                                    }
+                                  ],
+                                  attrs: {
+                                    id: i,
+                                    type: "range",
+                                    name: "",
+                                    min: "-1",
+                                    max: "1",
+                                    step: "0.25",
+                                    value: "0",
+                                    list: "tickmarks",
+                                    required: "",
+                                    autofocus: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.feedback_response.responses[i]
+                                  },
+                                  on: {
+                                    __r: function($event) {
+                                      return _vm.$set(
+                                        _vm.feedback_response.responses,
+                                        i,
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "datalist",
+                                  {
+                                    staticClass: "text-black",
+                                    attrs: { id: "tickmarks" }
+                                  },
+                                  [
+                                    _c("option", {
+                                      attrs: {
+                                        value: "-1",
+                                        label: "Really bad"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "-0.75" } }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "-0.5" } }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "-0.25" } }),
+                                    _vm._v(" "),
+                                    _c("option", {
+                                      attrs: { value: "0", label: "Average" }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "0.25" } }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "0.5" } }),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "0.75" } }),
+                                    _vm._v(" "),
+                                    _c("option", {
+                                      attrs: {
+                                        value: "1",
+                                        label: "Really good"
+                                      }
+                                    })
+                                  ]
                                 )
-                              },
-                              expression: "feedback_response.responses[i]"
-                            }
-                          }),
+                              ]
+                            : question.question_type == 3
+                            ? [
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.feedback_response.responses[i],
+                                        expression:
+                                          "feedback_response.responses[i]"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "sad",
+                                      type: "radio",
+                                      name: "emojipicker",
+                                      value: "-1",
+                                      required: "",
+                                      autofocus: ""
+                                    },
+                                    domProps: {
+                                      checked: _vm._q(
+                                        _vm.feedback_response.responses[i],
+                                        "-1"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.feedback_response.responses,
+                                          i,
+                                          "-1"
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                sad\n              "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.feedback_response.responses[i],
+                                        expression:
+                                          "feedback_response.responses[i]"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "neutral",
+                                      type: "radio",
+                                      name: "emojipicker",
+                                      value: "0"
+                                    },
+                                    domProps: {
+                                      checked: _vm._q(
+                                        _vm.feedback_response.responses[i],
+                                        "0"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.feedback_response.responses,
+                                          i,
+                                          "0"
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                neutral\n              "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.feedback_response.responses[i],
+                                        expression:
+                                          "feedback_response.responses[i]"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "happy",
+                                      type: "radio",
+                                      name: "emojipicker",
+                                      value: "1"
+                                    },
+                                    domProps: {
+                                      checked: _vm._q(
+                                        _vm.feedback_response.responses[i],
+                                        "1"
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        return _vm.$set(
+                                          _vm.feedback_response.responses,
+                                          i,
+                                          "1"
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                happy\n              "
+                                  )
+                                ])
+                              ]
+                            : _vm._e(),
+                          _vm._v(" "),
+                          question.question_type == 4
+                            ? [
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: {
+                                    id: i,
+                                    type: "text",
+                                    required: "",
+                                    autofocus: ""
+                                  },
+                                  model: {
+                                    value: _vm.feedback_response.responses[i],
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.feedback_response.responses,
+                                        i,
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "feedback_response.responses[i]"
+                                  }
+                                })
+                              ]
+                            : _vm._e(),
                           _vm._v(" "),
                           _vm.hasErrors
                             ? _c(
@@ -33090,7 +33451,7 @@ var render = function() {
                               )
                             : _vm._e()
                         ],
-                        1
+                        2
                       )
                     ]
                   )
