@@ -34,5 +34,25 @@ class FeedbackQuestionsTableSeeder extends Seeder
             'question_type' => 1,
             'meeting_id' => 11,
         ]);
+        FeedbackQuestion::create([
+            'question' => '5678 What came first, the chicken or the egg? - text input question',
+            'question_type' => 1,
+            'meeting_id' => 12,
+        ]);
+        FeedbackQuestion::create([
+            'question' => '5678 Are you happy? - emoji picker question',
+            'question_type' => 3,
+            'meeting_id' => 12,
+        ]);
+        FeedbackQuestion::create([
+            'question' => '5678 This should be a rating slider',
+            'question_type' => 2,
+            'meeting_id' => 12,
+        ]);
+        FeedbackQuestion::create([
+            'question' => '5678 This should be a text input question',
+            'question_type' => 1,
+            'meeting_id' => 12,
+        ]);
     }
 }

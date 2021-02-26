@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use App\Models\FeedbackQuestion;
+use App\Models\FeedbackResponse;
+use App\Models\ResponseInformation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +30,8 @@ class AttendEventController extends Controller
      */
     public function create(Request $request, Meeting $meeting)
     {
-        $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get();
+        // Gets the questions associated with a meeting
+        $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
 
         return Inertia::render('AttendEvent/Create', [
             'meeting' => $meeting,
@@ -44,10 +47,32 @@ class AttendEventController extends Controller
      */
     public function store(Request $request)
     {
-        // needs the questions, and the responses
+        // validate and then store the feedback response
         $this->validateSubmittedFeedback();
 
-        ddd($request);
+        $questions = request('questions');
+        $responses = request('responses');
+
+        $response_object = new ResponseInformation(request(['name', 'email']));
+        $response_object->save();
+
+        foreach ($responses as $key => $response) {
+            $feedback_object = new FeedbackResponse;
+            $feedback_object->response_id = $response_object->id;
+            $feedback_object->question_id = $questions[$key]['id'];
+
+            // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
+            $feedback_object->response = json_encode(['value' => $response]);
+
+            // Sentiment score should be calculated and stored here
+            $feedback_object->score = 0;
+
+            $feedback_object->save();
+        }
+
+        // Currently redirects to homepage
+        // Probably should redirect to a success page that would allow the user to access the form again
+        return redirect()->route('home');
     }
 
     /**
@@ -68,8 +93,11 @@ class AttendEventController extends Controller
      */
     protected function validateSubmittedFeedback()
     {
+        // TODO add appropriate validation for each of the responses once done
         return request()->validate([
-            'resp.*' => ['max:3'],
+            'responses.*' => ['required'],
+            'name' => ['nullable','string'],
+            'email' => ['nullable', 'email'],
         ]);
     }
 }
