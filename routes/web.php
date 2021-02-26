@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\AttendEventController;
+use App\Http\Controllers\FeedbackFormController;
 use App\Models\Meeting;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,13 @@ Route::post('/attend-event', [AttendEventController::class, 'attend'])->name('at
 Route::get('/attend-event/{meeting}', [AttendEventController::class, 'create'])->name('attendevents.create');
 Route::post('/submit-feedback', [AttendEventController::class, 'store'])->name('attendevents.store');
 
-
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
     Route::get('/events', [MeetingController::class, 'index'])->name('meetings.index');
-    Route::post('/events', [MeetingController::class, 'store'])->name('meetings.store');
+    Route::post('/events/create', [MeetingController::class, 'store'])->name('meetings.store');
     Route::get('/events/create', [MeetingController::class, 'create'])->name('meetings.create');
     Route::get('/events/{meeting}', [MeetingController::class, 'show'])->name('meetings.show');
     Route::match(array('PUT', 'PATCH'),'/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
