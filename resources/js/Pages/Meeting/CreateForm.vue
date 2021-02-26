@@ -12,9 +12,17 @@
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
           <!-- <jet-validation-errors class="mb-4" /> -->
-
+          <input id="myQ" name="myQ" type="text">
+          <select name="q_type" id="q_type">
+            <option value="0">Short Answer</option>
+            <option value="1">Long Answer</option>
+            <option value="2">Rating Slider</option>
+            <option value="3">Emoji Picker</option>
+          </select>
+             <!-- Will need to add in a seperate notification form or something -->
+          <button @click="addQuestion()">New Question</button>
           <form @submit.prevent="submit">
-            <h2>Your Form</h2>
+            <h1>Your Form</h1>
             <div class="mt-4" v-for="(question,i) in form_data.questions" :key="question.id">
               <!-- Show question added with a remove question button -->
               <p>Question: {{ question.question }}</p>
@@ -25,11 +33,9 @@
                 Submit Event
               </jet-button>
             </div>
+            <pre>{{ $data }}</pre>
           </form>
           <div>
-            <input id="myQ" name="myQ" type="text">
-             <!-- Will need to add in a seperate notification form or something -->
-            <button @click="addQuestion()">New Question</button>
           </div>
         </div>
       </div>
@@ -83,11 +89,13 @@ export default {
     },
     addQuestion: function () {
         var user_question = document.getElementById("myQ");
+        var user_question_type = document.getElementById("q_type");
         if (user_question.value === ''){
             alert("Can't add empty question");
         }else{
-            this.form_data.questions.push({ question: user_question.value, type:3 });
-            user_question.value = '';    
+            this.form_data.questions.push({ question: user_question.value, type:user_question_type.value });
+            user_question.value = '';  
+            user_question_type.value = '0';  
         }
           
     } 

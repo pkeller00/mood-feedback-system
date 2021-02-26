@@ -4869,6 +4869,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4911,15 +4917,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     addQuestion: function addQuestion() {
       var user_question = document.getElementById("myQ");
+      var user_question_type = document.getElementById("q_type");
 
       if (user_question.value === '') {
         alert("Can't add empty question");
       } else {
         this.form_data.questions.push({
           question: user_question.value,
-          type: 3
+          type: user_question_type.value
         });
         user_question.value = '';
+        user_question_type.value = '0';
       }
     }
   }
@@ -34668,6 +34676,38 @@ var render = function() {
                 "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
             },
             [
+              _c("input", { attrs: { id: "myQ", name: "myQ", type: "text" } }),
+              _vm._v(" "),
+              _c("select", { attrs: { name: "q_type", id: "q_type" } }, [
+                _c("option", { attrs: { value: "0" } }, [
+                  _vm._v("Short Answer")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1" } }, [
+                  _vm._v("Long Answer")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "2" } }, [
+                  _vm._v("Rating Slider")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "3" } }, [
+                  _vm._v("Emoji Picker")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.addQuestion()
+                    }
+                  }
+                },
+                [_vm._v("New Question")]
+              ),
+              _vm._v(" "),
               _c(
                 "form",
                 {
@@ -34679,7 +34719,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("h2", [_vm._v("Your Form")]),
+                  _c("h1", [_vm._v("Your Form")]),
                   _vm._v(" "),
                   _vm._l(_vm.form_data.questions, function(question, i) {
                     return _c(
@@ -34717,28 +34757,14 @@ var render = function() {
                       )
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("pre", [_vm._v(_vm._s(_vm.$data))])
                 ],
                 2
               ),
               _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  attrs: { id: "myQ", name: "myQ", type: "text" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.addQuestion()
-                      }
-                    }
-                  },
-                  [_vm._v("New Question")]
-                )
-              ])
+              _c("div")
             ]
           )
         ])
