@@ -33,7 +33,6 @@
                 Submit Event
               </jet-button>
             </div>
-            <pre>{{ $data }}</pre>
           </form>
           <div>
           </div>
