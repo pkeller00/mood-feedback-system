@@ -61,12 +61,29 @@ class AttendEventController extends Controller
             $feedback_object->response_id = $response_object->id;
             $feedback_object->question_id = $questions[$key]['id'];
 
-            // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
-            $feedback_object->response = json_encode(['value' => $response]);
+            if ($questions[$key]['question_type'] === 0 || $questions[$key]['question_type'] === 1) {
+                // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
+                $feedback_object->response = json_encode(['value' => $response]);
 
-            // Sentiment score should be calculated and stored here
-            $feedback_object->score = 0;
+                // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
+                $feedback_object->score = 0;
+            } elseif ($questions[$key]['question_type'] === 2) {
+                // rating slider
+                $feedback_object->response = json_encode(['rating' => $response]);
 
+                $feedback_object->score = $response;
+            } elseif ($questions[$key]['question_type'] === 3) {
+                // emoji picker
+                $feedback_object->response = json_encode(['emoji' => $response]);
+
+                $feedback_object->score = $response;
+            } elseif ($questions[$key]['question_type'] === 4) {
+                // multiple choice question
+                $feedback_object->response = json_encode(['value' => $response]);
+
+                // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
+                $feedback_object->score = 0;
+            }
             $feedback_object->save();
         }
 
@@ -96,7 +113,7 @@ class AttendEventController extends Controller
         // TODO add appropriate validation for each of the responses once done
         return request()->validate([
             'responses.*' => ['required'],
-            'name' => ['nullable','string'],
+            'name' => ['nullable', 'string'],
             'email' => ['nullable', 'email'],
         ]);
     }
