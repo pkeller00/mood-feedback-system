@@ -19,8 +19,16 @@ class AttendEventController extends Controller
     public function attend(Request $request)
     {
         $this->validateAccessCode();
-
+        $current_user = auth()->id();
         $meeting = Meeting::where('meeting_reference', request(['code']))->first();
+
+        if($current_user != null){
+            $meeting_host = $meeting->user_id;
+            if($meeting_host === $current_user){
+                dd("Can't submit feedback for own event");
+                return redirect()->route('home');
+            }
+        }
 
         return redirect()->route('attendevents.create', compact('meeting'));
     }

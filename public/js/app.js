@@ -4920,6 +4920,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
 //
 //
 //
@@ -4964,6 +4966,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -4976,6 +5014,8 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_6__.default,
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_7__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
     JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default
   },
@@ -5007,16 +5047,37 @@ __webpack_require__.r(__webpack_exports__);
     addQuestion: function addQuestion() {
       var user_question = document.getElementById("myQ");
       var user_question_type = document.getElementById("q_type");
+      var type_val = 0;
+      var question_str = user_question.value;
 
       if (user_question.value === '') {
         alert("Can't add empty question");
       } else {
+        if (user_question_type.value === 'Short Answer') {
+          type_val = 0;
+        } else if (user_question_type.value === 'Long Answer') {
+          type_val = 1;
+        } else if (user_question_type.value === 'Rating Slider') {
+          type_val = 2;
+        } else if (user_question_type.value === 'Emoji Picker') {
+          type_val = 3;
+        } else {
+          alert("Not valid question type");
+          return;
+        }
+
+        var last_char = question_str.charAt(question_str.length - 1);
+
+        if (last_char != "?") {
+          question_str += "?";
+        }
+
         this.form_data.questions.push({
-          question: user_question.value,
-          type: user_question_type.value
+          question: question_str,
+          type: type_val
         });
         user_question.value = '';
-        user_question_type.value = '0';
+        user_question_type.value = '';
       }
     }
   }
@@ -5310,6 +5371,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5318,7 +5399,9 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
-    meeting: Object
+    meeting: Object,
+    questions: Object,
+    no_edit: Boolean
   }
 });
 
@@ -35036,38 +35119,98 @@ var render = function() {
                 "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
             },
             [
-              _c("input", { attrs: { id: "myQ", name: "myQ", type: "text" } }),
-              _vm._v(" "),
-              _c("select", { attrs: { name: "q_type", id: "q_type" } }, [
-                _c("option", { attrs: { value: "0" } }, [
-                  _vm._v("Short Answer")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "1" } }, [
-                  _vm._v("Long Answer")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [
-                  _vm._v("Rating Slider")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "3" } }, [
-                  _vm._v("Emoji Picker")
-                ])
-              ]),
-              _vm._v(" "),
               _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.addQuestion()
+                "div",
+                { staticClass: "mt-4" },
+                [
+                  _c("jet-label", { attrs: { for: "myQ", value: "Question" } }),
+                  _vm._v(" "),
+                  _c("jet-input", {
+                    staticClass: "mt-1 block w-full",
+                    attrs: {
+                      id: "myQ",
+                      name: "myQ",
+                      type: "text",
+                      autofocus: ""
                     }
-                  }
-                },
-                [_vm._v("New Question")]
+                  })
+                ],
+                1
               ),
               _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-4" },
+                [
+                  _c("jet-label", { attrs: { for: "q_type", value: "Type" } }),
+                  _vm._v(" "),
+                  _c("jet-input", {
+                    staticClass: "mt-1 block w-full",
+                    attrs: {
+                      id: "q_type",
+                      name: "q_type",
+                      type: "text",
+                      list: "tickmarks",
+                      autofocus: ""
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "datalist",
+                { staticClass: "text-black", attrs: { id: "tickmarks" } },
+                [
+                  _c("option", {
+                    attrs: { value: "Short Answer", label: "Short Answer" }
+                  }),
+                  _vm._v(" "),
+                  _c("option", {
+                    attrs: { value: "Long Answer", label: "Long Answer" }
+                  }),
+                  _vm._v(" "),
+                  _c("option", {
+                    attrs: { value: "Rating Slider", label: "Rating Slider" }
+                  }),
+                  _vm._v(" "),
+                  _c("option", {
+                    attrs: { value: "Emoji Picker", label: "Emoji Picker" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center justify-center mt-4" },
+                [
+                  _c(
+                    "jet-button",
+                    {
+                      staticClass: "ml-4",
+                      attrs: { type: "button" },
+                      nativeOn: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.addQuestion()
+                        }
+                      }
+                    },
+                    [_vm._v("New Question")]
+                  )
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+            },
+            [
               _c(
                 "form",
                 {
@@ -35079,7 +35222,9 @@ var render = function() {
                   }
                 },
                 [
-                  _c("h1", [_vm._v("Your Form")]),
+                  _c("div", { staticClass: "mt-2 text-2xl" }, [
+                    _vm._v("\n            Your Form\n          ")
+                  ]),
                   _vm._v(" "),
                   _vm._l(_vm.form_data.questions, function(question, i) {
                     return _c(
@@ -35090,19 +35235,43 @@ var render = function() {
                           _vm._v("Question: " + _vm._s(question.question))
                         ]),
                         _vm._v(" "),
+                        question.type == 0
+                          ? _c("p", [_vm._v("Answer type: short text input")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        question.type == 1
+                          ? _c("p", [_vm._v("Answer type: long text input")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        question.type == 2
+                          ? _c("p", [_vm._v("Answer type: rating slider")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        question.type == 3
+                          ? _c("p", [_vm._v("Answer type: emoji picker")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        question.type == 4
+                          ? _c("p", [_vm._v("Answer type: multiple choice")])
+                          : _vm._e(),
+                        _vm._v(" "),
                         _c(
-                          "button",
+                          "jet-button",
                           {
+                            staticClass:
+                              "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900",
                             attrs: { type: "button" },
-                            on: {
+                            nativeOn: {
                               click: function($event) {
+                                $event.preventDefault()
                                 return _vm.deleteQuestion(i)
                               }
                             }
                           },
-                          [_vm._v(" Remove Question ")]
+                          [_vm._v("Remove Question")]
                         )
-                      ]
+                      ],
+                      1
                     )
                   }),
                   _vm._v(" "),
@@ -35120,9 +35289,7 @@ var render = function() {
                   )
                 ],
                 2
-              ),
-              _vm._v(" "),
-              _c("div")
+              )
             ]
           )
         ])
@@ -35588,14 +35755,16 @@ var render = function() {
                 "inertia-link",
                 { attrs: { href: _vm.route("meetings.edit", _vm.meeting) } },
                 [
-                  _c(
-                    "jet-button",
-                    {
-                      staticClass:
-                        "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-                    },
-                    [_vm._v("Edit Event")]
-                  )
+                  _vm.no_edit === false
+                    ? _c(
+                        "jet-button",
+                        {
+                          staticClass:
+                            "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
+                        },
+                        [_vm._v("Edit Event")]
+                      )
+                    : _vm._e()
                 ],
                 1
               ),
@@ -35623,6 +35792,44 @@ var render = function() {
               )
             ],
             1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+            },
+            [
+              _c("div", { staticClass: "mt-2 text-2xl" }, [
+                _vm._v("\n          Feedback Analysis\n        ")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.questions, function(question) {
+                return _c(
+                  "div",
+                  {
+                    key: question.id,
+                    staticClass:
+                      "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+                  },
+                  [
+                    _c("div", { staticClass: "mt-4" }, [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(question.question) +
+                          "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Graph goes here")])
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c("pre", [_vm._v(_vm._s(_vm.$props))])
+            ],
+            2
           )
         ])
       ])

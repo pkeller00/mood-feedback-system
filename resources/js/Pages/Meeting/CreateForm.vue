@@ -11,22 +11,57 @@
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
-          <!-- <jet-validation-errors class="mb-4" /> -->
-          <input id="myQ" name="myQ" type="text">
-          <select name="q_type" id="q_type">
-            <option value="0">Short Answer</option>
-            <option value="1">Long Answer</option>
-            <option value="2">Rating Slider</option>
-            <option value="3">Emoji Picker</option>
-          </select>
-             <!-- Will need to add in a seperate notification form or something -->
-          <button @click="addQuestion()">New Question</button>
+        <div class="mt-4">
+          <jet-label for="myQ" value="Question" />
+          <jet-input
+            id="myQ"
+            name="myQ"
+            type="text"
+            class="mt-1 block w-full"
+            autofocus
+          />
+        </div>
+
+        <div class="mt-4">
+          <jet-label for="q_type" value="Type" />
+          <jet-input
+            id="q_type"
+            name="q_type"
+            type="text"
+            list="tickmarks"
+            class="mt-1 block w-full"
+            autofocus
+          />
+        </div>
+ 
+        <datalist id="tickmarks" class="text-black">
+          <option value="Short Answer" label="Short Answer"></option>
+          <option value="Long Answer" label="Long Answer"></option>
+          <option value="Rating Slider" label="Rating Slider"></option>
+          <option value="Emoji Picker" label="Emoji Picker"></option>
+        </datalist>
+ 
+          <div class="flex items-center justify-center mt-4">
+            <jet-button class="ml-4" type="button" @click.native.prevent="addQuestion()">New Question</jet-button>
+          </div>
+        </div>  
+
+      <!-- Final form -->
+        <div
+            class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+        >
           <form @submit.prevent="submit">
-            <h1>Your Form</h1>
+            <div class="mt-2 text-2xl">
+              Your Form
+            </div>
             <div class="mt-4" v-for="(question,i) in form_data.questions" :key="question.id">
-              <!-- Show question added with a remove question button -->
               <p>Question: {{ question.question }}</p>
-              <button @click="deleteQuestion(i)" type="button"> Remove Question </button>
+              <p v-if="question.type == 0">Answer type: short text input</p>
+              <p v-if="question.type == 1">Answer type: long text input</p>
+              <p v-if="question.type == 2">Answer type: rating slider</p>
+              <p v-if="question.type == 3">Answer type: emoji picker</p>
+              <p v-if="question.type == 4">Answer type: multiple choice</p>
+              <jet-button class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900" type="button" @click.native.prevent="deleteQuestion(i)">Remove Question</jet-button>
             </div>
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4" type="submit">
@@ -34,9 +69,8 @@
               </jet-button>
             </div>
           </form>
-          <div>
-          </div>
         </div>
+
       </div>
     </div>
   </app-layout>
@@ -49,6 +83,8 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetDropdown from "@/Jetstream/Dropdown";
+import JetDropdownLink from "@/Jetstream/DropdownLink";
 
 export default {
   components: {
@@ -56,6 +92,8 @@ export default {
     JetButton,
     JetInput,
     JetCheckbox,
+    JetDropdown,
+    JetDropdownLink,
     JetLabel,
     JetValidationErrors,
   },
@@ -76,7 +114,7 @@ export default {
 
   methods: {
     deleteQuestion: function ($index) {
-        this.form_data.questions.splice($index,1);
+      this.form_data.questions.splice($index,1);
     },
     submit() {
       //If list is empty then doesn't have a first element so don't submit
@@ -89,12 +127,30 @@ export default {
     addQuestion: function () {
         var user_question = document.getElementById("myQ");
         var user_question_type = document.getElementById("q_type");
+        var type_val = 0;
+        var question_str = user_question.value;
         if (user_question.value === ''){
             alert("Can't add empty question");
         }else{
-            this.form_data.questions.push({ question: user_question.value, type:user_question_type.value });
+            if(user_question_type.value === 'Short Answer'){
+              type_val = 0;
+            }else if(user_question_type.value === 'Long Answer'){
+              type_val = 1;
+            }else if(user_question_type.value === 'Rating Slider'){
+              type_val = 2;
+            }else if(user_question_type.value === 'Emoji Picker'){
+              type_val = 3;
+            }else{
+              alert("Not valid question type");
+              return;
+            }
+            var last_char = question_str.charAt(question_str.length-1);
+            if(last_char != "?"){
+              question_str += "?";
+            }
+            this.form_data.questions.push({ question:question_str, type:type_val });
             user_question.value = '';  
-            user_question_type.value = '0';  
+            user_question_type.value = '';  
         }
           
     } 
