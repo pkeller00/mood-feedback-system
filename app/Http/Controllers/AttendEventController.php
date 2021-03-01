@@ -56,6 +56,7 @@ class AttendEventController extends Controller
     public function store(Request $request)
     {
         // validate and then store the feedback response
+        ddd($request);
         $this->validateSubmittedFeedback();
 
         $questions = request('questions');
@@ -66,8 +67,8 @@ class AttendEventController extends Controller
 
         foreach ($responses as $key => $response) {
             $feedback_object = new FeedbackResponse;
-            $feedback_object->response_id = $response_object->id;
-            $feedback_object->question_id = $questions[$key]['id'];
+            $feedback_object->feedback_response_id = $response_object->id;
+            $feedback_object->feedback_question_id = $questions[$key]['id'];
 
             if ($questions[$key]['question_type'] === 0 || $questions[$key]['question_type'] === 1) {
                 // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end

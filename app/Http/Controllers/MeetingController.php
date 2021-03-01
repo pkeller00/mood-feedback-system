@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use App\Models\FeedbackQuestion;
+use App\Models\FeedbackResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -117,10 +118,17 @@ class MeetingController extends Controller
         $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
         $current_date = Carbon::now()->toDateTimeString();
 
+        // $feedback_responses = [];
+
+        // foreach($questions as $question) {
+        //     $feedback_responses = App\Models\FeedbackResponse::where('question_id', $question->id)->get();
+        // }
+
+
         return Inertia::render('Meeting/Show', [
             'meeting' => $meeting,
             'questions' => $questions,
-            'no_edit' => ($meeting_date < $current_date),
+            'event_started' => ($meeting_date > $current_date),
         ]);
     }
 

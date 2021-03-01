@@ -14,4 +14,12 @@ class FeedbackQuestion extends Model
     // protected $casts = [
     //     'response' => 'array'
     // ];
+
+    public function meeting() {
+        return $this->belongsTo(Meeting::class);
+    }
+
+    public function feedback_response() {
+        return $this->hasMany(FeedbackResponse::class);
+    }
 }

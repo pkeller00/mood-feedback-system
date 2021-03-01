@@ -36,7 +36,7 @@
           <inertia-link :href="route('meetings.edit', meeting)">
             <jet-button
               class="mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-              v-if="!no_edit"
+              v-if="event_started"
               >Edit Event</jet-button
             >
           </inertia-link>
@@ -56,19 +56,25 @@
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
           <div class="mt-2 text-2xl">Feedback Analysis</div>
-          <div
-            class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
-            v-for="question in questions"
-            :key="question.id"
-          >
-            <div class="mt-4">
-              {{ question.question }}
-            </div>
-
-            <p>Graph goes here</p>
-          </div>
-          <pre>{{ $props }}</pre>
         </div>
+
+        <div
+          class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+          v-for="question in questions"
+          :key="question.id"
+        >
+          <div class="mt-4">
+            {{ question.question }}
+          </div>
+
+            <!-- probably some query based on the type of question to determine which graph to show -->
+
+          <line-chart :chartdata="chartdatas" :options="chartoptions" />
+
+          <p>Graph goes here</p>
+        </div>
+        <pre>{{ $props }}</pre>
+        <pre>{{ $data }}</pre>
       </div>
     </div>
   </app-layout>
@@ -77,17 +83,46 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
+import LineChart from "@/Charts/LineChart";
 
 export default {
   components: {
     AppLayout,
     JetButton,
+    LineChart,
   },
 
   props: {
     meeting: Object,
     questions: Array,
-    no_edit: Boolean,
+    event_started: Boolean,
+  },
+
+  data() {
+    return {
+      chartdatas: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+        ],
+        datasets: [
+          {
+            label: "Data One",
+            backgroundColor: "#f87900",
+            data: [40, 39, 10, 40, 39, 80, 40],
+          },
+        ],
+      },
+      chartoptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    };
   },
 };
 </script>

@@ -30,4 +30,12 @@ class Meeting extends Model
     {
         return 'meeting_reference';
     }
+
+    public function feedback_question() {
+        return $this->hasMany(FeedbackQuestion::class);
+    }
+
+    public function response_information() {
+        return $this->hasManyThrough(ResponseInformation::class, FeedbackQuestion::class);
+    }
 }

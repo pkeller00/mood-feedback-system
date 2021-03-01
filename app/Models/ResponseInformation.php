@@ -11,4 +11,8 @@ class ResponseInformation extends Model
 
     protected $fillable = ['name', 'email'];
 
+    public function feedback_response() {
+        return $this->hasMany(FeedbackResponse::class);
+    }
+
 }

@@ -15,16 +15,16 @@ class CreateFeedbackResponsesTable extends Migration
     {
         Schema::create('feedback_responses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('response_id')->unsigned();
-            $table->bigInteger('question_id')->unsigned();
+            $table->bigInteger('feedback_response_id')->unsigned();
+            $table->bigInteger('feedback_question_id')->unsigned();
 
             $table->json('response');
             $table->decimal('score');
 
             $table->timestamps();
 
-            $table->foreign('response_id')->references('id')->on('response_information');
-            $table->foreign('question_id')->references('id')->on('feedback_questions');
+            $table->foreign('feedback_response_id')->references('id')->on('response_information');
+            $table->foreign('feedback_question_id')->references('id')->on('feedback_questions');
         });
     }
 
