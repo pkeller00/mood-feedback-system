@@ -23,8 +23,8 @@ class CreateFeedbackResponsesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('feedback_response_id')->references('id')->on('response_information');
-            $table->foreign('feedback_question_id')->references('id')->on('feedback_questions');
+            $table->foreign('feedback_response_id')->references('id')->on('response_information')->onDelete('cascade');
+            $table->foreign('feedback_question_id')->references('id')->on('feedback_questions')->onDelete('cascade');
         });
     }
 

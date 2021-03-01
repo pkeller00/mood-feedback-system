@@ -53,16 +53,17 @@ class AttendEventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Meeting $meeting)
     {
         // validate and then store the feedback response
-        ddd($request);
+        // ddd($request, $meeting);
         $this->validateSubmittedFeedback();
 
         $questions = request('questions');
         $responses = request('responses');
 
         $response_object = new ResponseInformation(request(['name', 'email']));
+        $response_object->meeting_id = $meeting->id;
         $response_object->save();
 
         foreach ($responses as $key => $response) {

@@ -257,7 +257,7 @@ export default {
 
   methods: {
     submit() {
-      this.$inertia.post(`/submit-feedback`, this.feedback_response);
+      this.$inertia.post(`/submit-feedback/${this.meeting.meeting_reference}`, this.feedback_response);
     },
   },
 };

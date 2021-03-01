@@ -4027,7 +4027,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.post("/submit-feedback", this.feedback_response);
+      this.$inertia.post("/submit-feedback/".concat(this.meeting.meeting_reference), this.feedback_response);
     }
   }
 });

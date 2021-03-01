@@ -20,16 +20,14 @@ class CreateFeedbackQuestionsTable extends Migration
             $table->string('question');
 
             // question type to render in form (thinking of numbers that represent the different set states)
-            $table->smallInteger('question_type')->nullable($value = false);
+            $table->smallInteger('question_type');
+            // $table->smallInteger('question_type')->nullable($value = false);
 
             $table->bigInteger('meeting_id')->unsigned();
 
             $table->timestamps();
 
-            $table->foreign('meeting_id')
-                ->references('id')
-                ->on('meetings')
-                ->onDelete('cascade');
+            $table->foreign('meeting_id')->references('id')->on('meetings')->onDelete('cascade');
         });
     }
 

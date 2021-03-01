@@ -36,6 +36,6 @@ class Meeting extends Model
     }
 
     public function response_information() {
-        return $this->hasManyThrough(ResponseInformation::class, FeedbackQuestion::class);
+        return $this->hasMany(ResponseInformation::class);
     }
 }

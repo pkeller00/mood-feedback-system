@@ -18,7 +18,12 @@ class CreateResponseInformationTable extends Migration
             // user name gets stored here
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+
+            $table->bigInteger('meeting_id')->unsigned();
+
             $table->timestamps();
+
+            $table->foreign('meeting_id')->references('id')->on('meetings')->onDelete('cascade');
         });
     }
 
