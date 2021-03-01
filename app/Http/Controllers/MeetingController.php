@@ -6,7 +6,7 @@ use App\Models\Meeting;
 use App\Models\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-Use \Carbon\Carbon;
+use Carbon\Carbon;
 // use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -19,7 +19,7 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        $meetings = DB::table('meetings')->where('user_id', auth()->id())->orderByDesc('meeting_start')->get();
+        $meetings = Meeting::where('user_id', auth()->id())->orderByDesc('meeting_start')->get();
 
         return Inertia::render('Meeting/Index', compact('meetings'));
     }
@@ -41,49 +41,43 @@ class MeetingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        //general field only added once form has been made => if not there then need to make a form before storing    
-        $hasForm = request('general');
-        if($hasForm === null){
+    {
+        // Determine whether this is a request to make the event or feedback form
+        if (!request(['formRequest'])) {
             $this->validateMeeting();
             $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
-            //need to let user create a form first
-            return Inertia::render('Meeting/CreateForm', compact('meeting')); 
-         }else{
+
+            // Store the meeting information in the user's session
+            session(compact('meeting'));
+
+            // Render form for user to create a feedback form
+            return Inertia::render('Meeting/CreateForm');
+        } else {
+            $this->validateFeedbackForm();
             // Event access code generator
             $isUnique = true;
             $code = "";
             do {
-                $isUnique = true;
                 $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
-                if (Meeting::where('meeting_reference', $code)->exists()) {
-                    $isUnique = false;
-                }
+                $isUnique = Meeting::where('meeting_reference', $code)->doesntExist();
             } while ($isUnique == false);
 
-            //Create a meeting object
-            $meeting = new Meeting();
-            $meeting->name = $hasForm['name'];
-            $meeting->meeting_start = $hasForm['meeting_start'];
-            $meeting->meeting_end = $hasForm['meeting_end'];
+            // Get meeting object from session
+            $meeting = request()->session()->pull('meeting');
             $meeting->meeting_reference = $code;
             $meeting->user_id = auth()->id();
             $meeting->save();
 
-            $saved_meeting = DB::table('meetings')->where('meeting_reference', $meeting->meeting_reference)->first();
-            $questions = request('questions');
-            
-            foreach($questions as $item){
+            // Add each question to the meeting
+            foreach (request('questions') as $item) {
                 $question = new FeedbackQuestion();
                 $question->question = $item['question'];
-                $question->question_type = $item['type'];
-                $question->meeting_id = $saved_meeting->id;
+                $question->question_type = $item['question_type'];
+                $question->meeting_id = $meeting->id;
                 $question->save();
             }
-            return redirect(route('meetings.index'));
-            
-         }
-  
+            return redirect(route('meetings.show', compact('meeting')));
+        }
     }
 
     /**
@@ -95,25 +89,15 @@ class MeetingController extends Controller
     public function show(Meeting $meeting)
     {
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
-        //dd($questions);
-        $start_date = $meeting->meeting_start;
-        $meeting_date = Carbon::parse($start_date)->toDateTimeString();
-        $current_date = $date = Carbon::now()->toDateTimeString();
-        if($meeting_date > $current_date){
-            return Inertia::render('Meeting/Show', [
-                'meeting' => $meeting,
-                'questions' => $questions,
-                'no_edit' => FALSE,
-            ]);
-        }else{
-            return Inertia::render('Meeting/Show', [
-                'meeting' => $meeting,
-                'questions' => $questions,
-                'no_edit' => TRUE,
-            ]);
-        }
-        
-        //return Inertia::render('Meeting/Show', compact('meeting'));
+
+        $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
+        $current_date = Carbon::now()->toDateTimeString();
+
+        return Inertia::render('Meeting/Show', [
+            'meeting' => $meeting,
+            'questions' => $questions,
+            'no_edit' => ($meeting_date < $current_date),
+        ]);
     }
 
     /**
@@ -124,15 +108,14 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        $start_date = $meeting->meeting_start;
-        $meeting_date = Carbon::parse($start_date)->toDateTimeString();
+        $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
         $current_date = $date = Carbon::now()->toDateTimeString();
-        if($meeting_date > $current_date){
+
+        if ($meeting_date > $current_date) {
             return Inertia::render('Meeting/Edit', compact('meeting'));
-        }else{
+        } else {
             return redirect()->route('meetings.show', compact('meeting'));
         }
-        
     }
 
     /**
@@ -168,6 +151,13 @@ class MeetingController extends Controller
             'name' => 'required|max:255',
             'meeting_start' => 'required|date',
             'meeting_end' => 'required|date|after:meeting_start',
+        ]);
+    }
+
+    protected function validateFeedbackForm()
+    {
+        return request()->validate([
+            'questions' => 'required',
         ]);
     }
 }

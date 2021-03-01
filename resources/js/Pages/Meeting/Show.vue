@@ -36,7 +36,7 @@
           <inertia-link :href="route('meetings.edit', meeting)">
             <jet-button
               class="mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-              v-if="no_edit === false"
+              v-if="!no_edit"
               >Edit Event</jet-button
             >
           </inertia-link>
@@ -46,29 +46,32 @@
             :href="route('meetings.destroy', meeting)"
           >
             <jet-button
-              class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900" 
+              class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
               >Delete Event</jet-button
             >
           </inertia-link>
         </div>
 
+        <template v-if="pastBeginning">
+          seems like we should show feedback as no_edit is true
+        </template>
+
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
-          <div class="mt-2 text-2xl">
-            Feedback Analysis
-          </div>
+          <div class="mt-2 text-2xl">Feedback Analysis</div>
           <div
-          class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
-          v-for="question in questions"
-          :key="question.id"
+            class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+            v-for="question in questions"
+            :key="question.id"
           >
-          <div class="mt-4">
-            {{ question.question }}
+            <div class="mt-4">
+              {{ question.question }}
+            </div>
+
+            <p>Graph goes here</p>
           </div>
-          <p>Graph goes here</p>
-          </div>
-          <pre>{{$props }}</pre>
+          <pre>{{ $props }}</pre>
         </div>
       </div>
     </div>
@@ -87,7 +90,7 @@ export default {
 
   props: {
     meeting: Object,
-    questions: Object,
+    questions: Array,
     no_edit: Boolean,
   },
 };

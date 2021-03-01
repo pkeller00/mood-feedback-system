@@ -4928,11 +4928,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
-/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
-/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5014,32 +5031,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
+ // import JetCheckbox from "@/Jetstream/Checkbox";
+// import JetValidationErrors from "@/Jetstream/ValidationErrors";
+// import JetDropdown from "@/Jetstream/Dropdown";
+// import JetDropdownLink from "@/Jetstream/DropdownLink";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_6__.default,
-    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_7__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default // JetCheckbox,
+    // JetDropdown,
+    // JetDropdownLink,
+    // JetValidationErrors,
+
   },
   props: {
-    errors: Object,
-    meeting: Array
+    errors: Object
   },
   data: function data() {
     return {
+      new_question_errors: {
+        empty_question: false
+      },
+      new_question: {
+        question: "",
+        question_type: 0
+      },
       form_data: this.$inertia.form({
         questions: [],
-        general: JSON.parse(JSON.stringify(this.meeting)) //Copy from previous page
-
+        formRequest: true
       })
     };
   },
@@ -5056,40 +5078,25 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addQuestion: function addQuestion() {
-      var user_question = document.getElementById("myQ");
-      var user_question_type = document.getElementById("q_type");
-      var type_val = 0;
-      var question_str = user_question.value;
+      // Validate that there is a question
+      if (!this.new_question.question) {
+        return this.new_question_errors.empty_question = true;
+      } // Add question mark to end automatically if not present
 
-      if (user_question.value === '') {
-        alert("Can't add empty question");
-      } else {
-        if (user_question_type.value === 'Short Answer') {
-          type_val = 0;
-        } else if (user_question_type.value === 'Long Answer') {
-          type_val = 1;
-        } else if (user_question_type.value === 'Rating Slider') {
-          type_val = 2;
-        } else if (user_question_type.value === 'Emoji Picker') {
-          type_val = 3;
-        } else {
-          alert("Not valid question type");
-          return;
-        }
 
-        var last_char = question_str.charAt(question_str.length - 1);
+      if (this.new_question.question.charAt(this.new_question.question.length - 1 != "?")) {
+        this.new_question.question += "?";
+      } // Add question to the array model
 
-        if (last_char != "?") {
-          question_str += "?";
-        }
 
-        this.form_data.questions.push({
-          question: question_str,
-          type: type_val
-        });
-        user_question.value = '';
-        user_question_type.value = '';
-      }
+      this.form_data.questions.push({
+        question: this.new_question.question,
+        question_type: this.new_question.question_type
+      }); // Reset other model instances
+
+      this.new_question.question = "";
+      this.new_question.question_type = 0;
+      this.new_question_errors.empty_question = false;
     }
   }
 });
@@ -5402,6 +5409,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5411,7 +5421,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     meeting: Object,
-    questions: Object,
+    questions: Array,
     no_edit: Boolean
   }
 });
@@ -35136,7 +35146,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n      Create Meeting Form\n    ")]
+                [_vm._v("\n      Create Event Feedback Form\n    ")]
               )
             ]
           },
@@ -35146,7 +35156,7 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
+      _c("div", { staticClass: "pt-12" }, [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c(
             "div",
@@ -35159,87 +35169,141 @@ var render = function() {
                 "div",
                 { staticClass: "mt-4" },
                 [
-                  _c("jet-label", { attrs: { for: "myQ", value: "Question" } }),
+                  _c("jet-label", {
+                    attrs: {
+                      for: "question",
+                      value: "Enter your question here"
+                    }
+                  }),
                   _vm._v(" "),
                   _c("jet-input", {
                     staticClass: "mt-1 block w-full",
                     attrs: {
-                      id: "myQ",
-                      name: "myQ",
+                      id: "question",
+                      name: "question",
                       type: "text",
-                      autofocus: ""
+                      autofocus: "",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.new_question.question,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.new_question,
+                          "question",
+                          typeof $$v === "string" ? $$v.trim() : $$v
+                        )
+                      },
+                      expression: "new_question.question"
                     }
                   })
                 ],
                 1
               ),
+              _vm._v(" "),
+              _vm.new_question_errors.empty_question
+                ? _c("div", { staticClass: "mt-3 text-sm text-red-600" }, [
+                    _vm._v(
+                      "\n          You have not provided a question\n        "
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "mt-4" },
                 [
-                  _c("jet-label", { attrs: { for: "q_type", value: "Type" } }),
-                  _vm._v(" "),
-                  _c("jet-input", {
-                    staticClass: "mt-1 block w-full",
+                  _c("jet-label", {
                     attrs: {
-                      id: "q_type",
-                      name: "q_type",
-                      type: "text",
-                      list: "tickmarks",
-                      autofocus: ""
+                      for: "question_type",
+                      value: "What type of response are you after"
                     }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "datalist",
-                { staticClass: "text-black", attrs: { id: "tickmarks" } },
-                [
-                  _c("option", {
-                    attrs: { value: "Short Answer", label: "Short Answer" }
                   }),
                   _vm._v(" "),
-                  _c("option", {
-                    attrs: { value: "Long Answer", label: "Long Answer" }
-                  }),
-                  _vm._v(" "),
-                  _c("option", {
-                    attrs: { value: "Rating Slider", label: "Rating Slider" }
-                  }),
-                  _vm._v(" "),
-                  _c("option", {
-                    attrs: { value: "Emoji Picker", label: "Emoji Picker" }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex items-center justify-center mt-4" },
-                [
                   _c(
-                    "jet-button",
+                    "select",
                     {
-                      staticClass: "ml-4",
-                      attrs: { type: "button" },
-                      nativeOn: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.addQuestion()
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.new_question.question_type,
+                          expression: "new_question.question_type"
+                        }
+                      ],
+                      staticClass:
+                        "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+                      attrs: { id: "question_type", name: "question_type" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.new_question,
+                            "question_type",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
-                    [_vm._v("New Question")]
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Short Answer")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Long Answer")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Rating Slider")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v("Emoji Picker")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex items-center justify-center mt-4" },
+                    [
+                      _c(
+                        "jet-button",
+                        {
+                          staticClass: "ml-4",
+                          attrs: { type: "button" },
+                          nativeOn: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.addQuestion()
+                            }
+                          }
+                        },
+                        [_vm._v("Add Question")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
               )
             ]
-          ),
-          _vm._v(" "),
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pb-12" }, [
+        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c(
             "div",
             {
@@ -35259,7 +35323,7 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "mt-2 text-2xl" }, [
-                    _vm._v("\n            Your Form\n          ")
+                    _vm._v("Your Form")
                   ]),
                   _vm._v(" "),
                   _vm._l(_vm.form_data.questions, function(question, i) {
@@ -35271,24 +35335,20 @@ var render = function() {
                           _vm._v("Question: " + _vm._s(question.question))
                         ]),
                         _vm._v(" "),
-                        question.type == 0
-                          ? _c("p", [_vm._v("Answer type: short text input")])
+                        question.question_type == 0
+                          ? _c("p", [_vm._v("Question type: short text input")])
                           : _vm._e(),
                         _vm._v(" "),
-                        question.type == 1
-                          ? _c("p", [_vm._v("Answer type: long text input")])
+                        question.question_type == 1
+                          ? _c("p", [_vm._v("Question type: long text input")])
                           : _vm._e(),
                         _vm._v(" "),
-                        question.type == 2
-                          ? _c("p", [_vm._v("Answer type: rating slider")])
+                        question.question_type == 2
+                          ? _c("p", [_vm._v("Question type: rating slider")])
                           : _vm._e(),
                         _vm._v(" "),
-                        question.type == 3
-                          ? _c("p", [_vm._v("Answer type: emoji picker")])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        question.type == 4
-                          ? _c("p", [_vm._v("Answer type: multiple choice")])
+                        question.question_type == 3
+                          ? _c("p", [_vm._v("Question type: emoji picker")])
                           : _vm._e(),
                         _vm._v(" "),
                         _c(
@@ -35318,7 +35378,7 @@ var render = function() {
                       _c(
                         "jet-button",
                         { staticClass: "ml-4", attrs: { type: "submit" } },
-                        [_vm._v("\n              Submit Event\n            ")]
+                        [_vm._v(" Submit Event ")]
                       )
                     ],
                     1
@@ -35732,142 +35792,159 @@ var render = function() {
     [
       _vm._v(" "),
       _c("div", { staticClass: "py-12" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c(
-            "div",
-            { staticClass: "flex items-center justify-start mt-4" },
-            [
-              _c(
-                "inertia-link",
-                { attrs: { href: _vm.route("meetings.index") } },
-                [
-                  _c("jet-button", { staticClass: "ml-4 sm:ml-0" }, [
-                    _vm._v("Back to your events")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-            },
-            [
-              _c("div", { staticClass: "mt-2 text-2xl" }, [
-                _vm._v("\n          " + _vm._s(_vm.meeting.name) + "\n        ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mt-6 text-gray-500" }, [
-                _c("p", [
-                  _vm._v("\n            Access code:\n            "),
-                  _c("span", { staticClass: "raisin-black font-mono" }, [
-                    _vm._v(_vm._s(_vm.meeting.meeting_reference))
-                  ])
+        _c(
+          "div",
+          { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" },
+          [
+            _c(
+              "div",
+              { staticClass: "flex items-center justify-start mt-4" },
+              [
+                _c(
+                  "inertia-link",
+                  { attrs: { href: _vm.route("meetings.index") } },
+                  [
+                    _c("jet-button", { staticClass: "ml-4 sm:ml-0" }, [
+                      _vm._v("Back to your events")
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+              },
+              [
+                _c("div", { staticClass: "mt-2 text-2xl" }, [
+                  _vm._v(
+                    "\n          " + _vm._s(_vm.meeting.name) + "\n        "
+                  )
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "raisin-black" }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.meeting.meeting_start) +
-                      " to " +
-                      _vm._s(_vm.meeting.meeting_end) +
-                      "\n          "
-                  )
+                _c("div", { staticClass: "mt-6 text-gray-500" }, [
+                  _c("p", [
+                    _vm._v("\n            Access code:\n            "),
+                    _c("span", { staticClass: "raisin-black font-mono" }, [
+                      _vm._v(_vm._s(_vm.meeting.meeting_reference))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "raisin-black" }, [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.meeting.meeting_start) +
+                        " to " +
+                        _vm._s(_vm.meeting.meeting_end) +
+                        "\n          "
+                    )
+                  ])
                 ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex items-center justify-end sm:space-x-4 mt-4" },
-            [
-              _c(
-                "inertia-link",
-                { attrs: { href: _vm.route("meetings.edit", _vm.meeting) } },
-                [
-                  _vm.no_edit === false
-                    ? _c(
-                        "jet-button",
-                        {
-                          staticClass:
-                            "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-                        },
-                        [_vm._v("Edit Event")]
-                      )
-                    : _vm._e()
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "inertia-link",
-                {
-                  attrs: {
-                    method: "delete",
-                    as: "button",
-                    href: _vm.route("meetings.destroy", _vm.meeting)
-                  }
-                },
-                [
-                  _c(
-                    "jet-button",
-                    {
-                      staticClass:
-                        "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
-                    },
-                    [_vm._v("Delete Event")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-            },
-            [
-              _c("div", { staticClass: "mt-2 text-2xl" }, [
-                _vm._v("\n          Feedback Analysis\n        ")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.questions, function(question) {
-                return _c(
-                  "div",
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "flex items-center justify-end sm:space-x-4 mt-4"
+              },
+              [
+                _c(
+                  "inertia-link",
+                  { attrs: { href: _vm.route("meetings.edit", _vm.meeting) } },
+                  [
+                    !_vm.no_edit
+                      ? _c(
+                          "jet-button",
+                          {
+                            staticClass:
+                              "mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
+                          },
+                          [_vm._v("Edit Event")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "inertia-link",
                   {
-                    key: question.id,
-                    staticClass:
-                      "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+                    attrs: {
+                      method: "delete",
+                      as: "button",
+                      href: _vm.route("meetings.destroy", _vm.meeting)
+                    }
                   },
                   [
-                    _c("div", { staticClass: "mt-4" }, [
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(question.question) +
-                          "\n        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("Graph goes here")])
-                  ]
+                    _c(
+                      "jet-button",
+                      {
+                        staticClass:
+                          "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
+                      },
+                      [_vm._v("Delete Event")]
+                    )
+                  ],
+                  1
                 )
-              }),
-              _vm._v(" "),
-              _c("pre", [_vm._v(_vm._s(_vm.$props))])
-            ],
-            2
-          )
-        ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm.pastBeginning
+              ? [
+                  _vm._v(
+                    "\n        seems like we should show feedback as no_edit is true\n      "
+                  )
+                ]
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+              },
+              [
+                _c("div", { staticClass: "mt-2 text-2xl" }, [
+                  _vm._v("Feedback Analysis")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.questions, function(question) {
+                  return _c(
+                    "div",
+                    {
+                      key: question.id,
+                      staticClass:
+                        "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+                    },
+                    [
+                      _c("div", { staticClass: "mt-4" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(question.question) +
+                            "\n          "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Graph goes here")])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c("pre", [_vm._v(_vm._s(_vm.$props))])
+              ],
+              2
+            )
+          ],
+          2
+        )
       ])
     ]
   )
