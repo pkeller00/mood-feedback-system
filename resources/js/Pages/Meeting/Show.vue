@@ -36,6 +36,7 @@
           <inertia-link :href="route('meetings.edit', meeting)">
             <jet-button
               class="mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
+              v-if="no_edit === false"
               >Edit Event</jet-button
             >
           </inertia-link>
@@ -45,10 +46,29 @@
             :href="route('meetings.destroy', meeting)"
           >
             <jet-button
-              class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
+              class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900" 
               >Delete Event</jet-button
             >
           </inertia-link>
+        </div>
+
+        <div
+          class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+        >
+          <div class="mt-2 text-2xl">
+            Feedback Analysis
+          </div>
+          <div
+          class="bg-white overflow-hidden shadow-xl sm:rounded-lg my-4"
+          v-for="question in questions"
+          :key="question.id"
+          >
+          <div class="mt-4">
+            {{ question.question }}
+          </div>
+          <p>Graph goes here</p>
+          </div>
+          <pre>{{$props }}</pre>
         </div>
       </div>
     </div>
@@ -67,6 +87,8 @@ export default {
 
   props: {
     meeting: Object,
+    questions: Object,
+    no_edit: Boolean,
   },
 };
 </script>

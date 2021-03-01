@@ -6,6 +6,7 @@ use App\Models\Meeting;
 use App\Models\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+Use \Carbon\Carbon;
 // use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -93,7 +94,26 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
-        return Inertia::render('Meeting/Show', compact('meeting'));
+        $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
+        //dd($questions);
+        $start_date = $meeting->meeting_start;
+        $meeting_date = Carbon::parse($start_date)->toDateTimeString();
+        $current_date = $date = Carbon::now()->toDateTimeString();
+        if($meeting_date > $current_date){
+            return Inertia::render('Meeting/Show', [
+                'meeting' => $meeting,
+                'questions' => $questions,
+                'no_edit' => FALSE,
+            ]);
+        }else{
+            return Inertia::render('Meeting/Show', [
+                'meeting' => $meeting,
+                'questions' => $questions,
+                'no_edit' => TRUE,
+            ]);
+        }
+        
+        //return Inertia::render('Meeting/Show', compact('meeting'));
     }
 
     /**
@@ -104,7 +124,15 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
-        return Inertia::render('Meeting/Edit', compact('meeting'));
+        $start_date = $meeting->meeting_start;
+        $meeting_date = Carbon::parse($start_date)->toDateTimeString();
+        $current_date = $date = Carbon::now()->toDateTimeString();
+        if($meeting_date > $current_date){
+            return Inertia::render('Meeting/Edit', compact('meeting'));
+        }else{
+            return redirect()->route('meetings.show', compact('meeting'));
+        }
+        
     }
 
     /**
