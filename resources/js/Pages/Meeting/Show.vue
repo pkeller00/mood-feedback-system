@@ -52,10 +52,6 @@
           </inertia-link>
         </div>
 
-        <template v-if="pastBeginning">
-          seems like we should show feedback as no_edit is true
-        </template>
-
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >

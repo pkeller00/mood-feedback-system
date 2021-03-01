@@ -40,44 +40,68 @@ class MeetingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_event(Request $request)
     {
         // Determine whether this is a request to make the event or feedback form
-        if (!request(['formRequest'])) {
-            $this->validateMeeting();
-            $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
+        $this->validateMeeting();
+        $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
 
-            // Store the meeting information in the user's session
-            session(compact('meeting'));
+        // Store the meeting information in the user's session
+        session(compact('meeting'));
 
-            // Render form for user to create a feedback form
-            return Inertia::render('Meeting/CreateForm');
+        // Render form for user to create a feedback form
+        return redirect(route('meetings.create_form'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_form(Request $request)
+    {
+        if ($request->session()->has('meeting')) {
+            // ddd($request);
+            $meeting = $request->session()->get('meeting');
+            return Inertia::render('Meeting/CreateForm', compact('meeting'));
         } else {
-            $this->validateFeedbackForm();
-            // Event access code generator
-            $isUnique = true;
-            $code = "";
-            do {
-                $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
-                $isUnique = Meeting::where('meeting_reference', $code)->doesntExist();
-            } while ($isUnique == false);
-
-            // Get meeting object from session
-            $meeting = request()->session()->pull('meeting');
-            $meeting->meeting_reference = $code;
-            $meeting->user_id = auth()->id();
-            $meeting->save();
-
-            // Add each question to the meeting
-            foreach (request('questions') as $item) {
-                $question = new FeedbackQuestion();
-                $question->question = $item['question'];
-                $question->question_type = $item['question_type'];
-                $question->meeting_id = $meeting->id;
-                $question->save();
-            }
-            return redirect(route('meetings.show', compact('meeting')));
+            return redirect(route('meetings.create'));
         }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validateFeedbackForm();
+
+        // Event access code generator
+        $isUnique = true;
+        $code = "";
+        do {
+            $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
+            $isUnique = Meeting::where('meeting_reference', $code)->doesntExist();
+        } while ($isUnique == false);
+
+        // Get meeting object from session
+        $meeting = request()->session()->pull('meeting');
+        $meeting->meeting_reference = $code;
+        $meeting->user_id = auth()->id();
+        $meeting->save();
+
+        // Add each question to the meeting
+        foreach (request('questions') as $item) {
+            $question = new FeedbackQuestion();
+            $question->question = $item['question'];
+            $question->question_type = $item['question_type'];
+            $question->meeting_id = $meeting->id;
+            $question->save();
+        }
+        return redirect(route('meetings.show', compact('meeting')));
     }
 
     /**
@@ -157,7 +181,9 @@ class MeetingController extends Controller
     protected function validateFeedbackForm()
     {
         return request()->validate([
-            'questions' => 'required',
+            'questions' => ['required'],
+        ], [
+            'questions.required' => 'You have not provided any questions',
         ]);
     }
 }

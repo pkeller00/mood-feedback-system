@@ -8,6 +8,20 @@
 
     <div class="pt-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div
+          class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+        >
+        Creating feedback form for:
+          <div class="mt-2 text-xl">
+            {{ meeting.name }}
+          </div>
+
+          <div class="mt-2">
+            <p class="raisin-black">
+              {{ meeting.meeting_start }} to {{ meeting.meeting_end }}
+            </p>
+          </div>
+        </div>
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
@@ -75,10 +89,18 @@
               :key="question.id"
             >
               <p>Question: {{ question.question }}</p>
-              <p v-if="question.question_type == 0">Question type: short text input</p>
-              <p v-if="question.question_type == 1">Question type: long text input</p>
-              <p v-if="question.question_type == 2">Question type: rating slider</p>
-              <p v-if="question.question_type == 3">Question type: emoji picker</p>
+              <p v-if="question.question_type == 0">
+                Question type: short text input
+              </p>
+              <p v-if="question.question_type == 1">
+                Question type: long text input
+              </p>
+              <p v-if="question.question_type == 2">
+                Question type: rating slider
+              </p>
+              <p v-if="question.question_type == 3">
+                Question type: emoji picker
+              </p>
               <!-- <p v-if="question.type == 4">Question type: multiple choice</p> -->
               <jet-button
                 class="mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900"
@@ -86,6 +108,9 @@
                 @click.native.prevent="deleteQuestion(i)"
                 >Remove Question</jet-button
               >
+            </div>
+            <div v-if="errors.questions" class="mt-3 text-sm text-red-600">
+              {{ errors.questions }}
             </div>
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4" type="submit"> Submit Event </jet-button>
@@ -121,6 +146,7 @@ export default {
 
   props: {
     errors: Object,
+    meeting: Object,
   },
 
   data() {
@@ -134,7 +160,7 @@ export default {
       },
       form_data: this.$inertia.form({
         questions: [],
-        formRequest: true,
+        // formRequest: true,
       }),
     };
   },
@@ -145,11 +171,11 @@ export default {
     },
     submit() {
       //If list is empty then doesn't have a first element so don't submit
-      if (this.form_data.questions[0] == null) {
-        alert("Cannot submit a form without questions");
-      } else {
-        this.form_data.post(this.route("meetings.store"));
-      }
+      //   if (this.form_data.questions[0] == null) {
+      //     alert("Cannot submit a form without questions");
+      //   } else {
+      this.form_data.post(this.route("meetings.store"));
+      //   }
     },
     addQuestion() {
       // Validate that there is a question

@@ -36,8 +36,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     })->name('dashboard');
 
     Route::get('/events', [MeetingController::class, 'index'])->name('meetings.index');
-    Route::post('/events/create', [MeetingController::class, 'store'])->name('meetings.store');
+    Route::post('/events/create', [MeetingController::class, 'store_event'])->name('meetings.store_event');
     Route::get('/events/create', [MeetingController::class, 'create'])->name('meetings.create');
+    Route::post('/events/create/form', [MeetingController::class, 'store'])->name('meetings.store');
+    Route::get('/events/create/form', [MeetingController::class, 'create_form'])->name('meetings.create_form');
     Route::get('/events/{meeting}', [MeetingController::class, 'show'])->name('meetings.show');
     Route::match(array('PUT', 'PATCH'),'/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
     Route::delete('/events/{meeting}', [MeetingController::class, 'destroy'])->name('meetings.destroy');

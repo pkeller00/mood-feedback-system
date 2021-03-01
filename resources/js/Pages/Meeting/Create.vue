@@ -83,7 +83,7 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+// import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
   components: {
@@ -92,7 +92,7 @@ export default {
     JetInput,
     JetCheckbox,
     JetLabel,
-    JetValidationErrors,
+    // JetValidationErrors,
   },
 
   props: {
@@ -111,14 +111,7 @@ export default {
 
   methods: {
     submit() {
-      this.meeting.post(this.route("meetings.store"));
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
+      this.meeting.post(this.route("meetings.store_event"));
     },
   },
 };
