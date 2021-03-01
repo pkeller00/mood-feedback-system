@@ -38,14 +38,25 @@
             :key="question.id"
           >
             <div class="mt-4">
-              Question {{ i }}.
-              <jet-label :for="i" :value="question.question" />
+              <label :for="i" class="block font-medium text-gray-700"
+                >{{ i }}) {{ question.question }}</label
+              >
               <!-- This is the type of question : -->
-              <p v-if="question.question_type == 0">short text input</p>
-              <p v-if="question.question_type == 1">long text input</p>
-              <p v-if="question.question_type == 2">rating slider</p>
-              <p v-if="question.question_type == 3">emoji picker</p>
-              <p v-if="question.question_type == 4">multiple choice</p>
+              <p v-if="question.question_type == 0" class="text-xs">
+                short text input
+              </p>
+              <p v-if="question.question_type == 1" class="text-xs">
+                long text input
+              </p>
+              <p v-if="question.question_type == 2" class="text-xs">
+                rating slider
+              </p>
+              <p v-if="question.question_type == 3" class="text-xs">
+                emoji picker
+              </p>
+              <p v-if="question.question_type == 4" class="text-xs">
+                multiple choice
+              </p>
 
               <template v-if="question.question_type == 0">
                 <!-- short text -->
@@ -64,7 +75,7 @@
                   :id="i"
                   v-model.trim="feedback_response.responses[i]"
                   placeholder="add multiple lines"
-                  class="mt-1 block w-full"
+                  class="mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                   required
                   autofocus
                 ></textarea>
@@ -251,6 +262,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>
