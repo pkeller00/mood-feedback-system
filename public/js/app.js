@@ -73059,7 +73059,7 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              !_vm.meetings_current.length
+              !_vm.attended_events.length
                 ? [
                     _c("p", { staticClass: "mt-1 text-gray-600" }, [
                       _vm._v(
