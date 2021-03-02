@@ -38,7 +38,7 @@
             </inertia-link>
           </div>
 
-          <template v-if="!meetings_current.length">
+          <template v-if="!attended_events.length">
             <p class="mt-1 text-gray-600">
               You aren't hosting any events currently
             </p>
