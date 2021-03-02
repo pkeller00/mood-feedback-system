@@ -113,6 +113,10 @@ class MeetingController extends Controller
      */
     public function show(Meeting $meeting)
     {
+        if ($meeting->user_id != auth()->id()) {
+            return redirect(route('meetings.index'));
+        }
+
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
 
         $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
@@ -121,7 +125,7 @@ class MeetingController extends Controller
         // $feedback_responses = [];
 
         // foreach($questions as $question) {
-        //     $feedback_responses = App\Models\FeedbackResponse::where('question_id', $question->id)->get();
+        //     $feedback_responses = FeedbackResponse::where('question_id', $question->id)->get();
         // }
 
 
@@ -140,6 +144,10 @@ class MeetingController extends Controller
      */
     public function edit(Meeting $meeting)
     {
+        if ($meeting->user_id != auth()->id()) {
+            return redirect(route('meetings.index'));
+        }
+
         $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
         $current_date = $date = Carbon::now()->toDateTimeString();
 
@@ -159,6 +167,10 @@ class MeetingController extends Controller
      */
     public function update(Request $request, Meeting $meeting)
     {
+        if ($meeting->user_id != auth()->id()) {
+            return redirect(route('meetings.index'));
+        }
+
         $meeting->update($this->validateMeeting());
 
         return redirect(route('meetings.show', $meeting));
@@ -172,6 +184,10 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
+        if ($meeting->user_id != auth()->id()) {
+            return redirect(route('meetings.index'));
+        }
+
         $meeting->delete();
 
         return redirect(route('meetings.index'));
