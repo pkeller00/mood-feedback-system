@@ -185,9 +185,7 @@ export default {
 
       // Add question mark to end automatically if not present
       if (
-        this.new_question.question.charAt(
-          this.new_question.question.length - 1 != "?"
-        )
+        this.new_question.question.charAt(this.new_question.question.length - 1) != "?"
       ) {
         this.new_question.question += "?";
       }
