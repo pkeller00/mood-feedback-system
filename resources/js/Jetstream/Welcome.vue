@@ -98,12 +98,14 @@
         <div class="ml-12">
           <div class="mt-2 text-sm text-gray-500">
             Have an upcoming event? Go ahead and create an event, customise your
-            templates and be prepared for hosting your session. If you have not
-            done so already,
-            <inertia-link :href="route('register')" class="text-indigo-700">
-              register an account
-            </inertia-link>
-            with us.
+            templates and be prepared for hosting your session.
+            <span v-if="this.$page.props.user === null">
+              If you have not done so already,
+              <inertia-link :href="route('register')" class="text-indigo-700">
+                register an account
+              </inertia-link>
+              with us.
+            </span>
           </div>
 
           <inertia-link :href="route('meetings.create')">

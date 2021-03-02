@@ -2981,6 +2981,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
  // import JetCheckbox from '@/Jetstream/Checkbox'
@@ -69495,25 +69497,35 @@ var render = function() {
               "div",
               { staticClass: "ml-12" },
               [
-                _c(
-                  "div",
-                  { staticClass: "mt-2 text-sm text-gray-500" },
-                  [
-                    _vm._v(
-                      "\n          Have an upcoming event? Go ahead and create an event, customise your\n          templates and be prepared for hosting your session. If you have not\n          done so already,\n          "
-                    ),
-                    _c(
-                      "inertia-link",
-                      {
-                        staticClass: "text-indigo-700",
-                        attrs: { href: _vm.route("register") }
-                      },
-                      [_vm._v("\n            register an account\n          ")]
-                    ),
-                    _vm._v("\n          with us.\n        ")
-                  ],
-                  1
-                ),
+                _c("div", { staticClass: "mt-2 text-sm text-gray-500" }, [
+                  _vm._v(
+                    "\n          Have an upcoming event? Go ahead and create an event, customise your\n          templates and be prepared for hosting your session.\n          "
+                  ),
+                  this.$page.props.user === null
+                    ? _c(
+                        "span",
+                        [
+                          _vm._v(
+                            "\n            If you have not done so already,\n            "
+                          ),
+                          _c(
+                            "inertia-link",
+                            {
+                              staticClass: "text-indigo-700",
+                              attrs: { href: _vm.route("register") }
+                            },
+                            [
+                              _vm._v(
+                                "\n              register an account\n            "
+                              )
+                            ]
+                          ),
+                          _vm._v("\n            with us.\n          ")
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ]),
                 _vm._v(" "),
                 _c(
                   "inertia-link",
