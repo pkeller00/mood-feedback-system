@@ -67,7 +67,7 @@
             {{ question.question }}
           </div>
 
-            <!-- probably some query based on the type of question to determine which graph to show -->
+          <!-- probably some query based on the type of question to determine which graph to show -->
 
           <line-chart :chartdata="chartdatas" :options="chartoptions" />
 
@@ -122,7 +122,22 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
+      chart_response: [],
+      errors: []
     };
+  },
+
+  mounted() {
+    this.axios
+      .post(`/get-feedback/${this.meeting.meeting_reference}`)
+      .then((response) => {
+        // JSON responses are automatically parsed.
+        console.log(response);
+        this.chart_response = response.data;
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
   },
 };
 </script>
