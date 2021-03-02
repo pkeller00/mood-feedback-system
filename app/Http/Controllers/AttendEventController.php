@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccessedEvent;
 use App\Models\Meeting;
 use App\Models\FeedbackQuestion;
 use App\Models\FeedbackResponse;
 use App\Models\ResponseInformation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,15 +21,23 @@ class AttendEventController extends Controller
     public function attend(Request $request)
     {
         $this->validateAccessCode();
-        $current_user = auth()->id();
         $meeting = Meeting::where('meeting_reference', request(['code']))->first();
 
-        if($current_user != null){
-            $meeting_host = $meeting->user_id;
-            if($meeting_host === $current_user){
-                dd("Can't submit feedback for own event");
-                return redirect()->route('home');
-            }
+        // I feel that host's should be able to view the form for their events to see how it looks before it is put out live
+        // $current_user = auth()->id();
+        // if($current_user != null){
+        //     $meeting_host = $meeting->user_id;
+        //     if($meeting_host === $current_user){
+        //         dd("Can't submit feedback for own event");
+        //         return redirect()->route('home');
+        //     }
+        // }
+
+        // Validate whether meeting is still live
+        $current_time = Carbon::now()->toDateTime();
+        $meeting_end = Carbon::parse($meeting->meeting_end)->toDateTime();
+        if ($meeting_end < $current_time) {
+            return redirect()->back()->withErrors(['code' => 'Event has ended']);
         }
 
         return redirect()->route('attendevents.create', compact('meeting'));
@@ -38,6 +48,22 @@ class AttendEventController extends Controller
      */
     public function create(Request $request, Meeting $meeting)
     {
+        // If meeting has ended we should restrict access to making new feedback responses
+        $current_time = Carbon::now()->toDateTime();
+        $meeting_end = Carbon::parse($meeting->meeting_end)->toDateTime();
+        if ($meeting_end < $current_time) {
+            return redirect()->back();
+        }
+
+        if (auth()->id()) {
+            AccessedEvent::updateOrCreate([
+                'user_id' => auth()->id(),
+                'meeting_id' => $meeting->id
+            ], [
+                'last_accessed' => $current_time
+            ]);
+        }
+
         // Gets the questions associated with a meeting
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
 
@@ -56,14 +82,21 @@ class AttendEventController extends Controller
     public function store(Request $request, Meeting $meeting)
     {
         // validate and then store the feedback response
-        // ddd($request, $meeting);
         $this->validateSubmittedFeedback();
+
+        // If meeting has ended we should restrict access to making new feedback responses
+        $current_time = Carbon::now()->toDateTime();
+        $meeting_end = Carbon::parse($meeting->meeting_end)->toDateTime();
+        if ($meeting_end < $current_time) {
+            return redirect()->route('home');
+        }
 
         $questions = request('questions');
         $responses = request('responses');
 
         $response_object = new ResponseInformation(request(['name', 'email']));
         $response_object->meeting_id = $meeting->id;
+
         $response_object->save();
 
         foreach ($responses as $key => $response) {
@@ -99,6 +132,9 @@ class AttendEventController extends Controller
 
         // Currently redirects to homepage
         // Probably should redirect to a success page that would allow the user to access the form again
+        if (auth()->id()) {
+            return redirect()->route('dashboard');
+        }
         return redirect()->route('home');
     }
 

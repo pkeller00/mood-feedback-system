@@ -18,7 +18,8 @@ class CreateMeetingsTable extends Migration
             $table->string('meeting_reference')->unique();
             $table->text('name');
             // need to assign a meeting to the author that has created it
-            $table->bigInteger('user_id')->unsigned();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // $table->bigInteger('user_id')->unsigned();
 
             // need to assign a date and times for the meetings
             $table->dateTime('meeting_start');
@@ -29,7 +30,7 @@ class CreateMeetingsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

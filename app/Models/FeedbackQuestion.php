@@ -11,10 +11,6 @@ class FeedbackQuestion extends Model
 
     protected $fillable = ['question', 'question_type'];
 
-    // protected $casts = [
-    //     'response' => 'array'
-    // ];
-
     public function meeting() {
         return $this->belongsTo(Meeting::class);
     }

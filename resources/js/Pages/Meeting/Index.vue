@@ -8,7 +8,7 @@
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end">
           <inertia-link :href="route('meetings.create')">
             <jet-button class="mr-4 sm:mr-0"> Create Event </jet-button>
           </inertia-link>

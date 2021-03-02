@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\AttendEventController;
-use App\Http\Controllers\FeedbackFormController;
-use App\Models\Meeting;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,9 +30,7 @@ Route::get('/attend-event/{meeting}', [AttendEventController::class, 'create'])-
 Route::post('/submit-feedback/{meeting}', [AttendEventController::class, 'store'])->name('attendevents.store');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/events', [MeetingController::class, 'index'])->name('meetings.index');
     Route::post('/events/create', [MeetingController::class, 'store_event'])->name('meetings.store_event');
@@ -41,9 +38,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('/events/create/form', [MeetingController::class, 'store'])->name('meetings.store');
     Route::get('/events/create/form', [MeetingController::class, 'create_form'])->name('meetings.create_form');
     Route::get('/events/{meeting}', [MeetingController::class, 'show'])->name('meetings.show');
-    Route::match(array('PUT', 'PATCH'),'/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
+    Route::match(array('PUT', 'PATCH'), '/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
     Route::delete('/events/{meeting}', [MeetingController::class, 'destroy'])->name('meetings.destroy');
     Route::get('/events/{meeting}/edit', [MeetingController::class, 'edit'])->name('meetings.edit');
-
-
 });

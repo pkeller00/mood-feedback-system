@@ -23,11 +23,12 @@ class CreateFeedbackQuestionsTable extends Migration
             $table->smallInteger('question_type');
             // $table->smallInteger('question_type')->nullable($value = false);
 
-            $table->bigInteger('meeting_id')->unsigned();
+            $table->foreignId('meeting_id')->constrained()->onDelete('cascade');
+            // $table->bigInteger('meeting_id')->unsigned();
 
             $table->timestamps();
 
-            $table->foreign('meeting_id')->references('id')->on('meetings')->onDelete('cascade');
+            // $table->foreign('meeting_id')->references('id')->on('meetings')->onDelete('cascade');
         });
     }
 

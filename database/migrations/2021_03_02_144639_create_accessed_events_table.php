@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResponseInformationTable extends Migration
+class CreateAccessedEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateResponseInformationTable extends Migration
      */
     public function up()
     {
-        Schema::create('response_information', function (Blueprint $table) {
+        Schema::create('accessed_events', function (Blueprint $table) {
             $table->id();
-            // user name and email gets stored here for host view
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('meeting_id')->constrained()->onDelete('cascade');
+            $table->dateTime('last_accessed');
 
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ class CreateResponseInformationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('response_information');
+        Schema::dropIfExists('accessed_events');
     }
 }

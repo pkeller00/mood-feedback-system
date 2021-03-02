@@ -4722,7 +4722,133 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4750,7 +4876,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  props: {
+    meetings_current: Array,
+    meetings_past: Array,
+    meetings_future: Array,
+    attended_events: Array
   }
 });
 
@@ -72817,7 +72949,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Dashboard\n        ")]
+                [_vm._v("\n      Dashboard\n    ")]
               )
             ]
           },
@@ -72831,15 +72963,364 @@ var render = function() {
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
           _c(
             "div",
-            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
+            { staticClass: "flex items-center justify-end space-x-2" },
             [
-              _vm._v(
-                "\n\n                dashboard content goes here\n                "
-              ),
-              _vm._v(
-                "\n                a little change is welcome\n                another change is on the way\n            "
+              _c(
+                "inertia-link",
+                { attrs: { href: _vm.route("meetings.create") } },
+                [
+                  _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
+                    _vm._v(" Create Event ")
+                  ])
+                ],
+                1
               )
-            ]
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4 p-4"
+            },
+            [
+              _c("h2", { staticClass: "font text-2xl" }, [
+                _vm._v("Recently Attended Events")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.attended_events, function(meeting) {
+                return _c(
+                  "div",
+                  {
+                    key: meeting.meeting_reference,
+                    staticClass:
+                      "bg-white overflow-hidden shadow-md rounded-lg my-2 p-4 border border-gray-200"
+                  },
+                  [
+                    _c(
+                      "inertia-link",
+                      {
+                        attrs: {
+                          href: _vm.route("attendevents.create", meeting)
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(meeting.name) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mt-1 text-gray-600 text-sm sm:flex sm:flex-row sm:space-x-2"
+                          },
+                          [
+                            _c("p", [
+                              _vm._v(
+                                "\n                Access code:\n                "
+                              ),
+                              _c("span", { staticClass: "font-mono" }, [
+                                _vm._v(_vm._s(meeting.meeting_reference))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                _vm._s(meeting.meeting_start) +
+                                  " to " +
+                                  _vm._s(meeting.meeting_end)
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              !_vm.meetings_current.length
+                ? [
+                    _c("p", { staticClass: "mt-1 text-gray-600" }, [
+                      _vm._v(
+                        "\n            You aren't hosting any events currently\n          "
+                      )
+                    ])
+                  ]
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4 p-4"
+            },
+            [
+              _c("h2", { staticClass: "font text-2xl" }, [
+                _vm._v("Currently Hosting Events")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.meetings_current, function(meeting) {
+                return _c(
+                  "div",
+                  {
+                    key: meeting.meeting_reference,
+                    staticClass:
+                      "bg-white overflow-hidden shadow-md rounded-lg my-2 p-4 border border-gray-200"
+                  },
+                  [
+                    _c(
+                      "inertia-link",
+                      { attrs: { href: _vm.route("meetings.show", meeting) } },
+                      [
+                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(meeting.name) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mt-1 text-gray-600 text-sm sm:flex sm:flex-row sm:space-x-2"
+                          },
+                          [
+                            _c("p", [
+                              _vm._v(
+                                "\n                Access code:\n                "
+                              ),
+                              _c("span", { staticClass: "font-mono" }, [
+                                _vm._v(_vm._s(meeting.meeting_reference))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                _vm._s(meeting.meeting_start) +
+                                  " to " +
+                                  _vm._s(meeting.meeting_end)
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              !_vm.meetings_current.length
+                ? [
+                    _c("p", { staticClass: "mt-1 text-gray-600" }, [
+                      _vm._v(
+                        "\n            You aren't hosting any events currently\n          "
+                      )
+                    ])
+                  ]
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4 p-4"
+            },
+            [
+              _c("h2", { staticClass: "font text-2xl" }, [
+                _vm._v("Upcoming Events")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.meetings_future, function(meeting) {
+                return _c(
+                  "div",
+                  {
+                    key: meeting.meeting_reference,
+                    staticClass:
+                      "bg-white overflow-hidden shadow-md rounded-lg my-2 p-4 border border-gray-200"
+                  },
+                  [
+                    _c(
+                      "inertia-link",
+                      { attrs: { href: _vm.route("meetings.show", meeting) } },
+                      [
+                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(meeting.name) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mt-1 text-gray-600 text-sm sm:flex sm:flex-row sm:space-x-2"
+                          },
+                          [
+                            _c("p", [
+                              _vm._v(
+                                "\n                Access code:\n                "
+                              ),
+                              _c("span", { staticClass: "font-mono" }, [
+                                _vm._v(_vm._s(meeting.meeting_reference))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                _vm._s(meeting.meeting_start) +
+                                  " to " +
+                                  _vm._s(meeting.meeting_end)
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              !_vm.meetings_future.length
+                ? [
+                    _c("p", { staticClass: "mt-1 text-gray-600" }, [
+                      _vm._v("No upcoming events to host")
+                    ])
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center justify-center mt-4" },
+                [
+                  _c(
+                    "inertia-link",
+                    { attrs: { href: _vm.route("meetings.index") } },
+                    [
+                      _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
+                        _vm._v("View All Events")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-white overflow-hidden shadow-xl sm:rounded-lg my-4 p-4"
+            },
+            [
+              _c("h2", { staticClass: "font text-2xl" }, [
+                _vm._v("Past Events")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.meetings_past, function(meeting) {
+                return _c(
+                  "div",
+                  {
+                    key: meeting.meeting_reference,
+                    staticClass:
+                      "bg-white overflow-hidden shadow-md rounded-lg my-2 p-4 border border-gray-200"
+                  },
+                  [
+                    _c(
+                      "inertia-link",
+                      { attrs: { href: _vm.route("meetings.show", meeting) } },
+                      [
+                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                          _vm._v(
+                            "\n              " +
+                              _vm._s(meeting.name) +
+                              "\n            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mt-1 text-gray-600 text-sm sm:flex sm:flex-row sm:space-x-2"
+                          },
+                          [
+                            _c("p", [
+                              _vm._v(
+                                "\n                Access code:\n                "
+                              ),
+                              _c("span", { staticClass: "font-mono" }, [
+                                _vm._v(_vm._s(meeting.meeting_reference))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                _vm._s(meeting.meeting_start) +
+                                  " to " +
+                                  _vm._s(meeting.meeting_end)
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              !_vm.meetings_past.length
+                ? [
+                    _c("p", { staticClass: "mt-1 text-gray-600" }, [
+                      _vm._v("You have not hosted any events yet")
+                    ])
+                  ]
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center justify-center mt-4" },
+                [
+                  _c(
+                    "inertia-link",
+                    { attrs: { href: _vm.route("meetings.index") } },
+                    [
+                      _c("jet-button", { staticClass: "mr-4 sm:mr-0" }, [
+                        _vm._v("View All Events")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            2
           )
         ])
       ])
@@ -73726,7 +74207,7 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "flex items-center justify-end mt-4" },
+              { staticClass: "flex items-center justify-end" },
               [
                 _c(
                   "inertia-link",
