@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\AttendEventController;
-use App\Http\Controllers\ChartController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +43,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::delete('/events/{meeting}', [MeetingController::class, 'destroy'])->name('meetings.destroy');
     Route::get('/events/{meeting}/edit', [MeetingController::class, 'edit'])->name('meetings.edit');
 
-    Route::post('get-feedback/{meeting}', [ChartController::class, 'get_data'])->name('charts.get_data');
+    Route::post('get-feedback/{meeting}/data', [DataController::class, 'get_data'])->name('charts.get_data');
+    Route::post('get-feedback/{meeting}/chart', [DataController::class, 'get_chart'])->name('charts.get_chart');
 });

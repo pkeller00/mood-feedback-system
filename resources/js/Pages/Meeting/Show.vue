@@ -73,8 +73,10 @@
 
           <p>Graph goes here</p>
         </div>
-        <pre>{{ $props }}</pre>
-        <pre>{{ $data }}</pre>
+        data response
+        <div>{{ dataResponseComputed }}</div>
+        chart response
+        <div>{{ chartResponseComputed }}</div>
       </div>
     </div>
   </app-layout>
@@ -122,22 +124,71 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
-      chart_response: [],
-      errors: []
+      chart_response: null,
+      data_response: null,
+    //   errors: null,
+      polling: null,
+      check_time: null,
     };
   },
 
-  mounted() {
-    this.axios
-      .post(`/get-feedback/${this.meeting.meeting_reference}`)
-      .then((response) => {
-        // JSON responses are automatically parsed.
-        console.log(response);
-        this.chart_response = response.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
+  computed: {
+    chartResponseComputed: function () {
+      return this.$data.chart_response;
+    },
+    dataResponseComputed: function () {
+      return this.$data.data_response;
+    },
+  },
+
+  created() {
+    this.getDataResponse();
+    this.getChartResponse();
+
+    // only poll data if the meeting is live at the time of loading page
+    // should really have a poll to check the time every so often to call and clear the instance
+    if ((new Date(this.meeting.meeting_start) <= new Date(Date.now())) && (new Date(Date.now()) <= new Date(this.meeting.meeting_end))) {
+        this.pollData();
+    }
+  },
+
+  methods: {
+    pollData() {
+      this.polling = setInterval(() => {
+        this.getDataResponse();
+        this.getChartResponse();
+      }, 10000);
+    },
+    getDataResponse() {
+      axios
+        .post(`/get-feedback/${this.meeting.meeting_reference}/data`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(response);
+          this.data_response = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        //   this.errors.push(e);
+        });
+    },
+    getChartResponse() {
+      axios
+        .post(`/get-feedback/${this.meeting.meeting_reference}/chart`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(response);
+          this.chart_response = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        //   this.errors.push(e);
+        });
+    },
+  },
+
+  beforeDestroy() {
+    clearInterval(this.polling);
   },
 };
 </script>
