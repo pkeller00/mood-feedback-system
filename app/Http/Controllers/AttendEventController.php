@@ -131,10 +131,12 @@ class AttendEventController extends Controller
                 $feedback_object->response = json_encode(['value' => $response]);
 
                 $annotation = $language->analyzeSentiment($response);
-                $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want 
-                 
+                $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want
+
+                // ddd($annotation);
                 // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
-                $feedback_object->score = 0;
+                $feedback_object->score = $sentiment['score'];
+
             } elseif ($questions[$key]['question_type'] === 2) {
                 // rating slider
                 $feedback_object->response = json_encode(['rating' => $response]);

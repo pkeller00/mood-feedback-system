@@ -5296,7 +5296,7 @@ __webpack_require__.r(__webpack_exports__);
       } // Add question mark to end automatically if not present
 
 
-      if (this.new_question.question.charAt(this.new_question.question.length - 1 != "?")) {
+      if (this.new_question.question.charAt(this.new_question.question.length - 1) != "?") {
         this.new_question.question += "?";
       } // Add question to the array model
 
@@ -73337,7 +73337,7 @@ var render = function() {
                 ? [
                     _c("p", { staticClass: "mt-1 text-gray-600" }, [
                       _vm._v(
-                        "\n            You aren't hosting any events currently\n          "
+                        "\n            No recently attended events\n          "
                       )
                     ])
                   ]
