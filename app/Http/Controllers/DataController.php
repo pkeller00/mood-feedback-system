@@ -43,13 +43,12 @@ class DataController extends Controller
         $response_array = [];
 
         foreach ($questions as $key => $question) {
-            $question_type = $question->question_type;
+            // $question_type = $question->question_type;
             // return $question_type;
 
-
-            $question_chart = [];
             $plots = [];
             $responses = $question->feedback_response()->get();
+
 
             // return $responses;
             foreach($responses as $response_x) {
@@ -70,8 +69,9 @@ class DataController extends Controller
 
 
 
-
-            array_push($response_array, $chartData);
+            $response_array[] = $chartData;
+            // array_push($response_array, $chartData);
+            // return $response_array;
         }
 
 

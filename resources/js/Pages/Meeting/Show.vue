@@ -74,6 +74,10 @@
             :chart-data="chartDatasComputed[i]"
             :options="chartoptions"
           />
+          <scatter-chart
+            :chart-data="chartDatasComputed[i]"
+            :options="chartoptions"
+          />
         </div>
         data response
         <div>{{ dataResponseComputed }}</div>
@@ -88,12 +92,14 @@
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import LineChart from "@/Charts/LineChart";
+import ScatterChart from "@/Charts/ScatterChart";
 
 export default {
   components: {
     AppLayout,
     JetButton,
     LineChart,
+    ScatterChart,
   },
 
   props: {
@@ -104,16 +110,15 @@ export default {
 
   data() {
     return {
-      chartdatas: null,
-
+      chartdatas: [],
       chartoptions: {
         scales: {
           xAxes: [
             {
               type: "time",
-              //   time: {
-              //     unit: "minute",
-              //   },
+            //   time: {
+            //     unit: "hour",
+            //   },
             },
           ],
         },
@@ -179,8 +184,8 @@ export default {
         .post(`/get-feedback/${this.meeting.meeting_reference}/chart`)
         .then((response) => {
           // JSON responses are automatically parsed.
-          console.log(response);
-          this.chart_response = response.data;
+          console.log(JSON.stringify(response.data));
+          this.chart_response = JSON.stringify(response.data);
           this.chartdatas = response.data;
         })
         .catch((e) => {
