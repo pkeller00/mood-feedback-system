@@ -42,9 +42,39 @@ class DataController extends Controller
 
         $response_array = [];
 
-        foreach ($questions as $question) {
-            array_push($response_array, $question->feedback_response()->get());
+        foreach ($questions as $key => $question) {
+            $question_type = $question->question_type;
+            // return $question_type;
+
+
+            $question_chart = [];
+            $plots = [];
+            $responses = $question->feedback_response()->get();
+
+            // return $responses;
+            foreach($responses as $response_x) {
+                $chart_time = $response_x->created_at;
+                $chart_score = $response_x->score;
+
+                $plot = array(
+                    'x' => $chart_time,
+                    'y' => $chart_score,
+                );
+
+                array_push($plots, $plot);
+            }
+
+            $chartData['datasets'][0]['data'] = $plots;
+            // return $chartData;
+
+
+
+
+
+            array_push($response_array, $chartData);
         }
+
+
 
         return $response_array;
     }

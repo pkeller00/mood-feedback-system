@@ -5592,6 +5592,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -5608,15 +5610,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      chartdatas: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-          label: "Data One",
-          backgroundColor: "#f87900",
-          data: [40, 39, 10, 40, 39, 80, 40]
-        }]
-      },
+      chartdatas: null,
       chartoptions: {
+        scales: {
+          xAxes: [{
+            type: "time" //   time: {
+            //     unit: "minute",
+            //   },
+
+          }]
+        },
         responsive: true,
         maintainAspectRatio: false
       },
@@ -5633,6 +5636,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     dataResponseComputed: function dataResponseComputed() {
       return this.$data.data_response;
+    },
+    chartDatasComputed: function chartDatasComputed() {
+      return this.$data.chartdatas;
     }
   },
   created: function created() {
@@ -5672,6 +5678,11 @@ __webpack_require__.r(__webpack_exports__);
         // JSON responses are automatically parsed.
         console.log(response);
         _this3.chart_response = response.data;
+        _this3.chartdatas = response.data;
+
+        _this3.chartdatas.forEach(function (chart) {
+          chart.update();
+        });
       })["catch"](function (e) {
         console.log(e); //   this.errors.push(e);
       });
@@ -74594,7 +74605,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._l(_vm.questions, function(question) {
+            _vm._l(_vm.questions, function(question, i) {
               return _c(
                 "div",
                 {
@@ -74609,14 +74620,14 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _c("p", [_vm._v("Graph goes here")]),
+                  _vm._v(" "),
                   _c("line-chart", {
                     attrs: {
-                      chartdata: _vm.chartdatas,
+                      chartdata: _vm.chartDatasComputed[i],
                       options: _vm.chartoptions
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Graph goes here")])
+                  })
                 ],
                 1
               )

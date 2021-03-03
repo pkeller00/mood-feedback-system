@@ -60,7 +60,7 @@
 
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-          v-for="question in questions"
+          v-for="(question, i) in questions"
           :key="question.id"
         >
           <div class="mt-4">
@@ -69,9 +69,11 @@
 
           <!-- probably some query based on the type of question to determine which graph to show -->
 
-          <line-chart :chartdata="chartdatas" :options="chartoptions" />
-
           <p>Graph goes here</p>
+          <line-chart
+            :chartdata="chartDatasComputed[i]"
+            :options="chartoptions"
+          />
         </div>
         data response
         <div>{{ dataResponseComputed }}</div>
@@ -102,31 +104,25 @@ export default {
 
   data() {
     return {
-      chartdatas: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
-        datasets: [
-          {
-            label: "Data One",
-            backgroundColor: "#f87900",
-            data: [40, 39, 10, 40, 39, 80, 40],
-          },
-        ],
-      },
+      chartdatas: null,
+
       chartoptions: {
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+              //   time: {
+              //     unit: "minute",
+              //   },
+            },
+          ],
+        },
         responsive: true,
         maintainAspectRatio: false,
       },
       chart_response: null,
       data_response: null,
-    //   errors: null,
+      //   errors: null,
       polling: null,
       check_time: null,
     };
@@ -139,6 +135,9 @@ export default {
     dataResponseComputed: function () {
       return this.$data.data_response;
     },
+    chartDatasComputed: function () {
+      return this.$data.chartdatas;
+    },
   },
 
   created() {
@@ -147,8 +146,11 @@ export default {
 
     // only poll data if the meeting is live at the time of loading page
     // should really have a poll to check the time every so often to call and clear the instance
-    if ((new Date(this.meeting.meeting_start) <= new Date(Date.now())) && (new Date(Date.now()) <= new Date(this.meeting.meeting_end))) {
-        this.pollData();
+    if (
+      new Date(this.meeting.meeting_start) <= new Date(Date.now()) &&
+      new Date(Date.now()) <= new Date(this.meeting.meeting_end)
+    ) {
+      this.pollData();
     }
   },
 
@@ -169,7 +171,7 @@ export default {
         })
         .catch((e) => {
           console.log(e);
-        //   this.errors.push(e);
+          //   this.errors.push(e);
         });
     },
     getChartResponse() {
@@ -179,10 +181,14 @@ export default {
           // JSON responses are automatically parsed.
           console.log(response);
           this.chart_response = response.data;
+          this.chartdatas = response.data;
+          this.chartdatas.forEach((chart) => {
+              chart.update();
+          })
         })
         .catch((e) => {
           console.log(e);
-        //   this.errors.push(e);
+          //   this.errors.push(e);
         });
     },
   },
