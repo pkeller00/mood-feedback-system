@@ -1870,12 +1870,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+ // const { reactiveProp } = mixins
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Line,
-  props: ['chartdata', 'options'],
+  mixins: [vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.mixins.reactiveProp],
+  props: ["chartData", "options"],
+  watch: {
+    chartData: function chartData() {
+      this.renderChart(this.chartData, this.options);
+    }
+  },
   mounted: function mounted() {
-    this.renderChart(this.chartdata, this.options);
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -5679,10 +5686,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
         _this3.chart_response = response.data;
         _this3.chartdatas = response.data;
-
-        _this3.chartdatas.forEach(function (chart) {
-          chart.update();
-        });
       })["catch"](function (e) {
         console.log(e); //   this.errors.push(e);
       });
@@ -74624,7 +74627,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("line-chart", {
                     attrs: {
-                      chartdata: _vm.chartDatasComputed[i],
+                      "chart-data": _vm.chartDatasComputed[i],
                       options: _vm.chartoptions
                     }
                   })

@@ -71,7 +71,7 @@
 
           <p>Graph goes here</p>
           <line-chart
-            :chartdata="chartDatasComputed[i]"
+            :chart-data="chartDatasComputed[i]"
             :options="chartoptions"
           />
         </div>
@@ -182,9 +182,6 @@ export default {
           console.log(response);
           this.chart_response = response.data;
           this.chartdatas = response.data;
-          this.chartdatas.forEach((chart) => {
-              chart.update();
-          })
         })
         .catch((e) => {
           console.log(e);
