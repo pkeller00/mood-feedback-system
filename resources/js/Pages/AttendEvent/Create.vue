@@ -156,7 +156,7 @@
 
               <!-- Different form question types should go here through a v-if -->
               <div v-if="hasErrors" class="mt-3 text-sm text-red-600">
-                {{ errors }}
+                {{ errors.responses[i] }}
               </div>
             </div>
           </div>

@@ -86,7 +86,11 @@ class AttendEventController extends Controller
 
         // If meeting has ended we should restrict access to making new feedback responses
         $current_time = Carbon::now()->toDateTime();
+        $meeting_start = Carbon::parse($meeting->meeting_start)->toDateTime();
         $meeting_end = Carbon::parse($meeting->meeting_end)->toDateTime();
+        if ($current_time < $meeting_start) {
+            return redirect()->back()->withErrors(['event_started' => "Event has not begun"]);
+        }
         if ($meeting_end < $current_time) {
             return redirect()->route('home');
         }

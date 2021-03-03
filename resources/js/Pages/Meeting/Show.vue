@@ -63,26 +63,30 @@
           v-for="(question, i) in questions"
           :key="question.id"
         >
-          <div class="mt-4">
+          <div class="text-xl mt-4">
             {{ question.question }}
           </div>
 
-          <!-- probably some query based on the type of question to determine which graph to show -->
-
-          <p>Graph goes here</p>
           <line-chart
+            v-if="question.question_type === 0 || question.question_type === 1"
             :chart-data="chartDatasComputed[i]"
-            :options="chartoptions"
+            :options="chartoptions.mood"
           />
-          <scatter-chart
+          <line-chart
+            v-else-if="question.question_type === 2"
             :chart-data="chartDatasComputed[i]"
-            :options="chartoptions"
+            :options="chartoptions.rating"
+          />
+          <pie-chart
+            v-else-if="question.question_type === 3"
+            :chart-data="chartDatasComputed[i]"
+            :options="chartoptions.emoji"
           />
         </div>
-        data response
+        <!-- data response
         <div>{{ dataResponseComputed }}</div>
         chart response
-        <div>{{ chartResponseComputed }}</div>
+        <div>{{ chartResponseComputed }}</div> -->
       </div>
     </div>
   </app-layout>
@@ -92,14 +96,14 @@
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import LineChart from "@/Charts/LineChart";
-import ScatterChart from "@/Charts/ScatterChart";
+import PieChart from "@/Charts/PieChart";
 
 export default {
   components: {
     AppLayout,
     JetButton,
     LineChart,
-    ScatterChart,
+    PieChart,
   },
 
   props: {
@@ -112,18 +116,61 @@ export default {
     return {
       chartdatas: [],
       chartoptions: {
-        scales: {
-          xAxes: [
-            {
-              type: "time",
-            //   time: {
-            //     unit: "hour",
-            //   },
-            },
-          ],
+        emoji: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutoutPercentage: 0,
+        //   animation: {
+        //     animateRotate: false,
+        //     animateScale: true,
+        //   },
         },
-        responsive: true,
-        maintainAspectRatio: false,
+        mood: {
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  round: true,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: "Mood",
+                  padding: 0,
+                },
+              },
+            ],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+        rating: {
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  round: true,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: "Rating",
+                  padding: 0,
+                },
+              },
+            ],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        },
       },
       chart_response: null,
       data_response: null,
@@ -164,7 +211,7 @@ export default {
       this.polling = setInterval(() => {
         this.getDataResponse();
         this.getChartResponse();
-      }, 10000);
+      }, 30000);
     },
     getDataResponse() {
       axios

@@ -1,8 +1,9 @@
 <script>
-import { Scatter, mixins } from "vue-chartjs";
+import { Pie, mixins } from "vue-chartjs";
+// const { reactiveProp } = mixins
 
 export default {
-  extends: Scatter,
+  extends: Pie,
   mixins: [mixins.reactiveProp],
   props: ["chartData", "options"],
   watch: {

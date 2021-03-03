@@ -1888,10 +1888,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/PieChart.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/PieChart.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1900,9 +1900,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+ // const { reactiveProp } = mixins
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Scatter,
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Pie,
   mixins: [vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.mixins.reactiveProp],
   props: ["chartData", "options"],
   watch: {
@@ -5544,7 +5545,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Charts_LineChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Charts/LineChart */ "./resources/js/Charts/LineChart.vue");
-/* harmony import */ var _Charts_ScatterChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Charts/ScatterChart */ "./resources/js/Charts/ScatterChart.vue");
+/* harmony import */ var _Charts_PieChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Charts/PieChart */ "./resources/js/Charts/PieChart.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -5644,7 +5649,7 @@ __webpack_require__.r(__webpack_exports__);
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     LineChart: _Charts_LineChart__WEBPACK_IMPORTED_MODULE_2__.default,
-    ScatterChart: _Charts_ScatterChart__WEBPACK_IMPORTED_MODULE_3__.default
+    PieChart: _Charts_PieChart__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: {
     meeting: Object,
@@ -5655,16 +5660,53 @@ __webpack_require__.r(__webpack_exports__);
     return {
       chartdatas: [],
       chartoptions: {
-        scales: {
-          xAxes: [{
-            type: "time" //   time: {
-            //     unit: "hour",
-            //   },
+        emoji: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutoutPercentage: 0 //   animation: {
+          //     animateRotate: false,
+          //     animateScale: true,
+          //   },
 
-          }]
         },
-        responsive: true,
-        maintainAspectRatio: false
+        mood: {
+          scales: {
+            xAxes: [{
+              type: "time",
+              time: {
+                round: true
+              }
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: "Mood",
+                padding: 0
+              }
+            }]
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        },
+        rating: {
+          scales: {
+            xAxes: [{
+              type: "time",
+              time: {
+                round: true
+              }
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: "Rating",
+                padding: 0
+              }
+            }]
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
       },
       chart_response: null,
       data_response: null,
@@ -5701,7 +5743,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.getDataResponse();
 
         _this.getChartResponse();
-      }, 10000);
+      }, 30000);
     },
     getDataResponse: function getDataResponse() {
       var _this2 = this;
@@ -64132,10 +64174,10 @@ component.options.__file = "resources/js/Charts/LineChart.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Charts/ScatterChart.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/Charts/ScatterChart.vue ***!
-  \**********************************************/
+/***/ "./resources/js/Charts/PieChart.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Charts/PieChart.vue ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -64143,7 +64185,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _ScatterChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScatterChart.vue?vue&type=script&lang=js& */ "./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PieChart.vue?vue&type=script&lang=js& */ "./resources/js/Charts/PieChart.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 ;
@@ -64153,7 +64195,7 @@ var render, staticRenderFns
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
-  _ScatterChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default,
+  _PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default,
   render,
   staticRenderFns,
   false,
@@ -64165,7 +64207,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Charts/ScatterChart.vue"
+component.options.__file = "resources/js/Charts/PieChart.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -66243,10 +66285,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/Charts/PieChart.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Charts/PieChart.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -66254,8 +66296,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScatterChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ScatterChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/ScatterChart.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScatterChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PieChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Charts/PieChart.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -71967,7 +72009,7 @@ var render = function() {
                                 [
                                   _vm._v(
                                     "\n              " +
-                                      _vm._s(_vm.errors) +
+                                      _vm._s(_vm.errors.responses[i]) +
                                       "\n            "
                                   )
                                 ]
@@ -74707,35 +74749,38 @@ var render = function() {
                     "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
                 },
                 [
-                  _c("div", { staticClass: "mt-4" }, [
+                  _c("div", { staticClass: "text-xl mt-4" }, [
                     _vm._v(
                       "\n          " + _vm._s(question.question) + "\n        "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("Graph goes here")]),
-                  _vm._v(" "),
-                  _c("line-chart", {
-                    attrs: {
-                      "chart-data": _vm.chartDatasComputed[i],
-                      options: _vm.chartoptions
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("scatter-chart", {
-                    attrs: {
-                      "chart-data": _vm.chartDatasComputed[i],
-                      options: _vm.chartoptions
-                    }
-                  })
+                  question.question_type === 0 || question.question_type === 1
+                    ? _c("line-chart", {
+                        attrs: {
+                          "chart-data": _vm.chartDatasComputed[i],
+                          options: _vm.chartoptions.mood
+                        }
+                      })
+                    : question.question_type === 2
+                    ? _c("line-chart", {
+                        attrs: {
+                          "chart-data": _vm.chartDatasComputed[i],
+                          options: _vm.chartoptions.rating
+                        }
+                      })
+                    : question.question_type === 3
+                    ? _c("pie-chart", {
+                        attrs: {
+                          "chart-data": _vm.chartDatasComputed[i],
+                          options: _vm.chartoptions.emoji
+                        }
+                      })
+                    : _vm._e()
                 ],
                 1
               )
-            }),
-            _vm._v("\n      data response\n      "),
-            _c("div", [_vm._v(_vm._s(_vm.dataResponseComputed))]),
-            _vm._v("\n      chart response\n      "),
-            _c("div", [_vm._v(_vm._s(_vm.chartResponseComputed))])
+            })
           ],
           2
         )
