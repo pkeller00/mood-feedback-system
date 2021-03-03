@@ -60,21 +60,33 @@
 
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-          v-for="question in questions"
+          v-for="(question, i) in questions"
           :key="question.id"
         >
-          <div class="mt-4">
+          <div class="text-xl mt-4">
             {{ question.question }}
           </div>
 
-            <!-- probably some query based on the type of question to determine which graph to show -->
-
-          <line-chart :chartdata="chartdatas" :options="chartoptions" />
-
-          <p>Graph goes here</p>
+          <line-chart
+            v-if="question.question_type === 0 || question.question_type === 1"
+            :chart-data="chartDatasComputed[i]"
+            :options="chartoptions.mood"
+          />
+          <line-chart
+            v-else-if="question.question_type === 2"
+            :chart-data="chartDatasComputed[i]"
+            :options="chartoptions.rating"
+          />
+          <pie-chart
+            v-else-if="question.question_type === 3"
+            :chart-data="chartDatasComputed[i]"
+            :options="chartoptions.emoji"
+          />
         </div>
-        <pre>{{ $props }}</pre>
-        <pre>{{ $data }}</pre>
+        <!-- data response
+        <div>{{ dataResponseComputed }}</div>
+        chart response
+        <div>{{ chartResponseComputed }}</div> -->
       </div>
     </div>
   </app-layout>
@@ -84,12 +96,14 @@
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import LineChart from "@/Charts/LineChart";
+import PieChart from "@/Charts/PieChart";
 
 export default {
   components: {
     AppLayout,
     JetButton,
     LineChart,
+    PieChart,
   },
 
   props: {
@@ -100,29 +114,136 @@ export default {
 
   data() {
     return {
-      chartdatas: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
-        datasets: [
-          {
-            label: "Data One",
-            backgroundColor: "#f87900",
-            data: [40, 39, 10, 40, 39, 80, 40],
-          },
-        ],
-      },
+      chartdatas: [],
       chartoptions: {
-        responsive: true,
-        maintainAspectRatio: false,
+        emoji: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutoutPercentage: 0,
+        //   animation: {
+        //     animateRotate: false,
+        //     animateScale: true,
+        //   },
+        },
+        mood: {
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  round: true,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: "Mood",
+                  padding: 0,
+                },
+              },
+            ],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+        rating: {
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  round: true,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: "Rating",
+                  padding: 0,
+                },
+              },
+            ],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        },
       },
+      chart_response: null,
+      data_response: null,
+      //   errors: null,
+      polling: null,
+      check_time: null,
     };
+  },
+
+  computed: {
+    chartResponseComputed: function () {
+      return this.$data.chart_response;
+    },
+    dataResponseComputed: function () {
+      return this.$data.data_response;
+    },
+    chartDatasComputed: function () {
+      return this.$data.chartdatas;
+    },
+  },
+
+  created() {
+    this.getDataResponse();
+    this.getChartResponse();
+
+    // only poll data if the meeting is live at the time of loading page
+    // should really have a poll to check the time every so often to call and clear the instance
+    if (
+      new Date(this.meeting.meeting_start) <= new Date(Date.now()) &&
+      new Date(Date.now()) <= new Date(this.meeting.meeting_end)
+    ) {
+      this.pollData();
+    }
+  },
+
+  methods: {
+    pollData() {
+      this.polling = setInterval(() => {
+        this.getDataResponse();
+        this.getChartResponse();
+      }, 30000);
+    },
+    getDataResponse() {
+      axios
+        .post(`/get-feedback/${this.meeting.meeting_reference}/data`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(response);
+          this.data_response = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+          //   this.errors.push(e);
+        });
+    },
+    getChartResponse() {
+      axios
+        .post(`/get-feedback/${this.meeting.meeting_reference}/chart`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(JSON.stringify(response.data));
+          this.chart_response = JSON.stringify(response.data);
+          this.chartdatas = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+          //   this.errors.push(e);
+        });
+    },
+  },
+
+  beforeDestroy() {
+    clearInterval(this.polling);
   },
 };
 </script>
