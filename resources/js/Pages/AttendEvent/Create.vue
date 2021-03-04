@@ -248,7 +248,11 @@
               />
             </div>
           </div>
-
+          <div class="mt-4">
+            <vue-recaptcha ref="recaptcha"
+              @verify="onVerify" sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y">
+            </vue-recaptcha>
+            </div>
           <div class="flex items-center justify-center mt-4">
             <jet-button class="ml-4"> Submit Feedback </jet-button>
           </div>
@@ -265,6 +269,7 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import VueRecaptcha from 'vue-recaptcha';
 import { createDateFilter } from "vue-date-fns";
 import { isSameDay, parseISO } from "date-fns";
 
@@ -276,6 +281,7 @@ export default {
     JetCheckbox,
     JetLabel,
     JetValidationErrors,
+    VueRecaptcha,
   },
 
   props: {
@@ -295,6 +301,7 @@ export default {
         responses: [],
         name: "",
         email: "",
+        robot: false,
       }),
     };
   },
@@ -328,10 +335,13 @@ export default {
 
   methods: {
     submit() {
-      this.$inertia.post(
-        `/submit-feedback/${this.meeting.meeting_reference}`,
-        this.feedback_response
-      );
+      if (this.feedback_response.robot) {
+        this.$inertia.post(`/submit-feedback/${this.meeting.meeting_reference}`, this.feedback_response);
+      }
+      return;
+    },
+    onVerify: function (response) {
+      if (response) this.feedback_response.robot = true;
     },
   },
 };
