@@ -112,9 +112,14 @@
             <div v-if="errors.questions" class="mt-3 text-sm text-red-600">
               {{ errors.questions }}
             </div>
+            <div class="mt-4">
+              <vue-recaptcha ref="recaptcha"
+                @verify="onVerify" sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y">
+              </vue-recaptcha>
+            </div>
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4" type="submit"> Submit Event </jet-button>
-            </div>
+            </div>           
           </form>
         </div>
       </div>
@@ -127,6 +132,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
+import VueRecaptcha from 'vue-recaptcha';
 // import JetCheckbox from "@/Jetstream/Checkbox";
 // import JetValidationErrors from "@/Jetstream/ValidationErrors";
 // import JetDropdown from "@/Jetstream/Dropdown";
@@ -138,6 +144,7 @@ export default {
     JetButton,
     JetInput,
     JetLabel,
+    VueRecaptcha,
     // JetCheckbox,
     // JetDropdown,
     // JetDropdownLink,
@@ -160,6 +167,7 @@ export default {
       },
       form_data: this.$inertia.form({
         questions: [],
+        robot: false,
         // formRequest: true,
       }),
     };
@@ -170,12 +178,13 @@ export default {
       this.form_data.questions.splice($index, 1);
     },
     submit() {
-      //If list is empty then doesn't have a first element so don't submit
-      //   if (this.form_data.questions[0] == null) {
-      //     alert("Cannot submit a form without questions");
-      //   } else {
-      this.form_data.post(this.route("meetings.store"));
-      //   }
+      if (this.form_data.robot) {
+        this.form_data.post(this.route("meetings.store"));
+      }
+      return;
+    },
+    onVerify: function (response) {
+      if (response) this.form_data.robot = true;
     },
     addQuestion() {
       // Validate that there is a question
