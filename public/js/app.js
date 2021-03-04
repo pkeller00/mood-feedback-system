@@ -3815,7 +3815,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+<<<<<<< HEAD
 /* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
+=======
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+>>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
 //
 //
 //
@@ -4023,6 +4030,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+>>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
 
 
 
@@ -4043,8 +4107,13 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     meeting: Object
   },
+  filters: {
+    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
+    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("HH:mm")
+  },
   data: function data() {
     return {
+      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_7__.default,
       feedback_response: this.$inertia.form({
         questions: this.$page.props.questions,
         responses: [],
@@ -4055,6 +4124,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
+    meeting_start: function meeting_start() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_start);
+    },
+    meeting_end: function meeting_end() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_end);
+    },
     user_name_comp: function user_name_comp() {
       return this.feedback_response.name;
     },
@@ -5210,6 +5285,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
+<<<<<<< HEAD
+=======
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
 //
 //
 //
@@ -5343,10 +5441,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import JetCheckbox from "@/Jetstream/Checkbox";
-// import JetValidationErrors from "@/Jetstream/ValidationErrors";
-// import JetDropdown from "@/Jetstream/Dropdown";
-// import JetDropdownLink from "@/Jetstream/DropdownLink";
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5354,18 +5450,27 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
+<<<<<<< HEAD
     VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default // JetCheckbox,
     // JetDropdown,
     // JetDropdownLink,
     // JetValidationErrors,
 
+=======
+    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default
+>>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
   },
   props: {
     errors: Object,
     meeting: Object
   },
+  filters: {
+    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_5__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
+    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_5__.createDateFilter)("HH:mm")
+  },
   data: function data() {
     return {
+      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_6__.default,
       new_question_errors: {
         empty_question: false
       },
@@ -5374,11 +5479,24 @@ __webpack_require__.r(__webpack_exports__);
         question_type: 0
       },
       form_data: this.$inertia.form({
-        questions: [],
-        robot: false // formRequest: true,
-
+        questions: [{
+          question: "Did you enjoy today's meeting?",
+          question_type: "3"
+        }, {
+          question: "Do you have any comments, or concerns?",
+          question_type: "1"
+        }],
+        robot: false
       })
     };
+  },
+  computed: {
+    meeting_start: function meeting_start() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.default)(this.meeting.meeting_start);
+    },
+    meeting_end: function meeting_end() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.default)(this.meeting.meeting_end);
+    }
   },
   methods: {
     deleteQuestion: function deleteQuestion($index) {
@@ -90354,7 +90472,7 @@ var render = function() {
                   "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
               },
               [
-                _c("div", { staticClass: "mt-2 text-2xl" }, [
+                _c("div", { staticClass: "text-2xl" }, [
                   _vm._v(
                     "\n          " + _vm._s(_vm.meeting.name) + "\n        "
                   )
@@ -90368,15 +90486,25 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "raisin-black" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.meeting.meeting_start) +
-                        " to " +
-                        _vm._s(_vm.meeting.meeting_end) +
-                        "\n          "
-                    )
-                  ])
+                  _vm.isSameDay(_vm.meeting_start, _vm.meeting_end)
+                    ? _c("p", { staticClass: "raisin-black" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                            "\n            to\n            " +
+                            _vm._s(_vm._f("sameday")(_vm.meeting_end)) +
+                            "\n          "
+                        )
+                      ])
+                    : _c("p", { staticClass: "raisin-black" }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                            "\n            to\n            " +
+                            _vm._s(_vm._f("date")(_vm.meeting_end)) +
+                            "\n          "
+                        )
+                      ])
                 ])
               ]
             ),
@@ -90405,7 +90533,7 @@ var render = function() {
                     [
                       _c(
                         "div",
-                        { staticClass: "mt-4" },
+                        {},
                         [
                           _c(
                             "label",
@@ -90413,11 +90541,7 @@ var render = function() {
                               staticClass: "block font-medium text-gray-700",
                               attrs: { for: i }
                             },
-                            [
-                              _vm._v(
-                                _vm._s(i) + ") " + _vm._s(question.question)
-                              )
-                            ]
+                            [_vm._v(_vm._s(question.question))]
                           ),
                           _vm._v(" "),
                           question.question_type == 0
@@ -90605,124 +90729,278 @@ var render = function() {
                               ]
                             : question.question_type == 3
                             ? [
-                                _c("label", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.feedback_response.responses[i],
-                                        expression:
-                                          "feedback_response.responses[i]"
-                                      }
-                                    ],
-                                    attrs: {
-                                      id: "sad",
-                                      type: "radio",
-                                      name: "emojipicker",
-                                      value: "-1",
-                                      required: "",
-                                      autofocus: ""
-                                    },
-                                    domProps: {
-                                      checked: _vm._q(
-                                        _vm.feedback_response.responses[i],
-                                        "-1"
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        return _vm.$set(
-                                          _vm.feedback_response.responses,
-                                          i,
-                                          "-1"
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "flex flex-row w-full justify-center space-x-5 sm:space-x-10"
+                                  },
+                                  [
+                                    _c("div", { staticClass: "text-center" }, [
+                                      _c("label", { attrs: { for: "sad" } }, [
+                                        _c(
+                                          "svg",
+                                          {
+                                            staticClass:
+                                              "fill-current text-red-500 w-16 sm:w-20",
+                                            attrs: {
+                                              xmlns:
+                                                "http://www.w3.org/2000/svg",
+                                              viewBox: "0 0 24 24"
+                                            }
+                                          },
+                                          [
+                                            _c("path", {
+                                              attrs: {
+                                                d: "M0 0h24v24H0V0z",
+                                                fill: "none"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("circle", {
+                                              attrs: {
+                                                cx: "15.5",
+                                                cy: "9.5",
+                                                r: "1.5"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("circle", {
+                                              attrs: {
+                                                cx: "8.5",
+                                                cy: "9.5",
+                                                r: "1.5"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("path", {
+                                              attrs: {
+                                                d:
+                                                  "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-6c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5z"
+                                              }
+                                            })
+                                          ]
                                         )
-                                      }
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                sad\n              "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("label", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.feedback_response.responses[i],
-                                        expression:
-                                          "feedback_response.responses[i]"
-                                      }
-                                    ],
-                                    attrs: {
-                                      id: "neutral",
-                                      type: "radio",
-                                      name: "emojipicker",
-                                      value: "0"
-                                    },
-                                    domProps: {
-                                      checked: _vm._q(
-                                        _vm.feedback_response.responses[i],
-                                        "0"
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        return _vm.$set(
-                                          _vm.feedback_response.responses,
-                                          i,
-                                          "0"
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.feedback_response.responses[
+                                                i
+                                              ],
+                                            expression:
+                                              "feedback_response.responses[i]"
+                                          }
+                                        ],
+                                        attrs: {
+                                          id: "sad",
+                                          type: "radio",
+                                          name: "emojipicker",
+                                          value: "-1",
+                                          required: "",
+                                          autofocus: ""
+                                        },
+                                        domProps: {
+                                          checked: _vm._q(
+                                            _vm.feedback_response.responses[i],
+                                            "-1"
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.feedback_response.responses,
+                                              i,
+                                              "-1"
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "text-center" }, [
+                                      _c(
+                                        "label",
+                                        { attrs: { for: "neutral" } },
+                                        [
+                                          _c(
+                                            "svg",
+                                            {
+                                              staticClass:
+                                                "fill-current text-yellow-500 w-16 sm:w-20",
+                                              attrs: {
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                                viewBox: "0 0 24 24"
+                                              }
+                                            },
+                                            [
+                                              _c("path", {
+                                                attrs: {
+                                                  d: "M0 0h24v24H0V0z",
+                                                  fill: "none"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("path", {
+                                                attrs: {
+                                                  d: "M9 15.5h6v1H9v-1z"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "15.5",
+                                                  cy: "9.5",
+                                                  r: "1.5"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "8.5",
+                                                  cy: "9.5",
+                                                  r: "1.5"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("path", {
+                                                attrs: {
+                                                  d:
+                                                    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.feedback_response.responses[
+                                                i
+                                              ],
+                                            expression:
+                                              "feedback_response.responses[i]"
+                                          }
+                                        ],
+                                        attrs: {
+                                          id: "neutral",
+                                          type: "radio",
+                                          name: "emojipicker",
+                                          value: "0"
+                                        },
+                                        domProps: {
+                                          checked: _vm._q(
+                                            _vm.feedback_response.responses[i],
+                                            "0"
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.feedback_response.responses,
+                                              i,
+                                              "0"
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "text-center" }, [
+                                      _c("label", { attrs: { for: "happy" } }, [
+                                        _c(
+                                          "svg",
+                                          {
+                                            staticClass:
+                                              "fill-current text-green-500 w-16 sm:w-20",
+                                            attrs: {
+                                              xmlns:
+                                                "http://www.w3.org/2000/svg",
+                                              viewBox: "0 0 24 24"
+                                            }
+                                          },
+                                          [
+                                            _c("path", {
+                                              attrs: {
+                                                d: "M0 0h24v24H0V0z",
+                                                fill: "none"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("circle", {
+                                              attrs: {
+                                                cx: "15.5",
+                                                cy: "9.5",
+                                                r: "1.5"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("circle", {
+                                              attrs: {
+                                                cx: "8.5",
+                                                cy: "9.5",
+                                                r: "1.5"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("path", {
+                                              attrs: {
+                                                d:
+                                                  "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"
+                                              }
+                                            })
+                                          ]
                                         )
-                                      }
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                neutral\n              "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("label", [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.feedback_response.responses[i],
-                                        expression:
-                                          "feedback_response.responses[i]"
-                                      }
-                                    ],
-                                    attrs: {
-                                      id: "happy",
-                                      type: "radio",
-                                      name: "emojipicker",
-                                      value: "1"
-                                    },
-                                    domProps: {
-                                      checked: _vm._q(
-                                        _vm.feedback_response.responses[i],
-                                        "1"
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        return _vm.$set(
-                                          _vm.feedback_response.responses,
-                                          i,
-                                          "1"
-                                        )
-                                      }
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                happy\n              "
-                                  )
-                                ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.feedback_response.responses[
+                                                i
+                                              ],
+                                            expression:
+                                              "feedback_response.responses[i]"
+                                          }
+                                        ],
+                                        attrs: {
+                                          id: "happy",
+                                          type: "radio",
+                                          name: "emojipicker",
+                                          value: "1"
+                                        },
+                                        domProps: {
+                                          checked: _vm._q(
+                                            _vm.feedback_response.responses[i],
+                                            "1"
+                                          )
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            return _vm.$set(
+                                              _vm.feedback_response.responses,
+                                              i,
+                                              "1"
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]
+                                )
                               ]
                             : _vm._e(),
                           _vm._v(" "),
@@ -90782,7 +91060,7 @@ var render = function() {
                   [
                     _c(
                       "div",
-                      { staticClass: "mt-4" },
+                      {},
                       [
                         _vm._v(
                           "\n            User information (anonymity)\n            "
@@ -92831,21 +93109,31 @@ var render = function() {
                 "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
             },
             [
-              _vm._v("\n      Creating feedback form for:\n        "),
+              _vm._v("\n        Creating feedback form for:\n        "),
               _c("div", { staticClass: "mt-2 text-xl" }, [
                 _vm._v("\n          " + _vm._s(_vm.meeting.name) + "\n        ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "mt-2" }, [
-                _c("p", { staticClass: "raisin-black" }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.meeting.meeting_start) +
-                      " to " +
-                      _vm._s(_vm.meeting.meeting_end) +
-                      "\n          "
-                  )
-                ])
+                _vm.isSameDay(_vm.meeting_start, _vm.meeting_end)
+                  ? _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("sameday")(_vm.meeting_end)) +
+                          "\n          "
+                      )
+                    ])
+                  : _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_end)) +
+                          "\n          "
+                      )
+                    ])
               ])
             ]
           ),
@@ -93085,6 +93373,14 @@ var render = function() {
                           "\n            " +
                             _vm._s(_vm.errors.questions) +
                             "\n          "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.form_data.questions.length
+                    ? _c("div", { staticClass: "text-gray-600" }, [
+                        _vm._v(
+                          "\n            Your form is currently empty\n          "
                         )
                       ])
                     : _vm._e(),
