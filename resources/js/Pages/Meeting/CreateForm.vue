@@ -8,17 +8,27 @@
 
     <div class="pt-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div
+        <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
-        Creating feedback form for:
+          Creating feedback form for:
           <div class="mt-2 text-xl">
             {{ meeting.name }}
           </div>
 
           <div class="mt-2">
-            <p class="raisin-black">
-              {{ meeting.meeting_start }} to {{ meeting.meeting_end }}
+            <p
+              class="raisin-black"
+              v-if="isSameDay(meeting_start, meeting_end)"
+            >
+              {{ meeting_start | date }}
+              to
+              {{ meeting_end | sameday }}
+            </p>
+            <p class="raisin-black" v-else>
+              {{ meeting_start | date }}
+              to
+              {{ meeting_end | date }}
             </p>
           </div>
         </div>
@@ -112,14 +122,20 @@
             <div v-if="errors.questions" class="mt-3 text-sm text-red-600">
               {{ errors.questions }}
             </div>
+            <div v-if="!form_data.questions.length" class="text-gray-600">
+              Your form is currently empty
+            </div>
             <div class="mt-4">
-              <vue-recaptcha ref="recaptcha"
-                @verify="onVerify" sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y">
+              <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
+              >
               </vue-recaptcha>
             </div>
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4" type="submit"> Submit Event </jet-button>
-            </div>           
+            </div>
           </form>
         </div>
       </div>
@@ -132,11 +148,9 @@ import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
-import VueRecaptcha from 'vue-recaptcha';
-// import JetCheckbox from "@/Jetstream/Checkbox";
-// import JetValidationErrors from "@/Jetstream/ValidationErrors";
-// import JetDropdown from "@/Jetstream/Dropdown";
-// import JetDropdownLink from "@/Jetstream/DropdownLink";
+import VueRecaptcha from "vue-recaptcha";
+import { createDateFilter } from "vue-date-fns";
+import { isSameDay, parseISO } from "date-fns";
 
 export default {
   components: {
@@ -145,10 +159,6 @@ export default {
     JetInput,
     JetLabel,
     VueRecaptcha,
-    // JetCheckbox,
-    // JetDropdown,
-    // JetDropdownLink,
-    // JetValidationErrors,
   },
 
   props: {
@@ -156,8 +166,14 @@ export default {
     meeting: Object,
   },
 
+  filters: {
+    date: createDateFilter("EEEE do MMMM yyyy  HH:mm"),
+    sameday: createDateFilter("HH:mm"),
+  },
+
   data() {
     return {
+      isSameDay,
       new_question_errors: {
         empty_question: false,
       },
@@ -166,11 +182,23 @@ export default {
         question_type: 0,
       },
       form_data: this.$inertia.form({
-        questions: [],
+        questions: [
+          { question: "Did you enjoy today's meeting?", question_type: "3"},
+          {
+            question: "Do you have any comments, or concerns?", question_type: "1"},
+        ],
         robot: false,
-        // formRequest: true,
       }),
     };
+  },
+
+  computed: {
+    meeting_start: function () {
+      return parseISO(this.meeting.meeting_start);
+    },
+    meeting_end: function () {
+      return parseISO(this.meeting.meeting_end);
+    },
   },
 
   methods: {
@@ -194,7 +222,9 @@ export default {
 
       // Add question mark to end automatically if not present
       if (
-        this.new_question.question.charAt(this.new_question.question.length - 1) != "?"
+        this.new_question.question.charAt(
+          this.new_question.question.length - 1
+        ) != "?"
       ) {
         this.new_question.question += "?";
       }

@@ -5194,7 +5194,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-recaptcha'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5328,10 +5348,8 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
 
 
 
- // import JetCheckbox from "@/Jetstream/Checkbox";
-// import JetValidationErrors from "@/Jetstream/ValidationErrors";
-// import JetDropdown from "@/Jetstream/Dropdown";
-// import JetDropdownLink from "@/Jetstream/DropdownLink";
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5339,18 +5357,19 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
-    VueRecaptcha: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-recaptcha'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) // JetCheckbox,
-    // JetDropdown,
-    // JetDropdownLink,
-    // JetValidationErrors,
-
+    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
     errors: Object,
     meeting: Object
   },
+  filters: {
+    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_5__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
+    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_5__.createDateFilter)("HH:mm")
+  },
   data: function data() {
     return {
+      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_6__.default,
       new_question_errors: {
         empty_question: false
       },
@@ -5359,11 +5378,24 @@ Object(function webpackMissingModule() { var e = new Error("Cannot find module '
         question_type: 0
       },
       form_data: this.$inertia.form({
-        questions: [],
-        robot: false // formRequest: true,
-
+        questions: [{
+          question: "Did you enjoy today's meeting?",
+          question_type: "3"
+        }, {
+          question: "Do you have any comments, or concerns?",
+          question_type: "1"
+        }],
+        robot: false
       })
     };
+  },
+  computed: {
+    meeting_start: function meeting_start() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.default)(this.meeting.meeting_start);
+    },
+    meeting_end: function meeting_end() {
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_7__.default)(this.meeting.meeting_end);
+    }
   },
   methods: {
     deleteQuestion: function deleteQuestion($index) {
@@ -95933,21 +95965,31 @@ var render = function() {
                 "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
             },
             [
-              _vm._v("\n      Creating feedback form for:\n        "),
+              _vm._v("\n        Creating feedback form for:\n        "),
               _c("div", { staticClass: "mt-2 text-xl" }, [
                 _vm._v("\n          " + _vm._s(_vm.meeting.name) + "\n        ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "mt-2" }, [
-                _c("p", { staticClass: "raisin-black" }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.meeting.meeting_start) +
-                      " to " +
-                      _vm._s(_vm.meeting.meeting_end) +
-                      "\n          "
-                  )
-                ])
+                _vm.isSameDay(_vm.meeting_start, _vm.meeting_end)
+                  ? _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("sameday")(_vm.meeting_end)) +
+                          "\n          "
+                      )
+                    ])
+                  : _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_end)) +
+                          "\n          "
+                      )
+                    ])
               ])
             ]
           ),
@@ -96187,6 +96229,14 @@ var render = function() {
                           "\n            " +
                             _vm._s(_vm.errors.questions) +
                             "\n          "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.form_data.questions.length
+                    ? _c("div", { staticClass: "text-gray-600" }, [
+                        _vm._v(
+                          "\n            Your form is currently empty\n          "
                         )
                       ])
                     : _vm._e(),
@@ -98518,6 +98568,223 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var defer = function defer() {
+  var state = false; // Resolved or not
+
+  var callbacks = [];
+
+  var resolve = function resolve(val) {
+    if (state) {
+      return;
+    }
+
+    state = true;
+
+    for (var i = 0, len = callbacks.length; i < len; i++) {
+      callbacks[i](val);
+    }
+  };
+
+  var then = function then(cb) {
+    if (!state) {
+      callbacks.push(cb);
+      return;
+    }
+
+    cb();
+  };
+
+  var deferred = {
+    resolved: function resolved() {
+      return state;
+    },
+    resolve: resolve,
+    promise: {
+      then: then
+    }
+  };
+  return deferred;
+};
+
+var ownProp = Object.prototype.hasOwnProperty;
+function createRecaptcha() {
+  var deferred = defer();
+  return {
+    notify: function notify() {
+      deferred.resolve();
+    },
+    wait: function wait() {
+      return deferred.promise;
+    },
+    render: function render(ele, options, cb) {
+      this.wait().then(function () {
+        cb(window.grecaptcha.render(ele, options));
+      });
+    },
+    reset: function reset(widgetId) {
+      if (typeof widgetId === 'undefined') {
+        return;
+      }
+
+      this.assertLoaded();
+      this.wait().then(function () {
+        return window.grecaptcha.reset(widgetId);
+      });
+    },
+    execute: function execute(widgetId) {
+      if (typeof widgetId === 'undefined') {
+        return;
+      }
+
+      this.assertLoaded();
+      this.wait().then(function () {
+        return window.grecaptcha.execute(widgetId);
+      });
+    },
+    checkRecaptchaLoad: function checkRecaptchaLoad() {
+      if (ownProp.call(window, 'grecaptcha') && ownProp.call(window.grecaptcha, 'render')) {
+        this.notify();
+      }
+    },
+    assertLoaded: function assertLoaded() {
+      if (!deferred.resolved()) {
+        throw new Error('ReCAPTCHA has not been loaded');
+      }
+    }
+  };
+}
+var recaptcha = createRecaptcha();
+
+if (typeof window !== 'undefined') {
+  window.vueRecaptchaApiLoaded = recaptcha.notify;
+}
+
+var VueRecaptcha = {
+  name: 'VueRecaptcha',
+  props: {
+    sitekey: {
+      type: String,
+      required: true
+    },
+    theme: {
+      type: String
+    },
+    badge: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+    size: {
+      type: String
+    },
+    tabindex: {
+      type: String
+    },
+    loadRecaptchaScript: {
+      type: Boolean,
+      "default": false
+    },
+    recaptchaScriptId: {
+      type: String,
+      "default": '__RECAPTCHA_SCRIPT'
+    },
+    recaptchaHost: {
+      type: String,
+      "default": 'www.google.com'
+    },
+    language: {
+      type: String,
+      "default": ''
+    }
+  },
+  beforeMount: function beforeMount() {
+    if (this.loadRecaptchaScript) {
+      if (!document.getElementById(this.recaptchaScriptId)) {
+        // Note: vueRecaptchaApiLoaded load callback name is per the latest documentation
+        var script = document.createElement('script');
+        script.id = this.recaptchaScriptId;
+        script.src = "https://" + this.recaptchaHost + "/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit&hl=" + this.language;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    recaptcha.checkRecaptchaLoad();
+
+    var opts = _extends({}, this.$props, {
+      callback: this.emitVerify,
+      'expired-callback': this.emitExpired,
+      'error-callback': this.emitError
+    });
+
+    var container = this.$slots["default"] ? this.$el.children[0] : this.$el;
+    recaptcha.render(container, opts, function (id) {
+      _this.$widgetId = id;
+
+      _this.$emit('render', id);
+    });
+  },
+  methods: {
+    reset: function reset() {
+      recaptcha.reset(this.$widgetId);
+    },
+    execute: function execute() {
+      recaptcha.execute(this.$widgetId);
+    },
+    emitVerify: function emitVerify(response) {
+      this.$emit('verify', response);
+    },
+    emitExpired: function emitExpired() {
+      this.$emit('expired');
+    },
+    emitError: function emitError() {
+      this.$emit('error');
+    }
+  },
+  render: function render(h) {
+    return h('div', {}, this.$slots["default"]);
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VueRecaptcha);
 
 
 /***/ }),
