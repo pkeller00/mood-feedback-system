@@ -5194,7 +5194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-recaptcha'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 //
 //
 //
@@ -5339,7 +5339,7 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
-    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default // JetCheckbox,
+    VueRecaptcha: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-recaptcha'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()) // JetCheckbox,
     // JetDropdown,
     // JetDropdownLink,
     // JetValidationErrors,
@@ -44953,14 +44953,15 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.20';
+  var VERSION = '4.17.21';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
 
   /** Error message constants. */
   var CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',
-      FUNC_ERROR_TEXT = 'Expected a function';
+      FUNC_ERROR_TEXT = 'Expected a function',
+      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -45093,10 +45094,11 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
       reHasRegExpChar = RegExp(reRegExpChar.source);
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrim = /^\s+|\s+$/g,
-      reTrimStart = /^\s+/,
-      reTrimEnd = /\s+$/;
+  /** Used to match leading whitespace. */
+  var reTrimStart = /^\s+/;
+
+  /** Used to match a single whitespace character. */
+  var reWhitespace = /\s/;
 
   /** Used to match wrap detail comments. */
   var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
@@ -45105,6 +45107,18 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
   /** Used to match words composed of alphanumeric characters. */
   var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+
+  /**
+   * Used to validate the `validate` option in `_.template` variable.
+   *
+   * Forbids characters which could potentially change the meaning of the function argument definition:
+   * - "()," (modification of function parameters)
+   * - "=" (default value)
+   * - "[]{}" (destructuring of function parameters)
+   * - "/" (beginning of a comment)
+   * - whitespace
+   */
+  var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /** Used to match backslashes in property paths. */
   var reEscapeChar = /\\(\\)?/g;
@@ -45935,6 +45949,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   }
 
   /**
+   * The base implementation of `_.trim`.
+   *
+   * @private
+   * @param {string} string The string to trim.
+   * @returns {string} Returns the trimmed string.
+   */
+  function baseTrim(string) {
+    return string
+      ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+      : string;
+  }
+
+  /**
    * The base implementation of `_.unary` without support for storing metadata.
    *
    * @private
@@ -46265,6 +46292,21 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     return hasUnicode(string)
       ? unicodeToArray(string)
       : asciiToArray(string);
+  }
+
+  /**
+   * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+   * character of `string`.
+   *
+   * @private
+   * @param {string} string The string to inspect.
+   * @returns {number} Returns the index of the last non-whitespace character.
+   */
+  function trimmedEndIndex(string) {
+    var index = string.length;
+
+    while (index-- && reWhitespace.test(string.charAt(index))) {}
+    return index;
   }
 
   /**
@@ -57435,7 +57477,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
       if (typeof value != 'string') {
         return value === 0 ? value : +value;
       }
-      value = value.replace(reTrim, '');
+      value = baseTrim(value);
       var isBinary = reIsBinary.test(value);
       return (isBinary || reIsOctal.test(value))
         ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -59807,6 +59849,12 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
+      // Throw an error if a forbidden character was found in `variable`, to prevent
+      // potential command injection attacks.
+      else if (reForbiddenIdentifierChars.test(variable)) {
+        throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+      }
+
       // Cleanup code by stripping empty strings.
       source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
         .replace(reEmptyStringMiddle, '$1')
@@ -59920,7 +59968,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     function trim(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrim, '');
+        return baseTrim(string);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -59955,7 +60003,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     function trimEnd(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrimEnd, '');
+        return string.slice(0, trimmedEndIndex(string) + 1);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -98470,223 +98518,6 @@ function normalizeComponent (
     options: options
   }
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-var defer = function defer() {
-  var state = false; // Resolved or not
-
-  var callbacks = [];
-
-  var resolve = function resolve(val) {
-    if (state) {
-      return;
-    }
-
-    state = true;
-
-    for (var i = 0, len = callbacks.length; i < len; i++) {
-      callbacks[i](val);
-    }
-  };
-
-  var then = function then(cb) {
-    if (!state) {
-      callbacks.push(cb);
-      return;
-    }
-
-    cb();
-  };
-
-  var deferred = {
-    resolved: function resolved() {
-      return state;
-    },
-    resolve: resolve,
-    promise: {
-      then: then
-    }
-  };
-  return deferred;
-};
-
-var ownProp = Object.prototype.hasOwnProperty;
-function createRecaptcha() {
-  var deferred = defer();
-  return {
-    notify: function notify() {
-      deferred.resolve();
-    },
-    wait: function wait() {
-      return deferred.promise;
-    },
-    render: function render(ele, options, cb) {
-      this.wait().then(function () {
-        cb(window.grecaptcha.render(ele, options));
-      });
-    },
-    reset: function reset(widgetId) {
-      if (typeof widgetId === 'undefined') {
-        return;
-      }
-
-      this.assertLoaded();
-      this.wait().then(function () {
-        return window.grecaptcha.reset(widgetId);
-      });
-    },
-    execute: function execute(widgetId) {
-      if (typeof widgetId === 'undefined') {
-        return;
-      }
-
-      this.assertLoaded();
-      this.wait().then(function () {
-        return window.grecaptcha.execute(widgetId);
-      });
-    },
-    checkRecaptchaLoad: function checkRecaptchaLoad() {
-      if (ownProp.call(window, 'grecaptcha') && ownProp.call(window.grecaptcha, 'render')) {
-        this.notify();
-      }
-    },
-    assertLoaded: function assertLoaded() {
-      if (!deferred.resolved()) {
-        throw new Error('ReCAPTCHA has not been loaded');
-      }
-    }
-  };
-}
-var recaptcha = createRecaptcha();
-
-if (typeof window !== 'undefined') {
-  window.vueRecaptchaApiLoaded = recaptcha.notify;
-}
-
-var VueRecaptcha = {
-  name: 'VueRecaptcha',
-  props: {
-    sitekey: {
-      type: String,
-      required: true
-    },
-    theme: {
-      type: String
-    },
-    badge: {
-      type: String
-    },
-    type: {
-      type: String
-    },
-    size: {
-      type: String
-    },
-    tabindex: {
-      type: String
-    },
-    loadRecaptchaScript: {
-      type: Boolean,
-      "default": false
-    },
-    recaptchaScriptId: {
-      type: String,
-      "default": '__RECAPTCHA_SCRIPT'
-    },
-    recaptchaHost: {
-      type: String,
-      "default": 'www.google.com'
-    },
-    language: {
-      type: String,
-      "default": ''
-    }
-  },
-  beforeMount: function beforeMount() {
-    if (this.loadRecaptchaScript) {
-      if (!document.getElementById(this.recaptchaScriptId)) {
-        // Note: vueRecaptchaApiLoaded load callback name is per the latest documentation
-        var script = document.createElement('script');
-        script.id = this.recaptchaScriptId;
-        script.src = "https://" + this.recaptchaHost + "/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit&hl=" + this.language;
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-      }
-    }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    recaptcha.checkRecaptchaLoad();
-
-    var opts = _extends({}, this.$props, {
-      callback: this.emitVerify,
-      'expired-callback': this.emitExpired,
-      'error-callback': this.emitError
-    });
-
-    var container = this.$slots["default"] ? this.$el.children[0] : this.$el;
-    recaptcha.render(container, opts, function (id) {
-      _this.$widgetId = id;
-
-      _this.$emit('render', id);
-    });
-  },
-  methods: {
-    reset: function reset() {
-      recaptcha.reset(this.$widgetId);
-    },
-    execute: function execute() {
-      recaptcha.execute(this.$widgetId);
-    },
-    emitVerify: function emitVerify(response) {
-      this.$emit('verify', response);
-    },
-    emitExpired: function emitExpired() {
-      this.$emit('expired');
-    },
-    emitError: function emitError() {
-      this.$emit('error');
-    }
-  },
-  render: function render(h) {
-    return h('div', {}, this.$slots["default"]);
-  }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VueRecaptcha);
 
 
 /***/ }),
