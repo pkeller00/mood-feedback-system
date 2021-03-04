@@ -12,4 +12,7 @@ class FeedbackResponse extends Model
     public function feedback_question() {
         return $this->belongsTo(FeedbackQuestion::class);
     }
+    public function response_information() {
+        return $this->belongsTo(ResponseInformation::class);
+    }
 }

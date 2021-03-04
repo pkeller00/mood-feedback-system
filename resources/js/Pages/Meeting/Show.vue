@@ -27,8 +27,18 @@
                 meeting.meeting_reference
               }}</span>
             </p>
-            <p class="raisin-black">
-              {{ meeting.meeting_start }} to {{ meeting.meeting_end }}
+            <p
+              class="raisin-black"
+              v-if="isSameDay(meeting_start, meeting_end)"
+            >
+              {{ meeting_start | date }}
+              to
+              {{ meeting_end | sameday }}
+            </p>
+            <p class="raisin-black" v-else>
+              {{ meeting_start | date }}
+              to
+              {{ meeting_end | date }}
             </p>
           </div>
         </div>
@@ -82,11 +92,20 @@
             :chart-data="chartDatasComputed[i]"
             :options="chartoptions.emoji"
           />
+
+          <div class="flex items-center justify-end mt-4">
+            <inertia-link
+              method="get"
+              as="button"
+              :href="route('meetings.feedback', [meeting, i + 1])"
+              v-if="
+                question.question_type === 0 || question.question_type === 1
+              "
+            >
+              <jet-button>Access Responses</jet-button>
+            </inertia-link>
+          </div>
         </div>
-        <!-- data response
-        <div>{{ dataResponseComputed }}</div>
-        chart response
-        <div>{{ chartResponseComputed }}</div> -->
       </div>
     </div>
   </app-layout>
@@ -97,6 +116,8 @@ import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
 import LineChart from "@/Charts/LineChart";
 import PieChart from "@/Charts/PieChart";
+import { createDateFilter } from "vue-date-fns";
+import { isSameDay, parseISO } from "date-fns";
 
 export default {
   components: {
@@ -105,7 +126,10 @@ export default {
     LineChart,
     PieChart,
   },
-
+  filters: {
+    date: createDateFilter("EEEE do MMMM yyyy  HH:mm"),
+    sameday: createDateFilter("HH:mm"),
+  },
   props: {
     meeting: Object,
     questions: Array,
@@ -114,16 +138,13 @@ export default {
 
   data() {
     return {
+      isSameDay,
       chartdatas: [],
       chartoptions: {
         emoji: {
           responsive: true,
           maintainAspectRatio: false,
           cutoutPercentage: 0,
-        //   animation: {
-        //     animateRotate: false,
-        //     animateScale: true,
-        //   },
         },
         mood: {
           scales: {
@@ -131,12 +152,21 @@ export default {
               {
                 type: "time",
                 time: {
+                  minUnit: "minute",
                   round: true,
+                  stepSize: 5,
+                  displayFormats: {
+                    minute: "HH:mm",
+                  },
                 },
               },
             ],
             yAxes: [
               {
+                ticks: {
+                  suggestedMin: -1,
+                  suggestedMax: 1,
+                },
                 scaleLabel: {
                   display: true,
                   labelString: "Mood",
@@ -154,12 +184,21 @@ export default {
               {
                 type: "time",
                 time: {
+                  minUnit: "minute",
                   round: true,
+                  stepSize: 5,
+                  displayFormats: {
+                    minute: "HH:mm",
+                  },
                 },
               },
             ],
             yAxes: [
               {
+                ticks: {
+                  suggestedMin: -1,
+                  suggestedMax: 1,
+                },
                 scaleLabel: {
                   display: true,
                   labelString: "Rating",
@@ -172,35 +211,29 @@ export default {
           maintainAspectRatio: false,
         },
       },
-      chart_response: null,
-      data_response: null,
-      //   errors: null,
       polling: null,
-      check_time: null,
     };
   },
 
   computed: {
-    chartResponseComputed: function () {
-      return this.$data.chart_response;
-    },
-    dataResponseComputed: function () {
-      return this.$data.data_response;
-    },
     chartDatasComputed: function () {
       return this.$data.chartdatas;
+    },
+
+    meeting_start: function () {
+      return parseISO(this.meeting.meeting_start);
+    },
+    meeting_end: function () {
+      return parseISO(this.meeting.meeting_end);
     },
   },
 
   created() {
-    this.getDataResponse();
     this.getChartResponse();
 
     // only poll data if the meeting is live at the time of loading page
-    // should really have a poll to check the time every so often to call and clear the instance
     if (
-      new Date(this.meeting.meeting_start) <= new Date(Date.now()) &&
-      new Date(Date.now()) <= new Date(this.meeting.meeting_end)
+        this.meeting_start <= Date.now() && Date.now() <= this.meeting_end
     ) {
       this.pollData();
     }
@@ -209,35 +242,17 @@ export default {
   methods: {
     pollData() {
       this.polling = setInterval(() => {
-        this.getDataResponse();
         this.getChartResponse();
       }, 30000);
-    },
-    getDataResponse() {
-      axios
-        .post(`/get-feedback/${this.meeting.meeting_reference}/data`)
-        .then((response) => {
-          // JSON responses are automatically parsed.
-          console.log(response);
-          this.data_response = response.data;
-        })
-        .catch((e) => {
-          console.log(e);
-          //   this.errors.push(e);
-        });
     },
     getChartResponse() {
       axios
         .post(`/get-feedback/${this.meeting.meeting_reference}/chart`)
         .then((response) => {
-          // JSON responses are automatically parsed.
-          console.log(JSON.stringify(response.data));
-          this.chart_response = JSON.stringify(response.data);
           this.chartdatas = response.data;
         })
         .catch((e) => {
           console.log(e);
-          //   this.errors.push(e);
         });
     },
   },

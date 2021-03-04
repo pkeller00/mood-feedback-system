@@ -33,15 +33,29 @@
                   Access code:
                   <span class="font-mono">{{ meeting.meeting_reference }}</span>
                 </p>
-                <p>{{ meeting.meeting_start }} to {{ meeting.meeting_end }}</p>
+                <p
+                  v-if="
+                    isSameDay(
+                      parseISO(meeting.meeting_start),
+                      parseISO(meeting.meeting_end)
+                    )
+                  "
+                >
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | sameday }}
+                </p>
+                <p v-else>
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | date }}
+                </p>
               </div>
             </inertia-link>
           </div>
 
           <template v-if="!attended_events.length">
-            <p class="mt-1 text-gray-600">
-              No recently attended events
-            </p>
+            <p class="mt-1 text-gray-600">No recently attended events</p>
           </template>
         </div>
 
@@ -64,7 +78,23 @@
                   Access code:
                   <span class="font-mono">{{ meeting.meeting_reference }}</span>
                 </p>
-                <p>{{ meeting.meeting_start }} to {{ meeting.meeting_end }}</p>
+                <p
+                  v-if="
+                    isSameDay(
+                      parseISO(meeting.meeting_start),
+                      parseISO(meeting.meeting_end)
+                    )
+                  "
+                >
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | sameday }}
+                </p>
+                <p v-else>
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | date }}
+                </p>
               </div>
             </inertia-link>
           </div>
@@ -95,7 +125,23 @@
                   Access code:
                   <span class="font-mono">{{ meeting.meeting_reference }}</span>
                 </p>
-                <p>{{ meeting.meeting_start }} to {{ meeting.meeting_end }}</p>
+                <p
+                  v-if="
+                    isSameDay(
+                      parseISO(meeting.meeting_start),
+                      parseISO(meeting.meeting_end)
+                    )
+                  "
+                >
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | sameday }}
+                </p>
+                <p v-else>
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | date }}
+                </p>
               </div>
             </inertia-link>
           </div>
@@ -128,7 +174,23 @@
                   Access code:
                   <span class="font-mono">{{ meeting.meeting_reference }}</span>
                 </p>
-                <p>{{ meeting.meeting_start }} to {{ meeting.meeting_end }}</p>
+                <p
+                  v-if="
+                    isSameDay(
+                      parseISO(meeting.meeting_start),
+                      parseISO(meeting.meeting_end)
+                    )
+                  "
+                >
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | sameday }}
+                </p>
+                <p v-else>
+                  {{ parseISO(meeting.meeting_start) | date }}
+                  to
+                  {{ parseISO(meeting.meeting_end) | date }}
+                </p>
               </div>
             </inertia-link>
           </div>
@@ -149,6 +211,8 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
+import { createDateFilter } from "vue-date-fns";
+import { isSameDay, parseISO } from "date-fns";
 
 export default {
   components: {
@@ -156,11 +220,23 @@ export default {
     JetButton,
   },
 
+  filters: {
+    date: createDateFilter("EEEE do MMMM yyyy  HH:mm"),
+    sameday: createDateFilter("HH:mm"),
+  },
+
   props: {
     meetings_current: Array,
     meetings_past: Array,
     meetings_future: Array,
     attended_events: Array,
+  },
+
+  data() {
+    return {
+      isSameDay,
+      parseISO,
+    };
   },
 };
 </script>

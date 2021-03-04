@@ -42,7 +42,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::match(array('PUT', 'PATCH'), '/events/{meeting}', [MeetingController::class, 'update'])->name('meetings.update');
     Route::delete('/events/{meeting}', [MeetingController::class, 'destroy'])->name('meetings.destroy');
     Route::get('/events/{meeting}/edit', [MeetingController::class, 'edit'])->name('meetings.edit');
+    Route::get('/events/{meeting}/feedback/{question_number}', [MeetingController::class, 'show_feedback'])->name('meetings.feedback');
 
-    Route::post('get-feedback/{meeting}/data', [DataController::class, 'get_data'])->name('charts.get_data');
     Route::post('get-feedback/{meeting}/chart', [DataController::class, 'get_chart'])->name('charts.get_chart');
+    Route::post('get-feedback/{meeting}/{question}', [DataController::class, 'get_data'])->name('charts.get_data');
 });

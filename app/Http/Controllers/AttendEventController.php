@@ -123,13 +123,14 @@ class AttendEventController extends Controller
         // dd($sentiment);
         foreach ($responses as $key => $response) {
             $feedback_object = new FeedbackResponse;
-            $feedback_object->feedback_response_id = $response_object->id;
+            $feedback_object->response_information_id = $response_object->id;
             $feedback_object->feedback_question_id = $questions[$key]['id'];
 
             if ($questions[$key]['question_type'] === 0 || $questions[$key]['question_type'] === 1) {
                 // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
                 $feedback_object->response = json_encode(['value' => $response]);
 
+                // $feedback_object->score = 0;
                 $annotation = $language->analyzeSentiment($response);
                 $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want
 

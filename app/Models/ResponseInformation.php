@@ -14,5 +14,7 @@ class ResponseInformation extends Model
     public function feedback_response() {
         return $this->hasMany(FeedbackResponse::class);
     }
+    public $table = 'response_informations';
+
 
 }

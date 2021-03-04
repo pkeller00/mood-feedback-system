@@ -11,21 +11,21 @@ class DataController extends Controller
     /**
      * Method to get feedback responses
      */
-    public function get_data(Request $request, Meeting $meeting)
+    public function get_data(Request $request, Meeting $meeting, FeedbackQuestion $question)
     {
         // Only provide access if user is owner of event
         if ($meeting->user_id != auth()->id()) {
             return response('You do not have access rights', 403);
         }
+        $responses = $question->feedback_response()->get();
 
-        $questions = $meeting->feedback_question()->get();
-        $response_array = [];
+        $new_responses = [];
 
-        foreach ($questions as $question) {
-            array_push($response_array, $question->feedback_response()->get());
+        foreach ($responses as $response_x) {
+            $response_info = $response_x->response_information()->get(['name', 'email']);
+            $new_responses[] = array('response' => $response_x, 'response_info' => $response_info);
         }
-
-        return $response_array;
+        return $new_responses;
     }
 
     /**

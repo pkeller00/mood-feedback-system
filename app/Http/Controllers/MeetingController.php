@@ -128,6 +128,33 @@ class MeetingController extends Controller
     }
 
     /**
+     * Display the feedback for a question.
+     *
+     * @param  \App\Models\Meeting  $meeting
+     * @return \Illuminate\Http\Response
+     */
+    public function show_feedback(Meeting $meeting, $question_number)
+    {
+        // Only provide access if user is owner of event
+        if ($meeting->user_id != auth()->id()) {
+            return redirect(route('meetings.index'));
+        }
+
+        $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
+
+        if ($question_number > $questions->count() || $question_number <= 0) {
+            return redirect()->back();
+        }
+
+        $question = $questions[$question_number - 1];
+
+        if ($question->question_type !== 0 && $question->question_type !== 1) {
+            return redirect()->back();
+        }
+        return Inertia::render('Meeting/ShowFeedback', compact('meeting', 'question'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Meeting  $meeting

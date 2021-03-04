@@ -15,7 +15,7 @@ class CreateFeedbackResponsesTable extends Migration
     {
         Schema::create('feedback_responses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('feedback_response_id')->constrained()->onDelete('cascade');
+            $table->foreignId('response_information_id')->constrained()->onDelete('cascade');
             $table->foreignId('feedback_question_id')->constrained()->onDelete('cascade');
 
             $table->json('response');
