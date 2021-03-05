@@ -35,8 +35,8 @@
                 id="meeting-start"
                 type="datetime-local"
                 class="mt-1 block w-full"
-                placeholder="dd/mm/yyyy 00:00"
-                pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}"
+                placeholder="dd-mm-yyyy 00:00"
+                pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}"
                 v-model="meeting.meeting_start"
                 required
               />
@@ -54,8 +54,8 @@
                 id="meeting-end"
                 type="datetime-local"
                 class="mt-1 block w-full"
-                placeholder="dd/mm/yyyy 00:00"
-                pattern="[0-3][0-9]/[0-1][0-9]/[0-9]{4}"
+                placeholder="dd-mm-yyyy 00:00"
+                pattern="[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}"
                 v-model="meeting.meeting_end"
                 required
               />
@@ -66,7 +66,6 @@
 
             <div class="flex items-center justify-center mt-4">
               <jet-button class="ml-4">
-                <!-- <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"> -->
                 Add Event Form
               </jet-button>
             </div>

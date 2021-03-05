@@ -5219,7 +5219,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -5276,6 +5275,131 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -92290,7 +92414,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                        _c("div", { staticClass: "text-xl" }, [
                           _vm._v(
                             "\n              " +
                               _vm._s(meeting.name) +
@@ -92396,7 +92520,7 @@ var render = function() {
                       "inertia-link",
                       { attrs: { href: _vm.route("meetings.show", meeting) } },
                       [
-                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                        _c("div", { staticClass: "text-xl" }, [
                           _vm._v(
                             "\n              " +
                               _vm._s(meeting.name) +
@@ -92504,7 +92628,7 @@ var render = function() {
                       "inertia-link",
                       { attrs: { href: _vm.route("meetings.show", meeting) } },
                       [
-                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                        _c("div", { staticClass: "text-xl" }, [
                           _vm._v(
                             "\n              " +
                               _vm._s(meeting.name) +
@@ -92628,7 +92752,7 @@ var render = function() {
                       "inertia-link",
                       { attrs: { href: _vm.route("meetings.show", meeting) } },
                       [
-                        _c("div", { staticClass: "mt-1 text-xl" }, [
+                        _c("div", { staticClass: "text-xl" }, [
                           _vm._v(
                             "\n              " +
                               _vm._s(meeting.name) +
@@ -92914,8 +93038,9 @@ var render = function() {
                         attrs: {
                           id: "meeting-start",
                           type: "datetime-local",
-                          placeholder: "dd/mm/yyyy 00:00",
-                          pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
+                          placeholder: "dd-mm-yyyy 00:00",
+                          pattern:
+                            "[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}",
                           required: ""
                         },
                         model: {
@@ -92957,8 +93082,9 @@ var render = function() {
                         attrs: {
                           id: "meeting-end",
                           type: "datetime-local",
-                          placeholder: "dd/mm/yyyy 00:00",
-                          pattern: "[0-3][0-9]/[0-1][0-9]/[0-9]{4}",
+                          placeholder: "dd-mm-yyyy 00:00",
+                          pattern:
+                            "[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}",
                           required: ""
                         },
                         model: {
@@ -93100,7 +93226,7 @@ var render = function() {
             [
               _c(
                 "div",
-                { staticClass: "mt-4" },
+                {},
                 [
                   _c("jet-label", {
                     attrs: {
@@ -93135,7 +93261,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _vm.new_question_errors.empty_question
-                ? _c("div", { staticClass: "mt-3 text-sm text-red-600" }, [
+                ? _c("div", { staticClass: "mt-2 text-sm text-red-600" }, [
                     _vm._v(
                       "\n          You have not provided a question\n        "
                     )
@@ -93144,7 +93270,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "mt-4" },
+                { staticClass: "mt-2" },
                 [
                   _c("jet-label", {
                     attrs: {
@@ -93208,7 +93334,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "flex items-center justify-center mt-4" },
+                    { staticClass: "flex items-center justify-center mt-2" },
                     [
                       _c(
                         "jet-button",
@@ -93262,63 +93388,376 @@ var render = function() {
                   _vm._l(_vm.form_data.questions, function(question, i) {
                     return _c(
                       "div",
-                      { key: question.id, staticClass: "mt-4" },
+                      {
+                        key: question.id,
+                        staticClass:
+                          "w-full my-2 p-4 bg-white overflow-hidden shadow-md rounded-lg border border-gray-200"
+                      },
                       [
-                        _c("p", [
-                          _vm._v("Question: " + _vm._s(question.question))
-                        ]),
-                        _vm._v(" "),
-                        question.question_type == 0
-                          ? _c("p", [
-                              _vm._v(
-                                "\n              Question type: short text input\n            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        question.question_type == 1
-                          ? _c("p", [
-                              _vm._v(
-                                "\n              Question type: long text input\n            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        question.question_type == 2
-                          ? _c("p", [
-                              _vm._v(
-                                "\n              Question type: rating slider\n            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        question.question_type == 3
-                          ? _c("p", [
-                              _vm._v(
-                                "\n              Question type: emoji picker\n            "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c(
-                          "jet-button",
-                          {
-                            staticClass:
-                              "mr-4 sm:mr-0 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900",
-                            attrs: { type: "button" },
-                            nativeOn: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.deleteQuestion(i)
-                              }
-                            }
-                          },
-                          [_vm._v("Remove Question")]
+                          "div",
+                          {},
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "block font-medium text-gray-700",
+                                attrs: { for: i }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(i + 1) +
+                                    ". " +
+                                    _vm._s(question.question)
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            question.question_type == 0
+                              ? [
+                                  _c("jet-input", {
+                                    staticClass: "mt-1 block w-full",
+                                    attrs: { id: i, type: "text" }
+                                  })
+                                ]
+                              : question.question_type == 1
+                              ? [
+                                  _c("textarea", {
+                                    staticClass:
+                                      "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+                                    attrs: {
+                                      id: i,
+                                      placeholder: "add multiple lines"
+                                    }
+                                  })
+                                ]
+                              : question.question_type == 2
+                              ? [
+                                  _c(
+                                    "div",
+                                    { staticClass: "flex justify-center" },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex flex-col justify-center max-w-lg text-center"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "flex flex-row w-full justify-between space-x-5 sm:space-x-10"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "sm:w-24 text-center"
+                                                },
+                                                [_vm._v("really bad")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "sm:w-24 text-center"
+                                                },
+                                                [_vm._v("okay")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "sm:w-24 text-center"
+                                                },
+                                                [_vm._v("really good")]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            staticClass:
+                                              "w-full focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
+                                            attrs: {
+                                              id: i,
+                                              type: "range",
+                                              name: "",
+                                              min: "-1",
+                                              max: "1",
+                                              step: "0.1",
+                                              value: "0"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              : question.question_type == 3
+                              ? [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "flex flex-row w-full justify-center space-x-5 sm:space-x-10"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "text-center" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "sad" } },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "fill-current text-red-500 w-16 sm:w-20",
+                                                  attrs: {
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 24 24"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d: "M0 0h24v24H0V0z",
+                                                      fill: "none"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "15.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "8.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-6c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            attrs: {
+                                              id: "sad",
+                                              type: "radio",
+                                              name: "emojipicker",
+                                              value: "-1"
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "text-center" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "neutral" } },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "fill-current text-yellow-500 w-16 sm:w-20",
+                                                  attrs: {
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 24 24"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d: "M0 0h24v24H0V0z",
+                                                      fill: "none"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d: "M9 15.5h6v1H9v-1z"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "15.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "8.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            attrs: {
+                                              id: "neutral",
+                                              type: "radio",
+                                              name: "emojipicker",
+                                              value: "0"
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "text-center" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { attrs: { for: "happy" } },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "fill-current text-green-500 w-16 sm:w-20",
+                                                  attrs: {
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 24 24"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d: "M0 0h24v24H0V0z",
+                                                      fill: "none"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "15.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("circle", {
+                                                    attrs: {
+                                                      cx: "8.5",
+                                                      cy: "9.5",
+                                                      r: "1.5"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            attrs: {
+                                              id: "happy",
+                                              type: "radio",
+                                              name: "emojipicker",
+                                              value: "1"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "flex justify-center sm:justify-end w-full"
+                              },
+                              [
+                                _c(
+                                  "jet-button",
+                                  {
+                                    staticClass:
+                                      "mt-1 bg-red-800 hover:bg-red-700 active:bg-red-900 focus:border-red-900",
+                                    attrs: { type: "button" },
+                                    nativeOn: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteQuestion(i)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Remove Question")]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          2
                         )
-                      ],
-                      1
+                      ]
                     )
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "mt-4 flex max-w-24 justify-center" },
+                    [
+                      _c("vue-recaptcha", {
+                        ref: "recaptcha",
+                        attrs: {
+                          sitekey: "6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
+                        },
+                        on: { verify: _vm.onVerify }
+                      })
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _vm.errors.questions
                     ? _c("div", { staticClass: "mt-3 text-sm text-red-600" }, [
@@ -93337,21 +93776,6 @@ var render = function() {
                         )
                       ])
                     : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "mt-4" },
-                    [
-                      _c("vue-recaptcha", {
-                        ref: "recaptcha",
-                        attrs: {
-                          sitekey: "6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
-                        },
-                        on: { verify: _vm.onVerify }
-                      })
-                    ],
-                    1
-                  ),
                   _vm._v(" "),
                   _c(
                     "div",
