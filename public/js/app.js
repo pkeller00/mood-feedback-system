@@ -3815,14 +3815,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
-<<<<<<< HEAD
 /* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
-=======
-/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
-/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
->>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
 //
 //
 //
@@ -4030,8 +4027,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
+//
+//
+//
+//
 //
 //
 //
@@ -4086,7 +4085,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
->>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
+
 
 
 
@@ -4108,12 +4107,12 @@ __webpack_require__.r(__webpack_exports__);
     meeting: Object
   },
   filters: {
-    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
-    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("HH:mm")
+    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_7__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
+    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_7__.createDateFilter)("HH:mm")
   },
   data: function data() {
     return {
-      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_7__.default,
+      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_8__.default,
       feedback_response: this.$inertia.form({
         questions: this.$page.props.questions,
         responses: [],
@@ -4125,10 +4124,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     meeting_start: function meeting_start() {
-      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_start);
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.default)(this.meeting.meeting_start);
     },
     meeting_end: function meeting_end() {
-      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_end);
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.default)(this.meeting.meeting_end);
     },
     user_name_comp: function user_name_comp() {
       return this.feedback_response.name;
@@ -5285,8 +5284,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
-<<<<<<< HEAD
-=======
 /* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
 /* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
@@ -5307,7 +5304,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
 //
 //
 //
@@ -5450,15 +5446,7 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
-<<<<<<< HEAD
-    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default // JetCheckbox,
-    // JetDropdown,
-    // JetDropdownLink,
-    // JetValidationErrors,
-
-=======
     VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_4__.default
->>>>>>> 67a3e2fef1dd880f474593aafdb8299ee039070c
   },
   props: {
     errors: Object,
