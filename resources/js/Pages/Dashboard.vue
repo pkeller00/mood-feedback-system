@@ -22,7 +22,7 @@
             :key="meeting.meeting_reference"
           >
             <inertia-link :href="route('attendevents.create', meeting)">
-              <div class="mt-1 text-xl">
+              <div class="text-xl">
                 {{ meeting.name }}
               </div>
 
@@ -67,7 +67,7 @@
             :key="meeting.meeting_reference"
           >
             <inertia-link :href="route('meetings.show', meeting)">
-              <div class="mt-1 text-xl">
+              <div class="text-xl">
                 {{ meeting.name }}
               </div>
 
@@ -114,7 +114,7 @@
             :key="meeting.meeting_reference"
           >
             <inertia-link :href="route('meetings.show', meeting)">
-              <div class="mt-1 text-xl">
+              <div class="text-xl">
                 {{ meeting.name }}
               </div>
 
@@ -163,7 +163,7 @@
             :key="meeting.meeting_reference"
           >
             <inertia-link :href="route('meetings.show', meeting)">
-              <div class="mt-1 text-xl">
+              <div class="text-xl">
                 {{ meeting.name }}
               </div>
 

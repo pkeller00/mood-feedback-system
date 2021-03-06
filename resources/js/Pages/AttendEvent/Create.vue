@@ -51,23 +51,6 @@
               <label :for="i" class="block font-medium text-gray-700">{{
                 question.question
               }}</label>
-              <!-- This is the type of question : -->
-              <p v-if="question.question_type == 0" class="text-xs">
-                short text input
-              </p>
-              <p v-if="question.question_type == 1" class="text-xs">
-                long text input
-              </p>
-              <p v-if="question.question_type == 2" class="text-xs">
-                rating slider
-              </p>
-              <p v-if="question.question_type == 3" class="text-xs">
-                emoji picker
-              </p>
-              <p v-if="question.question_type == 4" class="text-xs">
-                multiple choice
-              </p>
-
               <template v-if="question.question_type == 0">
                 <!-- short text -->
                 <jet-input
@@ -92,30 +75,32 @@
               </template>
               <template v-else-if="question.question_type == 2">
                 <!-- rating slider -->
-                <input
-                  :id="i"
-                  v-model="feedback_response.responses[i]"
-                  type="range"
-                  name=""
-                  min="-1"
-                  max="1"
-                  step="0.25"
-                  value="0"
-                  list="tickmarks"
-                  required
-                  autofocus
-                />
-                <datalist id="tickmarks" class="text-black">
-                  <option value="-1" label="Really bad"></option>
-                  <option value="-0.75"></option>
-                  <option value="-0.5"></option>
-                  <option value="-0.25"></option>
-                  <option value="0" label="Average"></option>
-                  <option value="0.25"></option>
-                  <option value="0.5"></option>
-                  <option value="0.75"></option>
-                  <option value="1" label="Really good"></option>
-                </datalist>
+                <div class="flex justify-center">
+                  <div
+                    class="flex flex-col justify-center max-w-lg text-center"
+                  >
+                    <div
+                      class="flex flex-row w-full justify-between space-x-5 sm:space-x-10"
+                    >
+                      <div class="sm:w-24 text-center">really bad</div>
+                      <div class="sm:w-24 text-center">okay</div>
+                      <div class="sm:w-24 text-center">really good</div>
+                    </div>
+                    <input
+                      :id="i"
+                      v-model="feedback_response.responses[i]"
+                      type="range"
+                      name=""
+                      min="-1"
+                      max="1"
+                      step="0.1"
+                      value="0"
+                      class="w-full focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                      required
+                      autofocus
+                    />
+                  </div>
+                </div>
               </template>
               <template v-else-if="question.question_type == 3">
                 <!-- emoji picker -->
@@ -248,11 +233,14 @@
               />
             </div>
           </div>
-          <div class="mt-4">
-            <vue-recaptcha ref="recaptcha"
-              @verify="onVerify" sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y">
+          <div class="mt-4 flex max-w-24 justify-center">
+            <vue-recaptcha
+              ref="recaptcha"
+              @verify="onVerify"
+              sitekey="6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
+            >
             </vue-recaptcha>
-            </div>
+          </div>
           <div class="flex items-center justify-center mt-4">
             <jet-button class="ml-4"> Submit Feedback </jet-button>
           </div>
@@ -269,7 +257,7 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import VueRecaptcha from 'vue-recaptcha';
+import VueRecaptcha from "vue-recaptcha";
 import { createDateFilter } from "vue-date-fns";
 import { isSameDay, parseISO } from "date-fns";
 
@@ -336,7 +324,10 @@ export default {
   methods: {
     submit() {
       if (this.feedback_response.robot) {
-        this.$inertia.post(`/submit-feedback/${this.meeting.meeting_reference}`, this.feedback_response);
+        this.$inertia.post(
+          `/submit-feedback/${this.meeting.meeting_reference}`,
+          this.feedback_response
+        );
       }
       return;
     },
@@ -346,3 +337,4 @@ export default {
   },
 };
 </script>
+
