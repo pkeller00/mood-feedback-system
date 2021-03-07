@@ -36,7 +36,7 @@ class MeetingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function store_event(Request $request)
     {
@@ -54,7 +54,7 @@ class MeetingController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function create_form(Request $request)
     {
@@ -71,7 +71,7 @@ class MeetingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -106,7 +106,7 @@ class MeetingController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function show(Meeting $meeting)
     {
@@ -131,10 +131,22 @@ class MeetingController extends Controller
      * Display the feedback for a question.
      *
      * @param  \App\Models\Meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @param string $question_number
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function show_feedback(Meeting $meeting, $question_number)
+    public function show_feedback(Meeting $meeting, string $question_number)
     {
+        /*Code to check if feedback is an integer*/
+        // if(is_numeric($question_number)){
+        //     $question_number = $question_number + 0;
+        // }
+        // else{
+        //     return redirect()->back();
+        // }
+        // if(!is_int($question_number)){
+        //     return redirect()->back();
+        // }
+        
         // Only provide access if user is owner of event
         if ($meeting->user_id != auth()->id()) {
             return redirect(route('meetings.index'));
@@ -158,7 +170,7 @@ class MeetingController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function edit(Meeting $meeting)
     {
@@ -182,7 +194,7 @@ class MeetingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Meeting $meeting)
     {
@@ -199,7 +211,7 @@ class MeetingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Meeting $meeting)
     {
@@ -212,6 +224,11 @@ class MeetingController extends Controller
         return redirect(route('meetings.index'));
     }
 
+    /**
+     * Test if meeting is valid
+     *
+     * @return array<string, mixed>
+     */
     protected function validateMeeting()
     {
         return request()->validate([
@@ -221,6 +238,11 @@ class MeetingController extends Controller
         ]);
     }
 
+    /**
+     * Test if feedback form is valid
+     *
+     * @return array<string, mixed>
+     */
     protected function validateFeedbackForm()
     {
         return request()->validate([

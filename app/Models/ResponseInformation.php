@@ -11,9 +11,15 @@ class ResponseInformation extends Model
 
     protected $fillable = ['name', 'email'];
 
+    /**
+     * Response information has many responses
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function feedback_response() {
         return $this->hasMany(FeedbackResponse::class);
     }
+
     public $table = 'response_informations';
 
 
