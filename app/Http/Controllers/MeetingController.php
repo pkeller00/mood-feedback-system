@@ -137,16 +137,16 @@ class MeetingController extends Controller
     public function show_feedback(Meeting $meeting, string $question_number)
     {
         /*Code to check if feedback is an integer*/
-        // if(is_numeric($question_number)){
-        //     $question_number = $question_number + 0;
-        // }
-        // else{
-        //     return redirect()->back();
-        // }
-        // if(!is_int($question_number)){
-        //     return redirect()->back();
-        // }
-        
+        if(is_numeric($question_number)){
+            $question_number = $question_number + 0;
+        }
+        else{
+            return redirect()->back();
+        }
+        if(!is_int($question_number)){
+            return redirect()->back();
+        }
+
         // Only provide access if user is owner of event
         if ($meeting->user_id != auth()->id()) {
             return redirect(route('meetings.index'));
