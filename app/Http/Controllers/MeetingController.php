@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Inertia\Inertia;
 
+ /**
+     * Controller for methods associted with meetings
+     *
+     */
 class MeetingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a list of meetings
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,7 +27,7 @@ class MeetingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the page for creating new meeting details.
      *
      * @return \Illuminate\Http\Response
      */
@@ -33,14 +37,14 @@ class MeetingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stores meeting data in user session
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store_event(Request $request)
     {
-        // Determine whether this is a request to make the event or feedback form
+        //Makes sure input meeting data is valid
         $this->validateMeeting();
 
         $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
@@ -53,14 +57,15 @@ class MeetingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the page for creating a new event form
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create_form(Request $request)
-    {
+    {   
+        //Can only access create form page if have filled in event details
         if ($request->session()->has('meeting')) {
-            // ddd($request);
             $meeting = $request->session()->get('meeting');
             return Inertia::render('Meeting/CreateForm', compact('meeting'));
         } else {
@@ -69,14 +74,14 @@ class MeetingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store meeting and the questions from event form
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validateFeedbackForm();
+        $this->validateFeedbackForm();//check event form is valid
 
         // Event access code generator
         $isUnique = true;
@@ -104,7 +109,7 @@ class MeetingController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show data assoicated with a specfic meeting
      *
      * @param  \App\Models\Meeting  $meeting
      * @return \Illuminate\Http\Response
@@ -119,12 +124,12 @@ class MeetingController extends Controller
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
 
         $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
-        $current_date = Carbon::now()->toDateTimeString();
+        $current_date = Carbon::now()->toDateTimeString();//Convert to same format so can compare
 
         return Inertia::render('Meeting/Show', [
             'meeting' => $meeting,
             'questions' => $questions,
-            'event_started' => ($meeting_date > $current_date),
+            'event_started' => ($meeting_date > $current_date),//This will determine if hide/show edit button
         ]);
     }
 
@@ -132,6 +137,7 @@ class MeetingController extends Controller
      * Display the feedback for a question.
      *
      * @param  \App\Models\Meeting  $meeting
+     * @param  $question_number
      * @return \Illuminate\Http\Response
      */
     public function show_feedback(Meeting $meeting, $question_number)
@@ -141,14 +147,17 @@ class MeetingController extends Controller
             return redirect(route('meetings.index'));
         }
 
+        //Get questions associted with meeting
         $questions = FeedbackQuestion::where('meeting_id', $meeting->id)->get(['id', 'question', 'question_type']);
-
+        
+        //Send user back if question_number more than total question count or smaller than 1
         if ($question_number > $questions->count() || $question_number <= 0) {
             return redirect()->back();
         }
 
-        $question = $questions[$question_number - 1];
+        $question = $questions[$question_number - 1];//questions is 0 indexed so subtract 1
 
+        //Non worded questions won't have feedback repsonses
         if ($question->question_type !== 0 && $question->question_type !== 1) {
             return redirect()->back();
         }
@@ -156,7 +165,7 @@ class MeetingController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing meeting details
      *
      * @param  \App\Models\Meeting  $meeting
      * @return \Illuminate\Http\Response
@@ -171,6 +180,7 @@ class MeetingController extends Controller
         $meeting_date = Carbon::parse($meeting->meeting_start)->toDateTimeString();
         $current_date = $date = Carbon::now()->toDateTimeString();
 
+        //Can only edit a form if event has not started
         if ($meeting_date > $current_date) {
             return Inertia::render('Meeting/Edit', compact('meeting'));
         } else {
@@ -179,7 +189,7 @@ class MeetingController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the meeting details
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Meeting  $meeting
@@ -190,12 +200,14 @@ class MeetingController extends Controller
         if ($meeting->user_id != auth()->id()) {
             return redirect(route('meetings.index'));
         }
-        $meeting->update($this->validateMeeting());
+
+        $meeting->update($this->validateMeeting());//Replace old meeting details with new ones
+
         return redirect(route('meetings.show', $meeting));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the meeting from database
      *
      * @param  \App\Models\Meeting  $meeting
      * @return \Illuminate\Http\Response
@@ -211,6 +223,11 @@ class MeetingController extends Controller
         return redirect(route('meetings.index'));
     }
 
+    /**
+     * Test if meeting is valid
+     *
+     * @return \Illuminate\Http\Response
+     */
     protected function validateMeeting()
     {
         return request()->validate([
@@ -218,9 +235,13 @@ class MeetingController extends Controller
             'meeting_start' => 'required|date',
             'meeting_end' => 'required|date|after:meeting_start',
         ]);
-        return true;
     }
 
+    /**
+     * Test if feedback form is valid
+     *
+     * @return \Illuminate\Http\Response
+     */
     protected function validateFeedbackForm()
     {
         return request()->validate([

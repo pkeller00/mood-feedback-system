@@ -106,6 +106,7 @@
             </inertia-link>
           </div>
         </div>
+        <pre>{{ $props }}</pre>
       </div>
     </div>
   </app-layout>
