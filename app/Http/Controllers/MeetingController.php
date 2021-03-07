@@ -42,6 +42,7 @@ class MeetingController extends Controller
     {
         // Determine whether this is a request to make the event or feedback form
         $this->validateMeeting();
+
         $meeting = new Meeting(request(['name', 'meeting_start', 'meeting_end']));
 
         // Store the meeting information in the user's session
@@ -189,9 +190,7 @@ class MeetingController extends Controller
         if ($meeting->user_id != auth()->id()) {
             return redirect(route('meetings.index'));
         }
-
         $meeting->update($this->validateMeeting());
-
         return redirect(route('meetings.show', $meeting));
     }
 
@@ -219,6 +218,7 @@ class MeetingController extends Controller
             'meeting_start' => 'required|date',
             'meeting_end' => 'required|date|after:meeting_start',
         ]);
+        return true;
     }
 
     protected function validateFeedbackForm()
