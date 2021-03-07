@@ -218,7 +218,6 @@ class MeetingController extends Controller
             'meeting_start' => 'required|date',
             'meeting_end' => 'required|date|after:meeting_start',
         ]);
-        return true;
     }
 
     protected function validateFeedbackForm()
