@@ -19,21 +19,14 @@ class AttendEventController extends Controller
 
     /**
      * Show the form for creating a feedback response.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function attend(Request $request)
     {
         $this->validateAccessCode();
         $meeting = Meeting::where('meeting_reference', request(['code']))->first();
-
-        // I feel that host's should be able to view the form for their events to see how it looks before it is put out live
-        // $current_user = auth()->id();
-        // if($current_user != null){
-        //     $meeting_host = $meeting->user_id;
-        //     if($meeting_host === $current_user){
-        //         dd("Can't submit feedback for own event");
-        //         return redirect()->route('home');
-        //     }
-        // }
 
         // Validate whether meeting is still live
         $current_time = Carbon::now()->toDateTime();
@@ -47,6 +40,10 @@ class AttendEventController extends Controller
 
     /**
      * Show the form for creating a feedback response.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Meeting  $meeting
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function create(Request $request, Meeting $meeting)
     {
@@ -79,7 +76,7 @@ class AttendEventController extends Controller
      * Store a newly created feedback response in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, Meeting $meeting)
     {
@@ -114,13 +111,6 @@ class AttendEventController extends Controller
             'keyFile' => json_decode(file_get_contents($path), true),
         ]);
 
-        # The text to analyze
-        // $text = 'Hello, world!';
-
-        // # Detects the sentiment of the text
-        // $annotation = $language->analyzeSentiment($text);
-        // $sentiment = $annotation->sentiment();
-        // dd($sentiment);
         foreach ($responses as $key => $response) {
             $feedback_object = new FeedbackResponse;
             $feedback_object->response_information_id = $response_object->id;
@@ -130,11 +120,9 @@ class AttendEventController extends Controller
                 // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
                 $feedback_object->response = json_encode(['value' => $response]);
 
-                // $feedback_object->score = 0;
                 $annotation = $language->analyzeSentiment($response);
                 $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want
 
-                // ddd($annotation);
                 // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
                 $feedback_object->score = $sentiment['score'];
 
@@ -168,6 +156,8 @@ class AttendEventController extends Controller
 
     /**
      * Validates access code to check if it has a corresponding `meeting_reference`
+     * 
+     * @return array<string, mixed>
      */
     protected function validateAccessCode()
     {
@@ -181,6 +171,8 @@ class AttendEventController extends Controller
 
     /**
      * Validates access code to check if it has a corresponding `meeting_reference`
+     * 
+     * @return array<string, mixed>
      */
     protected function validateSubmittedFeedback()
     {
