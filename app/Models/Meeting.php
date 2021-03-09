@@ -14,7 +14,7 @@ class Meeting extends Model
 
     /**
      * Route to show meetings
-     * 
+     *
      * @return string
      */
     public function path()
@@ -24,29 +24,29 @@ class Meeting extends Model
 
     /**
      * Get meeting start
-     * 
+     *
      * @param string $value
      * @return string
      */
-    public function getMeetingStartAttribute(string $value)
+    public function getMeetingStartAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
 
     /**
      * Get meeting end
-     * 
+     *
      * @param string $value
      * @return string
      */
-    public function getMeetingEndAttribute(string $value)
+    public function getMeetingEndAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
 
     /**
      * Route will use meeting reference
-     * 
+     *
      * @return string
      */
     public function getRouteKeyName()
@@ -56,7 +56,7 @@ class Meeting extends Model
 
     /**
      * Meeting has many feedback questions
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function feedback_question() {
@@ -65,7 +65,7 @@ class Meeting extends Model
 
     /**
      * Meeting has many response information objects
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function response_information() {
