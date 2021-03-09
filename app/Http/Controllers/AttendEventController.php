@@ -19,7 +19,7 @@ class AttendEventController extends Controller
 
     /**
      * Show the form for creating a feedback response.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -40,7 +40,7 @@ class AttendEventController extends Controller
 
     /**
      * Show the form for creating a feedback response.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Meeting  $meeting
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -94,8 +94,13 @@ class AttendEventController extends Controller
             return redirect()->route('home');
         }
 
+
         $questions = request('questions');
         $responses = request('responses');
+
+        if (count($responses) !== count($questions)) {
+            return redirect()->back()->withErrors(['not_filled' => "You have not filled in all fields"]);
+        }
 
         $response_object = new ResponseInformation(request(['name', 'email']));
         $response_object->meeting_id = $meeting->id;
@@ -105,7 +110,7 @@ class AttendEventController extends Controller
         $projectId = 'mood-feedback-sy-1614713095205';
 
         $path="../Mood-Feedback-System-729677aa2e6b.json";
-        
+
         # Instantiates a client
         $language = new LanguageClient([
             'projectId' => $projectId,
@@ -157,7 +162,7 @@ class AttendEventController extends Controller
 
     /**
      * Validates access code to check if it has a corresponding `meeting_reference`
-     * 
+     *
      * @return array<string, mixed>
      */
     protected function validateAccessCode()
@@ -172,7 +177,7 @@ class AttendEventController extends Controller
 
     /**
      * Validates access code to check if it has a corresponding `meeting_reference`
-     * 
+     *
      * @return array<string, mixed>
      */
     protected function validateSubmittedFeedback()

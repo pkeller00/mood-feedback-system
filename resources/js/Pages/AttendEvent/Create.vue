@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <jet-validation-errors class="mb-4" />
+        <!-- <jet-validation-errors class="mb-4" /> -->
         <form @submit.prevent="submit">
           <!-- For each question in form lets user answer them -->
           <div
@@ -196,10 +196,10 @@
                 />
               </template>
 
-              <!-- Different form question types should go here through a v-if -->
+              <!-- Different form question types should go here through a v-if
               <div v-if="hasErrors" class="mt-3 text-sm text-red-600">
                 {{ errors.responses[i] }}
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -241,6 +241,13 @@
             >
             </vue-recaptcha>
           </div>
+          <div
+            v-if="hasErrors"
+            class="mt-3 text-sm text-red-600 w-full px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+          >
+            {{ errors.event_started }}
+            {{ errors.not_filled }}
+          </div>
           <div class="flex items-center justify-center mt-4">
             <jet-button class="ml-4"> Submit Feedback </jet-button>
           </div>
@@ -256,7 +263,7 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+// import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import VueRecaptcha from "vue-recaptcha";
 import { createDateFilter } from "vue-date-fns";
 import { isSameDay, parseISO } from "date-fns";
@@ -268,7 +275,7 @@ export default {
     JetInput,
     JetCheckbox,
     JetLabel,
-    JetValidationErrors,
+    // JetValidationErrors,
     VueRecaptcha,
   },
 
