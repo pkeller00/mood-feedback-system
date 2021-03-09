@@ -109,6 +109,7 @@
                     :id="i"
                     type="text"
                     class="mt-1 block w-full"
+                    disabled
                   />
                 </template>
                 <template v-else-if="question.question_type == 1">
@@ -117,6 +118,7 @@
                     :id="i"
                     placeholder="add multiple lines"
                     class="mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                    disabled
                   ></textarea>
                 </template>
                 <template v-else-if="question.question_type == 2">
@@ -141,6 +143,7 @@
                         step="0.1"
                         value="0"
                         class="w-full focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        disabled
                       />
                     </div>
                   </div>
@@ -171,6 +174,7 @@
                         type="radio"
                         name="emojipicker"
                         value="-1"
+                        disabled
                       />
                     </div>
                     <div class="text-center">
@@ -195,6 +199,7 @@
                         type="radio"
                         name="emojipicker"
                         value="0"
+                        disabled
                       />
                     </div>
                     <div class="text-center">
@@ -218,6 +223,7 @@
                         type="radio"
                         name="emojipicker"
                         value="1"
+                        disabled
                       />
                     </div>
                   </div>

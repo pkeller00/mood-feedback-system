@@ -5545,6 +5545,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -93417,7 +93423,7 @@ var render = function() {
                               ? [
                                   _c("jet-input", {
                                     staticClass: "mt-1 block w-full",
-                                    attrs: { id: i, type: "text" }
+                                    attrs: { id: i, type: "text", disabled: "" }
                                   })
                                 ]
                               : question.question_type == 1
@@ -93427,7 +93433,8 @@ var render = function() {
                                       "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
                                     attrs: {
                                       id: i,
-                                      placeholder: "add multiple lines"
+                                      placeholder: "add multiple lines",
+                                      disabled: ""
                                     }
                                   })
                                 ]
@@ -93490,7 +93497,8 @@ var render = function() {
                                               min: "-1",
                                               max: "1",
                                               step: "0.1",
-                                              value: "0"
+                                              value: "0",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93566,7 +93574,8 @@ var render = function() {
                                               id: "sad",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "-1"
+                                              value: "-1",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93637,7 +93646,8 @@ var render = function() {
                                               id: "neutral",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "0"
+                                              value: "0",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93702,7 +93712,8 @@ var render = function() {
                                               id: "happy",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "1"
+                                              value: "1",
+                                              disabled: ""
                                             }
                                           })
                                         ]
