@@ -9,9 +9,20 @@ class FeedbackResponse extends Model
 {
     use HasFactory;
 
+    /**
+     * Get question that response belongs to
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function feedback_question() {
         return $this->belongsTo(FeedbackQuestion::class);
     }
+
+    /**
+     * Get response information that has this feedback response
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function response_information() {
         return $this->belongsTo(ResponseInformation::class);
     }

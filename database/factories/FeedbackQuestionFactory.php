@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\FeedbackQuestion;
+use App\Models\Meeting;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FeedbackQuestionFactory extends Factory
@@ -23,8 +24,8 @@ class FeedbackQuestionFactory extends Factory
     {
         return [
             'question' => $this->faker->sentence,
-            'question_type' => 'slider',
-            'meeting_id' => 1
+            'question_type' => '3',
+            'meeting_id' => Meeting::factory()
         ];
     }
 }

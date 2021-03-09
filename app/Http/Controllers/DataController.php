@@ -10,6 +10,11 @@ class DataController extends Controller
 {
     /**
      * Method to get feedback responses
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Meeting  $meeting
+     * @param  \App\Models\FeedbackQuestion  $question
+     * @return array<int, array<string,mixed>>|\Illuminate\Http\Response
      */
     public function get_data(Request $request, Meeting $meeting, FeedbackQuestion $question)
     {
@@ -30,6 +35,10 @@ class DataController extends Controller
 
     /**
      * Method to get content for the charts
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Meeting  $meeting
+     * @return array<int, array<string,mixed>>|\Illuminate\Http\Response
      */
     public function get_chart(Request $request, Meeting $meeting)
     {

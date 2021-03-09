@@ -27,7 +27,7 @@ class MeetingFactory extends Factory
         return [
             'meeting_reference' => Str::upper(Str::random(7)),
             'name' => $this->faker->sentence,
-            'user_id' => 11,
+            'user_id' => User::factory(),
             'meeting_start' => $this->faker->dateTimeInInterval($date='-1 week', $interval='+1 day'),
             'meeting_end' => $this->faker->dateTimeInInterval($date='-6 days', $interval='+1 day'),
             // 'meeting_end' => $this->faker->date(),
