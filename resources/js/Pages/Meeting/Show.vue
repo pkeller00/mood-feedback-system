@@ -230,11 +230,8 @@ export default {
 
   created() {
     this.getChartResponse();
-
     // only poll data if the meeting is live at the time of loading page
-    if (
-        this.meeting_start <= Date.now() && Date.now() <= this.meeting_end
-    ) {
+    if (this.meeting_start <= Date.now() && Date.now() <= this.meeting_end) {
       this.pollData();
     }
   },

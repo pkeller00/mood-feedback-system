@@ -120,16 +120,13 @@
 </template>
 
 <script>
-import JetApplicationLogo from "@/Jetstream/ApplicationLogo";
 import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
-// import JetCheckbox from '@/Jetstream/Checkbox'
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
   components: {
-    JetApplicationLogo,
     JetButton,
     JetInput,
     JetLabel,

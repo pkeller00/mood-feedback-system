@@ -100,9 +100,9 @@
               :key="question.id"
             >
               <div class="">
-                <label :for="i" class="block font-medium text-gray-700">{{ i+1 }}. {{
-                  question.question
-                }}</label>
+                <label :for="i" class="block font-medium text-gray-700"
+                  >{{ i + 1 }}. {{ question.question }}</label
+                >
                 <template v-if="question.question_type == 0">
                   <!-- short text -->
                   <jet-input
