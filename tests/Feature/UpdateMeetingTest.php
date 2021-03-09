@@ -17,59 +17,47 @@ class UpdateMeetingTest extends TestCase
 
     public function testMeetingCanBeUpdated()
     {   
-        $this->actingAs($user = User::factory()->create());
-
         $this->withoutExceptionHandling();
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+
+        $user = User::find($meeting->user_id);
+        $this->actingAs($user);
         
         $response = $this->put(route('meetings.update',[
             'name' => 'New Name',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00',
+            'meeting_start' => $meeting->meeting_start,
+            'meeting_end' => $meeting->meeting_end,
             $meeting,
         ]));
         
         $response->assertStatus(302);
         $this->assertEquals('New Name', $meeting->fresh()->name);
-        $this->assertEquals('2012-01-01T00:00',$meeting->fresh()->meeting_start);
-        $this->assertEquals('2012-01-09T00:00',$meeting->fresh()->meeting_end);
+        $this->assertEquals($meeting->meeting_start,$meeting->fresh()->meeting_start);
+        $this->assertEquals($meeting->meeting_end,$meeting->fresh()->meeting_end);
         $response->assertRedirect(route('meetings.show', $meeting));
         
     }
 
     public function testDoNotUpdateMeetingIfNotMeetingCreator()
     {   
-        $user = User::factory()->create();
         $this->withoutExceptionHandling();
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
         
         $this->actingAs($user2 = User::factory()->create());
 
         $response = $this->put(route('meetings.update',[
             'name' => 'New Name',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00',
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00',
             $meeting,
         ]));
         
         $response->assertStatus(302);
-        $this->assertEquals('workshop', $meeting->fresh()->name);
-        $this->assertEquals('2012-01-01T00:00',$meeting->fresh()->meeting_start);
-        $this->assertEquals('2012-01-09T00:00',$meeting->fresh()->meeting_end);
+        $this->assertEquals($meeting->name, $meeting->fresh()->name);
+        $this->assertEquals($meeting->meeting_start,$meeting->fresh()->meeting_start);
+        $this->assertEquals($meeting->meeting_end,$meeting->fresh()->meeting_end);
         $response->assertRedirect(route('meetings.index'));
         
     }
@@ -80,15 +68,15 @@ class UpdateMeetingTest extends TestCase
         
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
         $meeting->user_id = $user->id;
         $meeting->meeting_reference ='QWERTYU';
 
         $response = $this->put(route('meetings.update',[
             'name' => 'New Name',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00',
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00',
             $meeting,
         ]));
 

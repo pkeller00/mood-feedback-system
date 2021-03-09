@@ -16,69 +16,49 @@ class ShowMeetingListTest extends TestCase
 
     public function testMeetingsAreLoaded()
     {   
-        $this->actingAs($user = User::factory()->create());
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
 
-        $this->withoutExceptionHandling();
+        $meeting3 = new Meeting();
+        $meeting3->name ='workshop';
+        $meeting3->meeting_start ='2012-01-01T00:00';
+        $meeting3->meeting_end ='2012-01-09T00:00';
+        $meeting3->user_id =$user->id;
+        $meeting3->meeting_reference ='QWERTYU';
+        $meeting3->save();
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-
-        $meeting2 = new Meeting();
-        $meeting2->name ='Lecture';
-        $meeting2->meeting_start ='2020-01-01T00:00';
-        $meeting2->meeting_end ='2020-01-09T00:00';
-        $meeting2->user_id =$user->id;
-        $meeting2->meeting_reference ='QWERTYI';
-        $meeting2->save();
+        $this->actingAs($user);
 
         $response = $this->get('/events');
 
         $content = $response->getOriginalContent()->getData()['page']['props']['meetings'];
 
-        $this->assertEquals('QWERTYI', $content[0]['meeting_reference']);
+        $this->assertEquals($meeting->meeting_reference, $content[0]['meeting_reference']);
         $this->assertEquals('QWERTYU', $content[1]['meeting_reference']);
         
     }
 
     public function testOnlyMeetingsOwnedByUserAreLoaded()
     {   
-        $user_other = User::factory()->create();
-        $meeting_not_owned = new Meeting();
-        $meeting_not_owned->name ='workshop';
-        $meeting_not_owned->meeting_start ='2012-01-01T00:00';
-        $meeting_not_owned->meeting_end ='2012-01-09T00:00';
-        $meeting_not_owned->user_id =$user_other->id;
-        $meeting_not_owned->meeting_reference ='ASDFGHJ';
-        $meeting_not_owned->save();
+        $meeting = Meeting::factory()->create();
 
-        $this->actingAs($user = User::factory()->create());
+        $meeting2 = Meeting::factory()->create();
+        $user = User::find($meeting2->user_id);
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting3 = new Meeting();
+        $meeting3->name ='workshop';
+        $meeting3->meeting_start ='2012-01-01T00:00';
+        $meeting3->meeting_end ='2012-01-09T00:00';
+        $meeting3->user_id =$user->id;
+        $meeting3->meeting_reference ='QWERTYU';
+        $meeting3->save();
 
-        $meeting2 = new Meeting();
-        $meeting2->name ='Lecture';
-        $meeting2->meeting_start ='2020-01-01T00:00';
-        $meeting2->meeting_end ='2020-01-09T00:00';
-        $meeting2->user_id =$user->id;
-        $meeting2->meeting_reference ='QWERTYI';
-        $meeting2->save();
-
+        $this->actingAs($user);
         $response = $this->get('/events');
 
         $content = $response->getOriginalContent()->getData()['page']['props']['meetings'];
 
-        $this->assertEquals('QWERTYI', $content[0]['meeting_reference']);
+        $this->assertEquals($meeting2->meeting_reference, $content[0]['meeting_reference']);
         $this->assertEquals('QWERTYU', $content[1]['meeting_reference']);
         $this->assertArrayNotHasKey(2, $content); 
         

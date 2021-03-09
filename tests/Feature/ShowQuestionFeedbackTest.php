@@ -16,18 +16,9 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserCanViewFeedbackForAWordedQuestionInForm()
     {   
-
-        $this->actingAs($user = User::factory()->create());
-
-        $this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
+        $this->actingAs($user);
 
         $question = new FeedbackQuestion();
         $question->question = 'Did you like the meeting?';
@@ -49,24 +40,9 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserCanViewFeedbackForAWordedQuestionInFormWithManyWordedQuestions()
     {   
-
-        $this->actingAs($user = User::factory()->create());
-
-        $this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '0';
-        $question->meeting_id = $meeting->id;
-        $question->save();
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
+        $user = User::find($meeting->user_id);
 
         $question2 = new FeedbackQuestion();
         $question2->question = 'What would you change about the workshop';
@@ -74,7 +50,7 @@ class ShowQuestionFeedbackTest extends TestCase
         $question2->meeting_id = $meeting->id;
         $question2->save();
 
-        
+        $this->actingAs($user);
 
         $response = $this->get(route('meetings.feedback', [$meeting,2]));
         
@@ -89,17 +65,8 @@ class ShowQuestionFeedbackTest extends TestCase
     public function testUserRedirectedIfQuestionNumberIsMoreThanMaximumPossible()
     {   
 
-        $this->actingAs($user = User::factory()->create());
-
-        //$this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
 
         $question = new FeedbackQuestion();
         $question->question = 'Did you like the meeting?';
@@ -107,7 +74,8 @@ class ShowQuestionFeedbackTest extends TestCase
         $question->meeting_id = $meeting->id;
         $question->save();
 
-        
+        $this->actingAs($user);
+
         //Only have 1 question so max number is 1
         $response = $this->get(route('meetings.feedback', [$meeting,2]));
 
@@ -117,25 +85,11 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserRedirectedIfQuestionNumberIsForANonWordedResponseQuestion()
     {   
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
+        $user = User::find($meeting->user_id);
 
-        $this->actingAs($user = User::factory()->create());
-
-        //$this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
-
+        $this->actingAs($user);
         
         $response = $this->get(route('meetings.feedback', [$meeting,1]));
 
@@ -145,18 +99,8 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserRedirectedIfQuestionNumberIsNegative()
     {   
-
-        $this->actingAs($user = User::factory()->create());
-
-        //$this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
 
         $question = new FeedbackQuestion();
         $question->question = 'Did you like the meeting?';
@@ -164,7 +108,8 @@ class ShowQuestionFeedbackTest extends TestCase
         $question->meeting_id = $meeting->id;
         $question->save();
 
-        
+        $this->actingAs($user);
+
         $response = $this->get(route('meetings.feedback', [$meeting,-1]));
 
         $response->assertRedirect('/');
@@ -173,17 +118,8 @@ class ShowQuestionFeedbackTest extends TestCase
     public function testUserRedirectedBackIfQuestionNumberIsNotANumber()
     {   
 
-        $this->actingAs($user = User::factory()->create());
-
-        //$this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
 
         $question = new FeedbackQuestion();
         $question->question = 'Did you like the meeting?';
@@ -191,6 +127,8 @@ class ShowQuestionFeedbackTest extends TestCase
         $question->meeting_id = $meeting->id;
         $question->save();
 
+        $this->actingAs($user);
+        
         $response = $this->get(route('meetings.feedback', [$meeting,'question_number' => 'string']));
 
         $response->assertRedirect('/');
@@ -199,16 +137,8 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserRedirectedBackIfQuestionNumberIsNotInteger()
     {   
-
-        $this->actingAs($user = User::factory()->create());
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
 
         $question = new FeedbackQuestion();
         $question->question = 'Did you like the meeting?';
@@ -216,14 +146,10 @@ class ShowQuestionFeedbackTest extends TestCase
         $question->meeting_id = $meeting->id;
         $question->save();
 
-        $question2 = new FeedbackQuestion();
-        $question2->question = 'Did you like the meeting?';
-        $question2->question_type = '0';
-        $question2->meeting_id = $meeting->id;
-        $question2->save();
+        $this->actingAs($user);
 
         
-        $response = $this->get(route('meetings.feedback', [$meeting,'question_number' => '1.5']));
+        $response = $this->get(route('meetings.feedback', [$meeting,'question_number' => '0.5']));
 
         $response->assertRedirect('/');
         

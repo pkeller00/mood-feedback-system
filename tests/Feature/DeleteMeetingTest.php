@@ -17,18 +17,11 @@ class DeleteMeetingTest extends TestCase
 
     public function testMeetingCanBeDeleted()
     {   
-        $this->actingAs($user = User::factory()->create());
 
-        $this->withoutExceptionHandling();
-        
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-        
+        $meeting = Meeting::factory()->create();
+        $user = User::find($meeting->user_id);
+        $this->actingAs($user);
+
         $response = $this->delete(route('meetings.destroy', $meeting));
 
         $response->assertStatus(302);
@@ -37,21 +30,12 @@ class DeleteMeetingTest extends TestCase
 
     public function testIfMeetingDeletedThenMeetingQuestionAlsoDeleted()
     {   
-        $this->actingAs($user = User::factory()->create());
-        
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-        
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
+        $user = User::find($meeting->user_id);
+        $this->actingAs($user);
+
+        $this->actingAs($user);
 
         $response = $this->delete(route('meetings.destroy', $meeting));
 
@@ -63,27 +47,18 @@ class DeleteMeetingTest extends TestCase
 
     public function testIfMeetingDeletedThenAllMeetingFormQuestionsAlsoDeleted()
     {   
-        $this->actingAs($user = User::factory()->create());
-        
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-        
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
+
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
 
         $question2 = new FeedbackQuestion();
         $question2->question = 'What would you change about the meeting?';
         $question2->question_type = '3';
         $question2->meeting_id = $meeting->id;
         $question2->save();
+
+        $user = User::find($meeting->user_id);
+        $this->actingAs($user);
 
         $response = $this->delete(route('meetings.destroy', $meeting));
 
@@ -96,24 +71,12 @@ class DeleteMeetingTest extends TestCase
 
     public function testDoNotDeleteMeetingIfNotMeetingCreator()
     {   
-        $user = User::factory()->create();
-        
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id = $user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-        
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
+        $this->actingAs($user = User::factory()->create());
 
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
 
-        $this->actingAs($user2 = User::factory()->create());
+        
 
         $response = $this->delete(route('meetings.destroy', $meeting));
 
@@ -124,13 +87,14 @@ class DeleteMeetingTest extends TestCase
     }
 
     public function testIfToBeDeletedMeetingNotInDatabaseThenRedirectToIndex()
-    {   
+    {   $this->withoutExceptionHandling();
+        
         $this->actingAs($user = User::factory()->create());;
         
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
         $meeting->user_id = $user->id;
         $meeting->meeting_reference ='QWERTYU';
 

@@ -16,23 +16,12 @@ class ShowMeetingDetailsTest extends TestCase
 
     public function testMeetingDataIsSentCorrectly()
     {   
-        $this->actingAs($user = User::factory()->create());
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
+        $user = User::find($meeting->user_id);
 
-        $this->withoutExceptionHandling();
+        $this->actingAs($user);
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
 
         $response = $this->get(route('meetings.show', $meeting));
 
@@ -48,24 +37,8 @@ class ShowMeetingDetailsTest extends TestCase
 
     public function testMeetingDataIsOnlyShownIfUserHostsEvent()
     {   
-
-        $user = User::factory()->create();
-
-        $this->withoutExceptionHandling();
-
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
-        $meeting->save();
-
-        $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
-        $question->save();
+        $question = FeedbackQuestion::factory()->create();
+        $meeting = Meeting::find($question->meeting_id);
 
         $this->actingAs($user = User::factory()->create());
 
@@ -78,23 +51,21 @@ class ShowMeetingDetailsTest extends TestCase
     public function testIfToBeShownMeetingNotInDatabaseThenRedirectToIndex()
     {   
 
-        $user = User::factory()->create();
+        $this->actingAs($user = User::factory()->create());
 
         //$this->withoutExceptionHandling();
 
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
         $meeting->user_id =$user->id;
         $meeting->meeting_reference ='QWERTYU';
 
         $question = new FeedbackQuestion();
-        $question->question = 'Did you like the meeting?';
+        $question->question = '‘Lorem’';
         $question->question_type = '3';
         $question->meeting_id = $meeting->id;
-
-        $this->actingAs($user2 = User::factory()->create());
 
         $response = $this->get(route('meetings.show', $meeting));
 

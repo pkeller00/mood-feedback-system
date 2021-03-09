@@ -24,8 +24,8 @@ class CreateMeetingTest extends TestCase
 
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -44,12 +44,12 @@ class CreateMeetingTest extends TestCase
     {
         $this->actingAs($user = User::factory()->create());
         
-        $name = "Lorem ipsum.";
+        $name = "workshop";
         
         $response = $this->post('/events/create', [
             'name' => $name,
             'meeting_start' => 'This is a string',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasErrors();
     }
@@ -58,12 +58,12 @@ class CreateMeetingTest extends TestCase
     {
         $this->actingAs($user = User::factory()->create());
         
-        $name = "Lorem ipsum.";
+        $name = "workshop";
         
         $response = $this->post('/events/create', [
             'name' => $name,
             'meeting_start' => '',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasErrors();
     }
@@ -74,8 +74,8 @@ class CreateMeetingTest extends TestCase
 
         $response = $this->post('/events/create', [
             'name' => 'workshop',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasNoErrors();
     }
@@ -86,8 +86,8 @@ class CreateMeetingTest extends TestCase
 
         $response = $this->post('/events/create', [
             'name' => 'workshop',
-            'meeting_start' => '2012-01-09T00:00',
-            'meeting_end' => '2012-01-01T00:00',
+            'meeting_start' => '2020-01-09T00:00',
+            'meeting_end' => '2020-01-01T00:00',
         ]);
         $response->assertSessionHasErrors();
     }
@@ -98,8 +98,8 @@ class CreateMeetingTest extends TestCase
 
         $response = $this->post('/events/create', [
             'name' => 'workshop',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-01T00:00',
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-01T00:00',
         ]);
         $response->assertSessionHasErrors();
     }
@@ -110,8 +110,8 @@ class CreateMeetingTest extends TestCase
 
         $response = $this->post('/events/create', [
             'name' => '',
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasErrors();
     }
@@ -124,8 +124,8 @@ class CreateMeetingTest extends TestCase
         
         $response = $this->post('/events/create', [
             'name' => $name,
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasNoErrors();
     }
@@ -138,8 +138,8 @@ class CreateMeetingTest extends TestCase
         
         $response = $this->post('/events/create', [
             'name' => $name,
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasErrors();
     }
@@ -152,8 +152,8 @@ class CreateMeetingTest extends TestCase
         
         $response = $this->post('/events/create', [
             'name' => $name,
-            'meeting_start' => '2012-01-01T00:00',
-            'meeting_end' => '2012-01-09T00:00'
+            'meeting_start' => '2020-01-01T00:00',
+            'meeting_end' => '2020-01-09T00:00'
         ]);
         $response->assertSessionHasNoErrors();
     }
@@ -167,8 +167,8 @@ class CreateMeetingTest extends TestCase
 
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -190,8 +190,8 @@ class CreateMeetingTest extends TestCase
         
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -205,8 +205,8 @@ class CreateMeetingTest extends TestCase
     {
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -222,8 +222,8 @@ class CreateMeetingTest extends TestCase
     {
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -242,8 +242,8 @@ class CreateMeetingTest extends TestCase
 
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -259,8 +259,8 @@ class CreateMeetingTest extends TestCase
     {
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -276,8 +276,8 @@ class CreateMeetingTest extends TestCase
 
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
@@ -292,8 +292,8 @@ class CreateMeetingTest extends TestCase
     {
         $meeting = new Meeting();
         $meeting->name ='workshop';
-        $meeting->meeting_start ='2012-01-01T00:00';
-        $meeting->meeting_end ='2012-01-09T00:00';
+        $meeting->meeting_start ='2020-01-01T00:00';
+        $meeting->meeting_end ='2020-01-09T00:00';
 
         $this->actingAs($user = User::factory()->create());
 
