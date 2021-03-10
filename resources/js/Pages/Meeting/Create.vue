@@ -11,8 +11,6 @@
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
-          <!-- <jet-validation-errors class="mb-4" /> -->
-
           <form @submit.prevent="submit">
             <div class="mt-4">
               <jet-label for="name" value="Meeting Name" />
@@ -65,9 +63,7 @@
             </div>
 
             <div class="flex items-center justify-center mt-4">
-              <jet-button class="ml-4">
-                Add Event Form
-              </jet-button>
+              <jet-button class="ml-4"> Add Event Form </jet-button>
             </div>
           </form>
         </div>
@@ -82,7 +78,6 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-// import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
   components: {
@@ -91,7 +86,6 @@ export default {
     JetInput,
     JetCheckbox,
     JetLabel,
-    // JetValidationErrors,
   },
 
   props: {

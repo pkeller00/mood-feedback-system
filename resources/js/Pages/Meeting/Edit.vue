@@ -11,8 +11,6 @@
         <div
           class="w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
         >
-          <!-- <jet-validation-errors class="mb-4" /> -->
-
           <form @submit.prevent="submit" :key="meeting.id">
             <div class="mt-4">
               <jet-label for="name" value="Meeting Name" />
@@ -66,10 +64,7 @@
             </div>
 
             <div class="flex items-center justify-center mt-4">
-              <jet-button class="ml-4">
-                <!-- <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"> -->
-                Update
-              </jet-button>
+              <jet-button class="ml-4"> Update </jet-button>
             </div>
           </form>
         </div>
@@ -84,7 +79,6 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
-// import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
 export default {
   components: {
@@ -93,7 +87,6 @@ export default {
     JetInput,
     JetCheckbox,
     JetLabel,
-    // JetValidationErrors
   },
 
   props: {
@@ -118,17 +111,6 @@ export default {
         `/events/${this.meeting.meeting_reference}`,
         this.return_meeting
       );
-      // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
-      // console.log(this.return_meeting);
-      // this.return_meeting
-      // .post(this.route('meetings.update', this.return_meeting))
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
     },
   },
 };

@@ -1870,7 +1870,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
- // const { reactiveProp } = mixins
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Line,
@@ -1900,7 +1899,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
- // const { reactiveProp } = mixins
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Pie,
@@ -2894,11 +2892,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _Jetstream_ApplicationLogo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ApplicationLogo */ "./resources/js/Jetstream/ApplicationLogo.vue");
-/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
 //
 //
 //
@@ -3021,18 +3018,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-
- // import JetCheckbox from '@/Jetstream/Checkbox'
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    JetApplicationLogo: _Jetstream_ApplicationLogo__WEBPACK_IMPORTED_MODULE_0__.default,
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__.default
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -3814,12 +3808,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
-/* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
-/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
-/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+/* harmony import */ var vue_recaptcha__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-recaptcha */ "./node_modules/vue-recaptcha/dist/vue-recaptcha.es.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-date-fns */ "./node_modules/vue-date-fns/src/index.js");
+/* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4076,7 +4076,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 
 
@@ -4088,34 +4088,35 @@ __webpack_require__.r(__webpack_exports__);
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default,
-    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_6__.default
+    // JetValidationErrors,
+    VueRecaptcha: vue_recaptcha__WEBPACK_IMPORTED_MODULE_5__.default
   },
   props: {
     meeting: Object
   },
   filters: {
-    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_7__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
-    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_7__.createDateFilter)("HH:mm")
+    date: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("EEEE do MMMM yyyy  HH:mm"),
+    sameday: (0,vue_date_fns__WEBPACK_IMPORTED_MODULE_6__.createDateFilter)("HH:mm")
   },
   data: function data() {
     return {
-      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_8__.default,
+      isSameDay: date_fns__WEBPACK_IMPORTED_MODULE_7__.default,
       feedback_response: this.$inertia.form({
         questions: this.$page.props.questions,
         responses: [],
         name: "",
         email: "",
-        robot: false
+        robot: false,
+        is_disabled: false
       })
     };
   },
   computed: {
     meeting_start: function meeting_start() {
-      return (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.default)(this.meeting.meeting_start);
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_start);
     },
     meeting_end: function meeting_end() {
-      return (0,date_fns__WEBPACK_IMPORTED_MODULE_9__.default)(this.meeting.meeting_end);
+      return (0,date_fns__WEBPACK_IMPORTED_MODULE_8__.default)(this.meeting.meeting_end);
     },
     user_name_comp: function user_name_comp() {
       return this.feedback_response.name;
@@ -4137,6 +4138,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       if (this.feedback_response.robot) {
+        this.feedback_response.is_disabled = true;
         this.$inertia.post("/submit-feedback/".concat(this.meeting.meeting_reference), this.feedback_response);
       }
 
@@ -5112,8 +5114,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5215,15 +5215,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
 
- // import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5231,8 +5226,7 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default // JetValidationErrors,
-
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
     errors: Object
@@ -5275,6 +5269,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_date_fns__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_date_fns__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/isSameDay/index.js");
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/parseISO/index.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5729,16 +5729,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
 
- // import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5746,8 +5740,7 @@ __webpack_require__.r(__webpack_exports__);
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetCheckbox: _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default // JetValidationErrors
-
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
     meeting: Object,
@@ -5765,17 +5758,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.$inertia.put("/events/".concat(this.meeting.meeting_reference), this.return_meeting); // this.$inertia.put(this.route('meetings.update', {meeting: this.return_meeting}))
-      // console.log(this.return_meeting);
-      // this.return_meeting
-      // .post(this.route('meetings.update', this.return_meeting))
-      // .transform(data => ({
-      //     ... data,
-      //     remember: this.form.remember ? 'on' : ''
-      // }))
-      // .post(this.route('meetings.store'), {
-      //     onFinish: () => this.form.reset('password'),
-      // })
+      this.$inertia.put("/events/".concat(this.meeting.meeting_reference), this.return_meeting);
     }
   }
 });
@@ -6235,8 +6218,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -6292,7 +6273,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post("/get-feedback/".concat(this.meeting.meeting_reference, "/").concat(this.question.id)).then(function (response) {
         // JSON responses are automatically parsed.
-        console.log(response);
+        //   console.log(response);
         _this2.data_response = response.data;
       })["catch"](function (e) {
         console.log(e); //   this.errors.push(e);
@@ -83187,43 +83168,6 @@ component.options.__file = "resources/js/Jetstream/ActionSection.vue"
 
 /***/ }),
 
-/***/ "./resources/js/Jetstream/ApplicationLogo.vue":
-/*!****************************************************!*\
-  !*** ./resources/js/Jetstream/ApplicationLogo.vue ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ApplicationLogo.vue?vue&type=template&id=4e07f5d2& */ "./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
-  script,
-  _ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/Jetstream/ApplicationLogo.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/Jetstream/ApplicationMark.vue":
 /*!****************************************************!*\
   !*** ./resources/js/Jetstream/ApplicationMark.vue ***!
@@ -86052,23 +85996,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2& ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApplicationLogo_vue_vue_type_template_id_4e07f5d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ApplicationLogo.vue?vue&type=template&id=4e07f5d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2&");
-
-
-/***/ }),
-
 /***/ "./resources/js/Jetstream/ApplicationMark.vue?vue&type=template&id=6ed2e539&":
 /*!***********************************************************************************!*\
   !*** ./resources/js/Jetstream/ApplicationMark.vue?vue&type=template&id=6ed2e539& ***!
@@ -87056,65 +86983,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Jetstream/ApplicationLogo.vue?vue&type=template&id=4e07f5d2& ***!
-  \**************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* binding */ render,
-/* harmony export */   "staticRenderFns": () => /* binding */ staticRenderFns
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "svg",
-    {
-      attrs: {
-        viewBox: "0 0 317 48",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg"
-      }
-    },
-    [
-      _c("path", {
-        attrs: {
-          d:
-            "M74.09 30.04V13h-4.14v21H82.1v-3.96h-8.01zM95.379 19v1.77c-1.08-1.35-2.7-2.19-4.89-2.19-3.99 0-7.29 3.45-7.29 7.92s3.3 7.92 7.29 7.92c2.19 0 3.81-.84 4.89-2.19V34h3.87V19h-3.87zm-4.17 11.73c-2.37 0-4.14-1.71-4.14-4.23 0-2.52 1.77-4.23 4.14-4.23 2.4 0 4.17 1.71 4.17 4.23 0 2.52-1.77 4.23-4.17 4.23zM106.628 21.58V19h-3.87v15h3.87v-7.17c0-3.15 2.55-4.05 4.56-3.81V18.7c-1.89 0-3.78.84-4.56 2.88zM124.295 19v1.77c-1.08-1.35-2.7-2.19-4.89-2.19-3.99 0-7.29 3.45-7.29 7.92s3.3 7.92 7.29 7.92c2.19 0 3.81-.84 4.89-2.19V34h3.87V19h-3.87zm-4.17 11.73c-2.37 0-4.14-1.71-4.14-4.23 0-2.52 1.77-4.23 4.14-4.23 2.4 0 4.17 1.71 4.17 4.23 0 2.52-1.77 4.23-4.17 4.23zM141.544 19l-3.66 10.5-3.63-10.5h-4.26l5.7 15h4.41l5.7-15h-4.26zM150.354 28.09h11.31c.09-.51.15-1.02.15-1.59 0-4.41-3.15-7.92-7.59-7.92-4.71 0-7.92 3.45-7.92 7.92s3.18 7.92 8.22 7.92c2.88 0 5.13-1.17 6.54-3.21l-3.12-1.8c-.66.87-1.86 1.5-3.36 1.5-2.04 0-3.69-.84-4.23-2.82zm-.06-3c.45-1.92 1.86-3.03 3.93-3.03 1.62 0 3.24.87 3.72 3.03h-7.65zM164.516 34h3.87V12.1h-3.87V34zM185.248 34.36c3.69 0 6.9-2.01 6.9-6.3V13h-2.1v15.06c0 3.03-2.07 4.26-4.8 4.26-2.19 0-3.93-.78-4.62-2.61l-1.77 1.05c1.05 2.43 3.57 3.6 6.39 3.6zM203.124 18.64c-4.65 0-7.83 3.45-7.83 7.86 0 4.53 3.24 7.86 7.98 7.86 3.03 0 5.34-1.41 6.6-3.45l-1.74-1.02c-.81 1.44-2.46 2.55-4.83 2.55-3.18 0-5.55-1.89-5.97-4.95h13.17c.03-.3.06-.63.06-.93 0-4.11-2.85-7.92-7.44-7.92zm0 1.92c2.58 0 4.98 1.71 5.4 5.01h-11.19c.39-2.94 2.64-5.01 5.79-5.01zM221.224 20.92V19h-4.32v-4.2l-1.98.6V19h-3.15v1.92h3.15v9.09c0 3.6 2.25 4.59 6.3 3.99v-1.74c-2.91.12-4.32.33-4.32-2.25v-9.09h4.32zM225.176 22.93c0-1.62 1.59-2.37 3.15-2.37 1.44 0 2.97.57 3.6 2.1l1.65-.96c-.87-1.86-2.79-3.06-5.25-3.06-3 0-5.13 1.89-5.13 4.29 0 5.52 8.76 3.39 8.76 7.11 0 1.77-1.68 2.4-3.45 2.4-2.01 0-3.57-.99-4.11-2.52l-1.68.99c.75 1.92 2.79 3.45 5.79 3.45 3.21 0 5.43-1.77 5.43-4.32 0-5.52-8.76-3.39-8.76-7.11zM244.603 20.92V19h-4.32v-4.2l-1.98.6V19h-3.15v1.92h3.15v9.09c0 3.6 2.25 4.59 6.3 3.99v-1.74c-2.91.12-4.32.33-4.32-2.25v-9.09h4.32zM249.883 21.49V19h-1.98v15h1.98v-8.34c0-3.72 2.34-4.98 4.74-4.98v-1.92c-1.92 0-3.69.63-4.74 2.73zM263.358 18.64c-4.65 0-7.83 3.45-7.83 7.86 0 4.53 3.24 7.86 7.98 7.86 3.03 0 5.34-1.41 6.6-3.45l-1.74-1.02c-.81 1.44-2.46 2.55-4.83 2.55-3.18 0-5.55-1.89-5.97-4.95h13.17c.03-.3.06-.63.06-.93 0-4.11-2.85-7.92-7.44-7.92zm0 1.92c2.58 0 4.98 1.71 5.4 5.01h-11.19c.39-2.94 2.64-5.01 5.79-5.01zM286.848 19v2.94c-1.26-2.01-3.39-3.3-6.06-3.3-4.23 0-7.74 3.42-7.74 7.86s3.51 7.86 7.74 7.86c2.67 0 4.8-1.29 6.06-3.3V34h1.98V19h-1.98zm-5.91 13.44c-3.33 0-5.91-2.61-5.91-5.94 0-3.33 2.58-5.94 5.91-5.94s5.91 2.61 5.91 5.94c0 3.33-2.58 5.94-5.91 5.94zM309.01 18.64c-1.92 0-3.75.87-4.86 2.73-.84-1.74-2.46-2.73-4.56-2.73-1.8 0-3.42.72-4.59 2.55V19h-1.98v15H295v-8.31c0-3.72 2.16-5.13 4.32-5.13 2.13 0 3.51 1.41 3.51 4.08V34h1.98v-8.31c0-3.72 1.86-5.13 4.17-5.13 2.13 0 3.66 1.41 3.66 4.08V34h1.98v-9.36c0-3.75-2.31-6-5.61-6z",
-          fill: "#000"
-        }
-      }),
-      _vm._v(" "),
-      _c("path", {
-        attrs: {
-          d:
-            "M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z",
-          fill: "#6875F5"
-        }
-      }),
-      _vm._v(" "),
-      _c("path", {
-        attrs: {
-          d:
-            "M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z",
-          fill: "#6875F5"
-        }
-      })
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Jetstream/ApplicationMark.vue?vue&type=template&id=6ed2e539&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Jetstream/ApplicationMark.vue?vue&type=template&id=6ed2e539& ***!
@@ -87134,19 +87002,38 @@ var render = function() {
   return _c(
     "svg",
     {
-      staticClass: "bi bi-calendar2-event-fill",
       attrs: {
         xmlns: "http://www.w3.org/2000/svg",
-        fill: "none",
-        viewBox: "0 0 16 16"
+        "xml:space": "preserve",
+        version: "1.1",
+        viewBox: "0 0 128 128"
       }
     },
     [
       _c("path", {
         attrs: {
-          fill: "#6875F5",
           d:
-            "M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM11.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"
+            "M64+0C28.6538+5.08626e-06-0+28.6538-0+64C0+99.3462+28.6538+128+64+128C99.3462+128+128+99.3462+128+64C128+28.6538+99.3462+0+64+0ZM39.9375+23.1875C41.8556+23.1875+43.5633+23.5764+45.0938+24.375C46.6239+25.174+47.7944+26.4289+48.5938+28.125C49.3923+29.8206+49.7812+32.0936+49.7812+34.9688C49.7813+37.2537+49.2521+39.63+48.1562+42.0625L54.1875+42.0625C56.5621+42.0625+58.6079+43.0076+60.3438+44.875C62.0788+46.7444+62.9375+48.9375+62.9375+51.4688C62.9375+53.6557+62.3691+55.6499+61.25+57.4688C61.4558+58.2791+61.5621+59.1153+61.5625+60C61.5625+61.8922+61.1486+63.6667+60.2812+65.3125C60.3501+65.829+60.375+66.366+60.375+66.9062C60.375+69.3878+59.6826+71.5765+58.3125+73.4688C58.3351+76.8843+57.3696+79.5842+55.4062+81.5625C53.4422+83.5408+50.8446+84.5312+47.625+84.5312L46.4062+84.5312L43.2188+84.5312C41.0264+84.5312+38.8539+84.2406+36.7188+83.6875C34.5839+83.1344+32.1214+82.3381+29.3125+81.2812C26.6635+80.2983+25.0962+79.8125+24.5938+79.8125L14.7188+79.8125C13.5085+79.8125+12.4818+79.3279+11.625+78.4062C10.7685+77.4846+10.3437+76.3962+10.3438+75.0938L10.3438+51.5C10.3438+50.1975+10.769+49.0779+11.625+48.1562C12.4814+47.2355+13.5085+46.7812+14.7188+46.7812L24.0938+46.7812C24.9154+46.1913+26.4749+44.2812+28.7812+41.0625C30.1057+39.2197+31.3495+37.6461+32.4688+36.3438C33.0165+35.7295+33.4251+34.6741+33.6875+33.1875C33.9499+31.7008+34.2848+30.1526+34.7188+28.5312C35.1524+26.9094+35.862+25.5944+36.8438+24.5625C37.7343+23.653+38.7723+23.1875+39.9375+23.1875ZM79.375+44.8125L80.625+44.8125L83.8125+44.8125C86.0049+44.8125+88.1461+45.1032+90.2812+45.6562C92.4161+46.2093+94.9098+47.0057+97.7188+48.0625C100.368+49.0455+101.935+49.5312+102.438+49.5312L112.312+49.5312C113.523+49.5312+114.549+49.9846+115.406+50.9062C116.263+51.8279+116.688+52.9475+116.688+54.25L116.688+77.8438C116.688+79.1462+116.262+80.2659+115.406+81.1875C114.55+82.1082+113.523+82.5625+112.312+82.5625L102.906+82.5625C102.085+83.1525+100.525+85.0625+98.2188+88.2812C96.8943+90.124+95.6817+91.6977+94.5625+93C94.0147+93.6143+93.6061+94.6697+93.3438+96.1562C93.0814+97.6429+92.7152+99.1911+92.2812+100.812C91.8475+102.434+91.138+103.749+90.1562+104.781C89.2657+105.691+88.2589+106.156+87.0938+106.156C85.1757+106.156+83.4367+105.767+81.9062+104.969C80.3761+104.17+79.2056+102.915+78.4062+101.219C77.6077+99.5231+77.2187+97.2189+77.2188+94.3438C77.2188+92.0588+77.7792+89.7138+78.875+87.2812L72.8438+87.2812C70.4691+87.2813+68.4234+86.3362+66.6875+84.4688C64.9525+82.5994+64.0625+80.4063+64.0625+77.875C64.0625+75.688+64.6309+73.6939+65.75+71.875C65.5443+71.0646+65.4379+70.2285+65.4375+69.3438C65.4375+67.4515+65.8826+65.677+66.75+64.0312C66.6811+63.5147+66.625+62.9778+66.625+62.4375C66.625+59.9559+67.3174+57.7672+68.6875+55.875C68.665+52.4594+69.6304+49.7596+71.5938+47.7812C73.5578+45.8029+76.1554+44.8125+79.375+44.8125Z",
+          opacity: "1",
+          fill: "#1f2937"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M39.9375+27.9062C39.343+28.5452+38.8988+29.5816+38.625+31.0312C38.3519+32.4808+38.0167+34.0218+37.5938+35.6562C37.1713+37.2904+36.4675+38.6312+35.5312+39.6875C35.0289+40.253+34.162+41.3918+32.9062+43.0625C32.8149+43.1855+32.5587+43.5421+32.125+44.1562C31.6911+44.7705+31.3165+45.2944+31.0312+45.6875C30.7456+46.0807+30.3461+46.5986+29.8438+47.25C29.3412+47.9009+28.9111+48.4451+28.5+48.875C28.0887+49.3053+27.6245+49.7138+27.1562+50.1562C26.6882+50.5987+26.2265+50.935+25.7812+51.1562C25.3359+51.3769+24.9591+51.5+24.5938+51.5L15.5938+51.5L15.5938+75.0938L24.5938+75.0938C24.8906+75.0938+25.2339+75.1138+25.6562+75.1875C26.0783+75.2614+26.4504+75.3518+26.7812+75.4375C27.1126+75.5231+27.5569+75.659+28.0938+75.8438C28.6307+76.0276+29.0185+76.151+29.2812+76.25C29.544+76.348+29.9516+76.5103+30.5+76.7188C31.0484+76.9273+31.3857+77.0759+31.5+77.125C36.3187+78.9192+40.2267+79.8125+43.2188+79.8125L47.3438+79.8125C51.7286+79.8125+53.9375+77.7597+53.9375+73.6562C53.9375+73.0175+53.8641+72.3308+53.75+71.5938C54.4348+71.2008+55.0071+70.5522+55.4062+69.6562C55.8061+68.7595+56+67.8468+56+66.9375C56+66.0288+55.7865+65.1922+55.375+64.4062C56.5854+63.178+57.1875+61.6947+57.1875+60C57.1875+59.3854+57.0719+58.7184+56.8438+57.9688C56.6153+57.22+56.3424+56.6366+56+56.2188C56.7306+56.1945+57.3215+55.5989+57.8125+54.4688C58.3034+53.3371+58.5621+52.3599+58.5625+51.5C58.5625+50.2464+58.1097+49.1334+57.2188+48.1875C56.3286+47.2409+55.3305+46.7813+54.1875+46.7812L42.125+46.7812C42.125+45.3561+42.6542+43.4005+43.75+40.9062C44.8463+38.4123+45.4062+36.4184+45.4062+34.9688C45.4062+32.5606+45.0429+30.7798+44.3125+29.625C43.582+28.4699+42.1291+27.9063+39.9375+27.9062Z",
+          opacity: "1",
+          fill: "#047857"
+        }
+      }),
+      _vm._v(" "),
+      _c("path", {
+        attrs: {
+          d:
+            "M79.6562+49.5312C75.2714+49.5312+73.0625+51.5841+73.0625+55.6875C73.0625+56.3263+73.1359+57.013+73.25+57.75C72.5652+58.143+72.0241+58.7915+71.625+59.6875C71.2251+60.5842+71.0313+61.497+71.0312+62.4062C71.0312+63.315+71.2135+64.1515+71.625+64.9375C70.4146+66.1658+69.8125+67.6491+69.8125+69.3438C69.8125+69.9584+69.9281+70.6253+70.1562+71.375C70.3847+72.1238+70.6889+72.7071+71.0312+73.125C70.3006+73.1493+69.6785+73.7136+69.1875+74.8438C68.6966+75.9754+68.4379+76.9838+68.4375+77.8438C68.4375+79.0973+68.8903+80.2103+69.7812+81.1562C70.6714+82.1028+71.7008+82.5625+72.8438+82.5625L84.9062+82.5625C84.9062+83.9876+84.3458+85.9433+83.25+88.4375C82.1537+90.9315+81.5937+92.8941+81.5938+94.3438C81.5938+96.7519+81.9571+98.5327+82.6875+99.6875C83.418+100.843+84.9021+101.437+87.0938+101.438C87.6882+100.799+88.1012+99.7622+88.375+98.3125C88.648+96.863+89.0146+95.3219+89.4375+93.6875C89.8599+92.0533+90.5325+90.6813+91.4688+89.625C91.9711+89.0595+92.838+87.9519+94.0938+86.2812C94.185+86.1582+94.4725+85.8016+94.9062+85.1875C95.3402+84.5732+95.6835+84.0494+95.9688+83.6562C96.2544+83.263+96.6539+82.7452+97.1562+82.0938C97.6588+81.4428+98.1201+80.8987+98.5312+80.4688C98.9425+80.0385+99.3755+79.5987+99.8438+79.1562C100.312+78.7138+100.774+78.4088+101.219+78.1875C101.664+77.9669+102.072+77.8437+102.438+77.8438L111.406+77.8438L111.406+54.25L102.438+54.25C102.141+54.25+101.766+54.23+101.344+54.1562C100.922+54.0824+100.55+53.992+100.219+53.9062C99.8874+53.8206+99.4744+53.6847+98.9375+53.5C98.4005+53.3162+97.9815+53.1615+97.7188+53.0625C97.456+52.9645+97.0484+52.8335+96.5+52.625C95.9516+52.4165+95.6143+52.2678+95.5+52.2188C90.6813+50.4245+86.8046+49.5313+83.8125+49.5312L79.6562+49.5312Z",
+          opacity: "1",
+          fill: "#b91c1c"
         }
       })
     ]
@@ -87225,25 +87112,36 @@ var render = function() {
       {
         staticClass: "w-16 h-16",
         attrs: {
-          viewBox: "0 0 48 48",
-          fill: "none",
-          xmlns: "http://www.w3.org/2000/svg"
+          xmlns: "http://www.w3.org/2000/svg",
+          version: "1.1",
+          viewBox: "0 0 128 128"
         }
       },
       [
         _c("path", {
           attrs: {
             d:
-              "M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z",
-            fill: "#6875F5"
+              "M64+0C28.6538+5.08626e-06-0+28.6538-0+64C0+99.3462+28.6538+128+64+128C99.3462+128+128+99.3462+128+64C128+28.6538+99.3462+0+64+0ZM39.9375+23.1875C41.8556+23.1875+43.5633+23.5764+45.0938+24.375C46.6239+25.174+47.7944+26.4289+48.5938+28.125C49.3923+29.8206+49.7812+32.0936+49.7812+34.9688C49.7813+37.2537+49.2521+39.63+48.1562+42.0625L54.1875+42.0625C56.5621+42.0625+58.6079+43.0076+60.3438+44.875C62.0788+46.7444+62.9375+48.9375+62.9375+51.4688C62.9375+53.6557+62.3691+55.6499+61.25+57.4688C61.4558+58.2791+61.5621+59.1153+61.5625+60C61.5625+61.8922+61.1486+63.6667+60.2812+65.3125C60.3501+65.829+60.375+66.366+60.375+66.9062C60.375+69.3878+59.6826+71.5765+58.3125+73.4688C58.3351+76.8843+57.3696+79.5842+55.4062+81.5625C53.4422+83.5408+50.8446+84.5312+47.625+84.5312L46.4062+84.5312L43.2188+84.5312C41.0264+84.5312+38.8539+84.2406+36.7188+83.6875C34.5839+83.1344+32.1214+82.3381+29.3125+81.2812C26.6635+80.2983+25.0962+79.8125+24.5938+79.8125L14.7188+79.8125C13.5085+79.8125+12.4818+79.3279+11.625+78.4062C10.7685+77.4846+10.3437+76.3962+10.3438+75.0938L10.3438+51.5C10.3438+50.1975+10.769+49.0779+11.625+48.1562C12.4814+47.2355+13.5085+46.7812+14.7188+46.7812L24.0938+46.7812C24.9154+46.1913+26.4749+44.2812+28.7812+41.0625C30.1057+39.2197+31.3495+37.6461+32.4688+36.3438C33.0165+35.7295+33.4251+34.6741+33.6875+33.1875C33.9499+31.7008+34.2848+30.1526+34.7188+28.5312C35.1524+26.9094+35.862+25.5944+36.8438+24.5625C37.7343+23.653+38.7723+23.1875+39.9375+23.1875ZM79.375+44.8125L80.625+44.8125L83.8125+44.8125C86.0049+44.8125+88.1461+45.1032+90.2812+45.6562C92.4161+46.2093+94.9098+47.0057+97.7188+48.0625C100.368+49.0455+101.935+49.5312+102.438+49.5312L112.312+49.5312C113.523+49.5312+114.549+49.9846+115.406+50.9062C116.263+51.8279+116.688+52.9475+116.688+54.25L116.688+77.8438C116.688+79.1462+116.262+80.2659+115.406+81.1875C114.55+82.1082+113.523+82.5625+112.312+82.5625L102.906+82.5625C102.085+83.1525+100.525+85.0625+98.2188+88.2812C96.8943+90.124+95.6817+91.6977+94.5625+93C94.0147+93.6143+93.6061+94.6697+93.3438+96.1562C93.0814+97.6429+92.7152+99.1911+92.2812+100.812C91.8475+102.434+91.138+103.749+90.1562+104.781C89.2657+105.691+88.2589+106.156+87.0938+106.156C85.1757+106.156+83.4367+105.767+81.9062+104.969C80.3761+104.17+79.2056+102.915+78.4062+101.219C77.6077+99.5231+77.2187+97.2189+77.2188+94.3438C77.2188+92.0588+77.7792+89.7138+78.875+87.2812L72.8438+87.2812C70.4691+87.2813+68.4234+86.3362+66.6875+84.4688C64.9525+82.5994+64.0625+80.4063+64.0625+77.875C64.0625+75.688+64.6309+73.6939+65.75+71.875C65.5443+71.0646+65.4379+70.2285+65.4375+69.3438C65.4375+67.4515+65.8826+65.677+66.75+64.0312C66.6811+63.5147+66.625+62.9778+66.625+62.4375C66.625+59.9559+67.3174+57.7672+68.6875+55.875C68.665+52.4594+69.6304+49.7596+71.5938+47.7812C73.5578+45.8029+76.1554+44.8125+79.375+44.8125Z",
+            opacity: "1",
+            fill: "#1f2937"
           }
         }),
         _vm._v(" "),
         _c("path", {
           attrs: {
             d:
-              "M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z",
-            fill: "#6875F5"
+              "M39.9375+27.9062C39.343+28.5452+38.8988+29.5816+38.625+31.0312C38.3519+32.4808+38.0167+34.0218+37.5938+35.6562C37.1713+37.2904+36.4675+38.6312+35.5312+39.6875C35.0289+40.253+34.162+41.3918+32.9062+43.0625C32.8149+43.1855+32.5587+43.5421+32.125+44.1562C31.6911+44.7705+31.3165+45.2944+31.0312+45.6875C30.7456+46.0807+30.3461+46.5986+29.8438+47.25C29.3412+47.9009+28.9111+48.4451+28.5+48.875C28.0887+49.3053+27.6245+49.7138+27.1562+50.1562C26.6882+50.5987+26.2265+50.935+25.7812+51.1562C25.3359+51.3769+24.9591+51.5+24.5938+51.5L15.5938+51.5L15.5938+75.0938L24.5938+75.0938C24.8906+75.0938+25.2339+75.1138+25.6562+75.1875C26.0783+75.2614+26.4504+75.3518+26.7812+75.4375C27.1126+75.5231+27.5569+75.659+28.0938+75.8438C28.6307+76.0276+29.0185+76.151+29.2812+76.25C29.544+76.348+29.9516+76.5103+30.5+76.7188C31.0484+76.9273+31.3857+77.0759+31.5+77.125C36.3187+78.9192+40.2267+79.8125+43.2188+79.8125L47.3438+79.8125C51.7286+79.8125+53.9375+77.7597+53.9375+73.6562C53.9375+73.0175+53.8641+72.3308+53.75+71.5938C54.4348+71.2008+55.0071+70.5522+55.4062+69.6562C55.8061+68.7595+56+67.8468+56+66.9375C56+66.0288+55.7865+65.1922+55.375+64.4062C56.5854+63.178+57.1875+61.6947+57.1875+60C57.1875+59.3854+57.0719+58.7184+56.8438+57.9688C56.6153+57.22+56.3424+56.6366+56+56.2188C56.7306+56.1945+57.3215+55.5989+57.8125+54.4688C58.3034+53.3371+58.5621+52.3599+58.5625+51.5C58.5625+50.2464+58.1097+49.1334+57.2188+48.1875C56.3286+47.2409+55.3305+46.7813+54.1875+46.7812L42.125+46.7812C42.125+45.3561+42.6542+43.4005+43.75+40.9062C44.8463+38.4123+45.4062+36.4184+45.4062+34.9688C45.4062+32.5606+45.0429+30.7798+44.3125+29.625C43.582+28.4699+42.1291+27.9063+39.9375+27.9062Z",
+            opacity: "1",
+            fill: "#047857"
+          }
+        }),
+        _vm._v(" "),
+        _c("path", {
+          attrs: {
+            d:
+              "M79.6562+49.5312C75.2714+49.5312+73.0625+51.5841+73.0625+55.6875C73.0625+56.3263+73.1359+57.013+73.25+57.75C72.5652+58.143+72.0241+58.7915+71.625+59.6875C71.2251+60.5842+71.0313+61.497+71.0312+62.4062C71.0312+63.315+71.2135+64.1515+71.625+64.9375C70.4146+66.1658+69.8125+67.6491+69.8125+69.3438C69.8125+69.9584+69.9281+70.6253+70.1562+71.375C70.3847+72.1238+70.6889+72.7071+71.0312+73.125C70.3006+73.1493+69.6785+73.7136+69.1875+74.8438C68.6966+75.9754+68.4379+76.9838+68.4375+77.8438C68.4375+79.0973+68.8903+80.2103+69.7812+81.1562C70.6714+82.1028+71.7008+82.5625+72.8438+82.5625L84.9062+82.5625C84.9062+83.9876+84.3458+85.9433+83.25+88.4375C82.1537+90.9315+81.5937+92.8941+81.5938+94.3438C81.5938+96.7519+81.9571+98.5327+82.6875+99.6875C83.418+100.843+84.9021+101.437+87.0938+101.438C87.6882+100.799+88.1012+99.7622+88.375+98.3125C88.648+96.863+89.0146+95.3219+89.4375+93.6875C89.8599+92.0533+90.5325+90.6813+91.4688+89.625C91.9711+89.0595+92.838+87.9519+94.0938+86.2812C94.185+86.1582+94.4725+85.8016+94.9062+85.1875C95.3402+84.5732+95.6835+84.0494+95.9688+83.6562C96.2544+83.263+96.6539+82.7452+97.1562+82.0938C97.6588+81.4428+98.1201+80.8987+98.5312+80.4688C98.9425+80.0385+99.3755+79.5987+99.8438+79.1562C100.312+78.7138+100.774+78.4088+101.219+78.1875C101.664+77.9669+102.072+77.8437+102.438+77.8438L111.406+77.8438L111.406+54.25L102.438+54.25C102.141+54.25+101.766+54.23+101.344+54.1562C100.922+54.0824+100.55+53.992+100.219+53.9062C99.8874+53.8206+99.4744+53.6847+98.9375+53.5C98.4005+53.3162+97.9815+53.1615+97.7188+53.0625C97.456+52.9645+97.0484+52.8335+96.5+52.625C95.9516+52.4165+95.6143+52.2678+95.5+52.2188C90.6813+50.4245+86.8046+49.5313+83.8125+49.5312L79.6562+49.5312Z",
+            opacity: "1",
+            fill: "#b91c1c"
           }
         })
       ]
@@ -90561,397 +90459,188 @@ var render = function() {
     [
       _vm._v(" "),
       _c("div", { staticClass: "py-12" }, [
-        _c(
-          "div",
-          { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-              },
-              [
-                _c("div", { staticClass: "text-2xl" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(_vm.meeting.name) + "\n        "
-                  )
+        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+            },
+            [
+              _c("div", { staticClass: "text-2xl" }, [
+                _vm._v("\n          " + _vm._s(_vm.meeting.name) + "\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-6 text-gray-500" }, [
+                _c("p", [
+                  _vm._v("\n            Access code:\n            "),
+                  _c("span", { staticClass: "raisin-black font-mono" }, [
+                    _vm._v(_vm._s(_vm.meeting.meeting_reference))
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mt-6 text-gray-500" }, [
-                  _c("p", [
-                    _vm._v("\n            Access code:\n            "),
-                    _c("span", { staticClass: "raisin-black font-mono" }, [
-                      _vm._v(_vm._s(_vm.meeting.meeting_reference))
+                _vm.isSameDay(_vm.meeting_start, _vm.meeting_end)
+                  ? _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("sameday")(_vm.meeting_end)) +
+                          "\n          "
+                      )
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _vm.isSameDay(_vm.meeting_start, _vm.meeting_end)
-                    ? _c("p", { staticClass: "raisin-black" }, [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm._f("date")(_vm.meeting_start)) +
-                            "\n            to\n            " +
-                            _vm._s(_vm._f("sameday")(_vm.meeting_end)) +
-                            "\n          "
-                        )
-                      ])
-                    : _c("p", { staticClass: "raisin-black" }, [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm._f("date")(_vm.meeting_start)) +
-                            "\n            to\n            " +
-                            _vm._s(_vm._f("date")(_vm.meeting_end)) +
-                            "\n          "
-                        )
-                      ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("jet-validation-errors", { staticClass: "mb-4" }),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submit($event)
-                  }
+                  : _c("p", { staticClass: "raisin-black" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_start)) +
+                          "\n            to\n            " +
+                          _vm._s(_vm._f("date")(_vm.meeting_end)) +
+                          "\n          "
+                      )
+                    ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
                 }
-              },
-              [
-                _vm._l(_vm.feedback_response.questions, function(question, i) {
-                  return _c(
-                    "div",
-                    {
-                      key: question.id,
-                      staticClass:
-                        "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {},
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "block font-medium text-gray-700",
-                              attrs: { for: i }
-                            },
-                            [_vm._v(_vm._s(question.question))]
-                          ),
-                          _vm._v(" "),
-                          question.question_type == 0
-                            ? [
-                                _c("jet-input", {
-                                  staticClass: "mt-1 block w-full",
-                                  attrs: {
-                                    id: i,
-                                    type: "text",
-                                    required: "",
-                                    autofocus: ""
-                                  },
-                                  model: {
-                                    value: _vm.feedback_response.responses[i],
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.feedback_response.responses,
-                                        i,
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "feedback_response.responses[i]"
-                                  }
-                                })
-                              ]
-                            : question.question_type == 1
-                            ? [
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model.trim",
-                                      value: _vm.feedback_response.responses[i],
-                                      expression:
-                                        "feedback_response.responses[i]",
-                                      modifiers: { trim: true }
-                                    }
-                                  ],
-                                  staticClass:
-                                    "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
-                                  attrs: {
-                                    id: i,
-                                    placeholder: "add multiple lines",
-                                    required: "",
-                                    autofocus: ""
-                                  },
-                                  domProps: {
-                                    value: _vm.feedback_response.responses[i]
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.feedback_response.responses,
-                                        i,
-                                        $event.target.value.trim()
-                                      )
-                                    },
-                                    blur: function($event) {
-                                      return _vm.$forceUpdate()
-                                    }
-                                  }
-                                })
-                              ]
-                            : question.question_type == 2
-                            ? [
-                                _c(
-                                  "div",
-                                  { staticClass: "flex justify-center" },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "flex flex-col justify-center max-w-lg text-center"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "flex flex-row w-full justify-between space-x-5 sm:space-x-10"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "sm:w-24 text-center"
-                                              },
-                                              [_vm._v("really bad")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "sm:w-24 text-center"
-                                              },
-                                              [_vm._v("okay")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "sm:w-24 text-center"
-                                              },
-                                              [_vm._v("really good")]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.feedback_response.responses[
-                                                  i
-                                                ],
-                                              expression:
-                                                "feedback_response.responses[i]"
-                                            }
-                                          ],
-                                          staticClass:
-                                            "w-full focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-                                          attrs: {
-                                            id: i,
-                                            type: "range",
-                                            name: "",
-                                            min: "-1",
-                                            max: "1",
-                                            step: "0.1",
-                                            value: "0",
-                                            required: "",
-                                            autofocus: ""
-                                          },
-                                          domProps: {
-                                            value:
-                                              _vm.feedback_response.responses[i]
-                                          },
-                                          on: {
-                                            __r: function($event) {
-                                              return _vm.$set(
-                                                _vm.feedback_response.responses,
-                                                i,
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
+              }
+            },
+            [
+              _vm._l(_vm.feedback_response.questions, function(question, i) {
+                return _c(
+                  "div",
+                  {
+                    key: question.id,
+                    staticClass:
+                      "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {},
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "block font-medium text-gray-700",
+                            attrs: { for: i }
+                          },
+                          [_vm._v(_vm._s(question.question))]
+                        ),
+                        _vm._v(" "),
+                        question.question_type == 0
+                          ? [
+                              _c("jet-input", {
+                                staticClass: "mt-1 block w-full",
+                                attrs: {
+                                  id: i,
+                                  type: "text",
+                                  required: "",
+                                  autofocus: ""
+                                },
+                                model: {
+                                  value: _vm.feedback_response.responses[i],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.feedback_response.responses,
+                                      i,
+                                      typeof $$v === "string" ? $$v.trim() : $$v
                                     )
-                                  ]
-                                )
-                              ]
-                            : question.question_type == 3
-                            ? [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "flex flex-row w-full justify-center space-x-5 sm:space-x-10"
                                   },
-                                  [
-                                    _c("div", { staticClass: "text-center" }, [
-                                      _c("label", { attrs: { for: "sad" } }, [
-                                        _c(
-                                          "svg",
-                                          {
-                                            staticClass:
-                                              "fill-current text-red-500 w-16 sm:w-20",
-                                            attrs: {
-                                              xmlns:
-                                                "http://www.w3.org/2000/svg",
-                                              viewBox: "0 0 24 24"
-                                            }
-                                          },
-                                          [
-                                            _c("path", {
-                                              attrs: {
-                                                d: "M0 0h24v24H0V0z",
-                                                fill: "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("circle", {
-                                              attrs: {
-                                                cx: "15.5",
-                                                cy: "9.5",
-                                                r: "1.5"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("circle", {
-                                              attrs: {
-                                                cx: "8.5",
-                                                cy: "9.5",
-                                                r: "1.5"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              attrs: {
-                                                d:
-                                                  "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-6c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5z"
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.feedback_response.responses[
-                                                i
-                                              ],
-                                            expression:
-                                              "feedback_response.responses[i]"
-                                          }
-                                        ],
-                                        attrs: {
-                                          id: "sad",
-                                          type: "radio",
-                                          name: "emojipicker",
-                                          value: "-1",
-                                          required: "",
-                                          autofocus: ""
-                                        },
-                                        domProps: {
-                                          checked: _vm._q(
-                                            _vm.feedback_response.responses[i],
-                                            "-1"
-                                          )
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            return _vm.$set(
-                                              _vm.feedback_response.responses,
-                                              i,
-                                              "-1"
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "text-center" }, [
+                                  expression: "feedback_response.responses[i]"
+                                }
+                              })
+                            ]
+                          : question.question_type == 1
+                          ? [
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model.trim",
+                                    value: _vm.feedback_response.responses[i],
+                                    expression:
+                                      "feedback_response.responses[i]",
+                                    modifiers: { trim: true }
+                                  }
+                                ],
+                                staticClass:
+                                  "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+                                attrs: {
+                                  id: i,
+                                  placeholder: "add multiple lines",
+                                  required: "",
+                                  autofocus: ""
+                                },
+                                domProps: {
+                                  value: _vm.feedback_response.responses[i]
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.feedback_response.responses,
+                                      i,
+                                      $event.target.value.trim()
+                                    )
+                                  },
+                                  blur: function($event) {
+                                    return _vm.$forceUpdate()
+                                  }
+                                }
+                              })
+                            ]
+                          : question.question_type == 2
+                          ? [
+                              _c(
+                                "div",
+                                { staticClass: "flex justify-center" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "flex flex-col justify-center max-w-lg text-center"
+                                    },
+                                    [
                                       _c(
-                                        "label",
-                                        { attrs: { for: "neutral" } },
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex flex-row w-full justify-between space-x-5 sm:space-x-10"
+                                        },
                                         [
                                           _c(
-                                            "svg",
+                                            "div",
                                             {
-                                              staticClass:
-                                                "fill-current text-yellow-500 w-16 sm:w-20",
-                                              attrs: {
-                                                xmlns:
-                                                  "http://www.w3.org/2000/svg",
-                                                viewBox: "0 0 24 24"
-                                              }
+                                              staticClass: "sm:w-24 text-center"
                                             },
-                                            [
-                                              _c("path", {
-                                                attrs: {
-                                                  d: "M0 0h24v24H0V0z",
-                                                  fill: "none"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("path", {
-                                                attrs: {
-                                                  d: "M9 15.5h6v1H9v-1z"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("circle", {
-                                                attrs: {
-                                                  cx: "15.5",
-                                                  cy: "9.5",
-                                                  r: "1.5"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("circle", {
-                                                attrs: {
-                                                  cx: "8.5",
-                                                  cy: "9.5",
-                                                  r: "1.5"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _c("path", {
-                                                attrs: {
-                                                  d:
-                                                    "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                                                }
-                                              })
-                                            ]
+                                            [_vm._v("really bad")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "sm:w-24 text-center"
+                                            },
+                                            [_vm._v("okay")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "sm:w-24 text-center"
+                                            },
+                                            [_vm._v("really good")]
                                           )
                                         ]
                                       ),
@@ -90969,263 +90658,447 @@ var render = function() {
                                               "feedback_response.responses[i]"
                                           }
                                         ],
+                                        staticClass:
+                                          "w-full focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
                                         attrs: {
-                                          id: "neutral",
-                                          type: "radio",
-                                          name: "emojipicker",
-                                          value: "0"
+                                          id: i,
+                                          type: "range",
+                                          name: "",
+                                          min: "-1",
+                                          max: "1",
+                                          step: "0.1",
+                                          value: "0",
+                                          required: "",
+                                          autofocus: ""
                                         },
                                         domProps: {
-                                          checked: _vm._q(
-                                            _vm.feedback_response.responses[i],
-                                            "0"
-                                          )
+                                          value:
+                                            _vm.feedback_response.responses[i]
                                         },
                                         on: {
-                                          change: function($event) {
+                                          __r: function($event) {
                                             return _vm.$set(
                                               _vm.feedback_response.responses,
                                               i,
-                                              "0"
+                                              $event.target.value
                                             )
                                           }
                                         }
                                       })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "text-center" }, [
-                                      _c("label", { attrs: { for: "happy" } }, [
-                                        _c(
-                                          "svg",
-                                          {
-                                            staticClass:
-                                              "fill-current text-green-500 w-16 sm:w-20",
-                                            attrs: {
-                                              xmlns:
-                                                "http://www.w3.org/2000/svg",
-                                              viewBox: "0 0 24 24"
-                                            }
-                                          },
-                                          [
-                                            _c("path", {
-                                              attrs: {
-                                                d: "M0 0h24v24H0V0z",
-                                                fill: "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("circle", {
-                                              attrs: {
-                                                cx: "15.5",
-                                                cy: "9.5",
-                                                r: "1.5"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("circle", {
-                                              attrs: {
-                                                cx: "8.5",
-                                                cy: "9.5",
-                                                r: "1.5"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              attrs: {
-                                                d:
-                                                  "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.feedback_response.responses[
-                                                i
-                                              ],
-                                            expression:
-                                              "feedback_response.responses[i]"
-                                          }
-                                        ],
-                                        attrs: {
-                                          id: "happy",
-                                          type: "radio",
-                                          name: "emojipicker",
-                                          value: "1"
-                                        },
-                                        domProps: {
-                                          checked: _vm._q(
-                                            _vm.feedback_response.responses[i],
-                                            "1"
-                                          )
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            return _vm.$set(
-                                              _vm.feedback_response.responses,
-                                              i,
-                                              "1"
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ])
-                                  ]
-                                )
-                              ]
-                            : _vm._e(),
-                          _vm._v(" "),
-                          question.question_type == 4
-                            ? [
-                                _c("jet-input", {
-                                  staticClass: "mt-1 block w-full",
-                                  attrs: {
-                                    id: i,
-                                    type: "text",
-                                    required: "",
-                                    autofocus: ""
-                                  },
-                                  model: {
-                                    value: _vm.feedback_response.responses[i],
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.feedback_response.responses,
-                                        i,
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "feedback_response.responses[i]"
-                                  }
-                                })
-                              ]
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.hasErrors
-                            ? _c(
-                                "div",
-                                { staticClass: "mt-3 text-sm text-red-600" },
-                                [
-                                  _vm._v(
-                                    "\n              " +
-                                      _vm._s(_vm.errors.responses[i]) +
-                                      "\n            "
+                                    ]
                                   )
                                 ]
                               )
-                            : _vm._e()
-                        ],
-                        2
+                            ]
+                          : question.question_type == 3
+                          ? [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex flex-row w-full justify-center space-x-5 sm:space-x-10"
+                                },
+                                [
+                                  _c("div", { staticClass: "text-center" }, [
+                                    _c("label", { attrs: { for: "sad" } }, [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "fill-current text-red-500 w-16 sm:w-20",
+                                          attrs: {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            viewBox: "0 0 24 24"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              d: "M0 0h24v24H0V0z",
+                                              fill: "none"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "15.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "8.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-6c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.feedback_response.responses[i],
+                                          expression:
+                                            "feedback_response.responses[i]"
+                                        }
+                                      ],
+                                      attrs: {
+                                        id: "sad",
+                                        type: "radio",
+                                        name: "emojipicker",
+                                        value: "-1",
+                                        required: "",
+                                        autofocus: ""
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback_response.responses[i],
+                                          "-1"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.feedback_response.responses,
+                                            i,
+                                            "-1"
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "text-center" }, [
+                                    _c("label", { attrs: { for: "neutral" } }, [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "fill-current text-yellow-500 w-16 sm:w-20",
+                                          attrs: {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            viewBox: "0 0 24 24"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              d: "M0 0h24v24H0V0z",
+                                              fill: "none"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: { d: "M9 15.5h6v1H9v-1z" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "15.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "8.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.feedback_response.responses[i],
+                                          expression:
+                                            "feedback_response.responses[i]"
+                                        }
+                                      ],
+                                      attrs: {
+                                        id: "neutral",
+                                        type: "radio",
+                                        name: "emojipicker",
+                                        value: "0"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback_response.responses[i],
+                                          "0"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.feedback_response.responses,
+                                            i,
+                                            "0"
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "text-center" }, [
+                                    _c("label", { attrs: { for: "happy" } }, [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "fill-current text-green-500 w-16 sm:w-20",
+                                          attrs: {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            viewBox: "0 0 24 24"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              d: "M0 0h24v24H0V0z",
+                                              fill: "none"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "15.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("circle", {
+                                            attrs: {
+                                              cx: "8.5",
+                                              cy: "9.5",
+                                              r: "1.5"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              d:
+                                                "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-6c.78 2.34 2.72 4 5 4s4.22-1.66 5-4H7z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.feedback_response.responses[i],
+                                          expression:
+                                            "feedback_response.responses[i]"
+                                        }
+                                      ],
+                                      attrs: {
+                                        id: "happy",
+                                        type: "radio",
+                                        name: "emojipicker",
+                                        value: "1"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.feedback_response.responses[i],
+                                          "1"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          return _vm.$set(
+                                            _vm.feedback_response.responses,
+                                            i,
+                                            "1"
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ])
+                                ]
+                              )
+                            ]
+                          : _vm._e(),
+                        _vm._v(" "),
+                        question.question_type == 4
+                          ? [
+                              _c("jet-input", {
+                                staticClass: "mt-1 block w-full",
+                                attrs: {
+                                  id: i,
+                                  type: "text",
+                                  required: "",
+                                  autofocus: ""
+                                },
+                                model: {
+                                  value: _vm.feedback_response.responses[i],
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.feedback_response.responses,
+                                      i,
+                                      typeof $$v === "string" ? $$v.trim() : $$v
+                                    )
+                                  },
+                                  expression: "feedback_response.responses[i]"
+                                }
+                              })
+                            ]
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                },
+                [
+                  _c(
+                    "div",
+                    {},
+                    [
+                      _vm._v(
+                        "\n            User information (anonymity)\n            "
+                      ),
+                      _c("jet-label", {
+                        attrs: {
+                          for: "user_name",
+                          value:
+                            "Enter your name (or blank to remain anonymous)"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-input", {
+                        staticClass: "mt-1 block w-full",
+                        attrs: { id: "user_name", type: "text", autofocus: "" },
+                        model: {
+                          value: _vm.feedback_response.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.feedback_response, "name", $$v)
+                          },
+                          expression: "feedback_response.name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-label", {
+                        attrs: {
+                          for: "user_email",
+                          value:
+                            "Enter your email (or blank to remain anonymous)"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("jet-input", {
+                        staticClass: "mt-1 block w-full",
+                        attrs: {
+                          id: "user_email",
+                          type: "text",
+                          autofocus: ""
+                        },
+                        model: {
+                          value: _vm.feedback_response.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.feedback_response, "email", $$v)
+                          },
+                          expression: "feedback_response.email"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-4 flex max-w-24 justify-center" },
+                [
+                  _c("vue-recaptcha", {
+                    ref: "recaptcha",
+                    attrs: {
+                      sitekey: "6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
+                    },
+                    on: { verify: _vm.onVerify }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.hasErrors
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mt-3 text-sm text-red-600 w-full px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
+                    },
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.errors.event_started) +
+                          "\n          " +
+                          _vm._s(_vm.errors.not_filled) +
+                          "\n        "
                       )
                     ]
                   )
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full mt-6 px-6 py-4 bg-white overflow-hidden shadow-xl sm:rounded-lg"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {},
-                      [
-                        _vm._v(
-                          "\n            User information (anonymity)\n            "
-                        ),
-                        _c("jet-label", {
-                          attrs: {
-                            for: "user_name",
-                            value:
-                              "Enter your name (or blank to remain anonymous)"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("jet-input", {
-                          staticClass: "mt-1 block w-full",
-                          attrs: {
-                            id: "user_name",
-                            type: "text",
-                            autofocus: ""
-                          },
-                          model: {
-                            value: _vm.feedback_response.name,
-                            callback: function($$v) {
-                              _vm.$set(_vm.feedback_response, "name", $$v)
-                            },
-                            expression: "feedback_response.name"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("jet-label", {
-                          attrs: {
-                            for: "user_email",
-                            value:
-                              "Enter your email (or blank to remain anonymous)"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("jet-input", {
-                          staticClass: "mt-1 block w-full",
-                          attrs: {
-                            id: "user_email",
-                            type: "text",
-                            autofocus: ""
-                          },
-                          model: {
-                            value: _vm.feedback_response.email,
-                            callback: function($$v) {
-                              _vm.$set(_vm.feedback_response, "email", $$v)
-                            },
-                            expression: "feedback_response.email"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "mt-4 flex max-w-24 justify-center" },
-                  [
-                    _c("vue-recaptcha", {
-                      ref: "recaptcha",
-                      attrs: {
-                        sitekey: "6Lf3oHAaAAAAACbBSSi60Lk4fK9S1tq6iicm-Y_y"
-                      },
-                      on: { verify: _vm.onVerify }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex items-center justify-center mt-4" },
-                  [
-                    _c("jet-button", { staticClass: "ml-4" }, [
-                      _vm._v(" Submit Feedback ")
-                    ])
-                  ],
-                  1
-                )
-              ],
-              2
-            )
-          ],
-          1
-        )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center justify-center mt-4" },
+                [
+                  _c(
+                    "jet-button",
+                    {
+                      staticClass: "ml-4",
+                      attrs: { disabled: _vm.feedback_response.is_disabled }
+                    },
+                    [_vm._v(" Submit Feedback ")]
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          )
+        ])
       ])
     ]
   )
@@ -92893,7 +92766,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Home\n        ")]
+                [_vm._v("Home")]
               )
             ]
           },
@@ -93118,7 +92991,7 @@ var render = function() {
                     { staticClass: "flex items-center justify-center mt-4" },
                     [
                       _c("jet-button", { staticClass: "ml-4" }, [
-                        _vm._v("\n              Add Event Form\n            ")
+                        _vm._v(" Add Event Form ")
                       ])
                     ],
                     1
@@ -93417,7 +93290,7 @@ var render = function() {
                               ? [
                                   _c("jet-input", {
                                     staticClass: "mt-1 block w-full",
-                                    attrs: { id: i, type: "text" }
+                                    attrs: { id: i, type: "text", disabled: "" }
                                   })
                                 ]
                               : question.question_type == 1
@@ -93427,7 +93300,8 @@ var render = function() {
                                       "mt-1 block w-full resize-y border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
                                     attrs: {
                                       id: i,
-                                      placeholder: "add multiple lines"
+                                      placeholder: "add multiple lines",
+                                      disabled: ""
                                     }
                                   })
                                 ]
@@ -93490,7 +93364,8 @@ var render = function() {
                                               min: "-1",
                                               max: "1",
                                               step: "0.1",
-                                              value: "0"
+                                              value: "0",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93566,7 +93441,8 @@ var render = function() {
                                               id: "sad",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "-1"
+                                              value: "-1",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93637,7 +93513,8 @@ var render = function() {
                                               id: "neutral",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "0"
+                                              value: "0",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -93702,7 +93579,8 @@ var render = function() {
                                               id: "happy",
                                               type: "radio",
                                               name: "emojipicker",
-                                              value: "1"
+                                              value: "1",
+                                              disabled: ""
                                             }
                                           })
                                         ]
@@ -94001,7 +93879,7 @@ var render = function() {
                     { staticClass: "flex items-center justify-center mt-4" },
                     [
                       _c("jet-button", { staticClass: "ml-4" }, [
-                        _vm._v("\n              Update\n            ")
+                        _vm._v(" Update ")
                       ])
                     ],
                     1

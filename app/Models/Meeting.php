@@ -14,7 +14,7 @@ class Meeting extends Model
 
     /**
      * Route to show meetings
-     * 
+     *
      * @return string
      */
     public function path()
@@ -24,8 +24,8 @@ class Meeting extends Model
 
     /**
      * Get meeting start
-     * 
-     * @param App\Models\DateTime $value
+     *
+     * @param string $value
      * @return string
      */
     public function getMeetingStartAttribute($value)
@@ -35,8 +35,8 @@ class Meeting extends Model
 
     /**
      * Get meeting end
-     * 
-     * @param App\Models\DateTime $value
+     *
+     * @param string $value
      * @return string
      */
     public function getMeetingEndAttribute($value)
@@ -46,7 +46,7 @@ class Meeting extends Model
 
     /**
      * Route will use meeting reference
-     * 
+     *
      * @return string
      */
     public function getRouteKeyName()
@@ -56,7 +56,7 @@ class Meeting extends Model
 
     /**
      * Meeting has many feedback questions
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function feedback_question() {
@@ -65,7 +65,7 @@ class Meeting extends Model
 
     /**
      * Meeting has many response information objects
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function response_information() {

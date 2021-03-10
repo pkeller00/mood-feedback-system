@@ -56,9 +56,7 @@
               {{ responseObj.response_info[0].email }}
             </div>
             <div>
-              {{
-                  parseISO(responseObj.response.created_at) | date
-              }}
+              {{ parseISO(responseObj.response.created_at) | date }}
             </div>
           </div>
         </div>
@@ -110,12 +108,9 @@ export default {
 
   created() {
     this.getDataResponse();
-
     // only poll data if the meeting is live at the time of loading page
     // should really have a poll to check the time every so often to call and clear the instance
-    if (
-        this.meeting_start <= Date.now() && Date.now() <= this.meeting_end
-    ) {
+    if (this.meeting_start <= Date.now() && Date.now() <= this.meeting_end) {
       this.pollData();
     }
   },
@@ -133,7 +128,7 @@ export default {
         )
         .then((response) => {
           // JSON responses are automatically parsed.
-          console.log(response);
+          //   console.log(response);
           this.data_response = response.data;
         })
         .catch((e) => {
