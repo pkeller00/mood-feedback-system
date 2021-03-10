@@ -14,55 +14,150 @@ class FeedbackQuestionsTableSeeder extends Seeder
      */
     public function run()
     {
+        // Past
         FeedbackQuestion::create([
-            'question' => 'What came first, the chicken or the egg? - short text input question',
-            'question_type' => 0,
-            'meeting_id' => 11,
-        ]);
-        FeedbackQuestion::create([
-            'question' => 'Write an essay',
-            'question_type' => 1,
-            'meeting_id' => 11,
-        ]);
-        FeedbackQuestion::create([
-            'question' => 'This should be a rating slider',
-            'question_type' => 2,
-            'meeting_id' => 11,
-        ]);
-        FeedbackQuestion::create([
-            'question' => 'Are you happy? - emoji picker question',
+            'question' => "Did you enjoy today's meeting?",
             'question_type' => 3,
-            'meeting_id' => 11,
+            'meeting_id' => 1,
         ]);
         FeedbackQuestion::create([
-            'question' => 'Multiple choice question should be asked here',
-            'question_type' => 4,
-            'meeting_id' => 11,
-        ]);
-        FeedbackQuestion::create([
-            'question' => 'This should be a text input question',
-            'question_type' => 0,
-            'meeting_id' => 11,
-        ]);
-        FeedbackQuestion::create([
-            'question' => '5678 What came first, the chicken or the egg? - text input question',
-            'question_type' => 0,
-            'meeting_id' => 12,
-        ]);
-        FeedbackQuestion::create([
-            'question' => '5678 Are you happy? - emoji picker question',
-            'question_type' => 3,
-            'meeting_id' => 12,
-        ]);
-        FeedbackQuestion::create([
-            'question' => '5678 This should be a rating slider',
-            'question_type' => 2,
-            'meeting_id' => 12,
-        ]);
-        FeedbackQuestion::create([
-            'question' => '5678 This should be a long text input question',
+            'question' => "Do you have any comments, or concerns?",
             'question_type' => 1,
-            'meeting_id' => 12,
+            'meeting_id' => 1,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 2,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 2,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 3,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 3,
+        ]);
+
+        // Present
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 4,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 4,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Describe how you feel in one word?",
+            'question_type' => 0,
+            'meeting_id' => 4,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "How do you think this event is going?",
+            'question_type' => 2,
+            'meeting_id' => 4,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 5,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 5,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Describe how you feel in one word?",
+            'question_type' => 0,
+            'meeting_id' => 5,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "How do you think this event is going?",
+            'question_type' => 2,
+            'meeting_id' => 5,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 6,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 6,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Describe how you feel in one word?",
+            'question_type' => 0,
+            'meeting_id' => 6,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "How do you think this event is going?",
+            'question_type' => 2,
+            'meeting_id' => 6,
+        ]);
+
+        // Future
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 7,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 7,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Describe how you feel in one word?",
+            'question_type' => 0,
+            'meeting_id' => 7,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 8,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "How do you think this event is going?",
+            'question_type' => 2,
+            'meeting_id' => 8,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 8,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 9,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 9,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Did you enjoy today's meeting?",
+            'question_type' => 3,
+            'meeting_id' => 10,
+        ]);
+        FeedbackQuestion::create([
+            'question' => "Do you have any comments, or concerns?",
+            'question_type' => 1,
+            'meeting_id' => 10,
         ]);
     }
 }
