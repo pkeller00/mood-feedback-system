@@ -7,6 +7,8 @@ use App\Models\FeedbackQuestion;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Inertia\Inertia;
+use RandomLib\Factory;
+
 
 class MeetingController extends Controller
 {
@@ -80,8 +82,11 @@ class MeetingController extends Controller
         // Event access code generator
         $isUnique = true;
         $code = "";
+        $factory = new Factory;
+        $generator = $factory->getLowStrengthGenerator();
         do {
-            $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
+            $code = $generator->generateString(7, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            // $code = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 7);
             $isUnique = Meeting::where('meeting_reference', $code)->doesntExist();
         } while ($isUnique == false);
 
