@@ -249,7 +249,9 @@
             {{ errors.not_filled }}
           </div>
           <div class="flex items-center justify-center mt-4">
-            <jet-button class="ml-4" :disabled='feedback_response.is_disabled'> Submit Feedback </jet-button>
+            <jet-button class="ml-4" :disabled="is_disabled">
+              Submit Feedback
+            </jet-button>
           </div>
         </form>
       </div>
@@ -297,9 +299,8 @@ export default {
         name: "",
         email: "",
         robot: false,
-        is_disabled: false
       }),
-      
+      is_disabled: false,
     };
   },
 
@@ -316,7 +317,6 @@ export default {
     user_email_comp() {
       return this.feedback_response.email;
     },
-
     errors() {
       return this.$page.props.errors;
     },
@@ -333,11 +333,14 @@ export default {
   methods: {
     submit() {
       if (this.feedback_response.robot) {
-        this.feedback_response.is_disabled = true;
+        this.is_disabled = true;
         this.$inertia.post(
           `/submit-feedback/${this.meeting.meeting_reference}`,
           this.feedback_response
         );
+        setTimeout(() => {
+          this.is_disabled = false;
+        }, 5000);
       }
       return;
     },

@@ -4072,6 +4072,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -4106,9 +4108,9 @@ __webpack_require__.r(__webpack_exports__);
         responses: [],
         name: "",
         email: "",
-        robot: false,
-        is_disabled: false
-      })
+        robot: false
+      }),
+      is_disabled: false
     };
   },
   computed: {
@@ -4137,9 +4139,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       if (this.feedback_response.robot) {
-        this.feedback_response.is_disabled = true;
+        this.is_disabled = true;
         this.$inertia.post("/submit-feedback/".concat(this.meeting.meeting_reference), this.feedback_response);
+        setTimeout(function () {
+          _this.is_disabled = false;
+        }, 5000);
       }
 
       return;
@@ -91088,9 +91095,9 @@ var render = function() {
                     "jet-button",
                     {
                       staticClass: "ml-4",
-                      attrs: { disabled: _vm.feedback_response.is_disabled }
+                      attrs: { disabled: _vm.is_disabled }
                     },
-                    [_vm._v(" Submit Feedback ")]
+                    [_vm._v("\n            Submit Feedback\n          ")]
                   )
                 ],
                 1
