@@ -25,10 +25,10 @@ class Meeting extends Model
     /**
      * Get meeting start
      * 
-     * @param string $value
+     * @param App\Models\DateTime $value
      * @return string
      */
-    public function getMeetingStartAttribute(string $value)
+    public function getMeetingStartAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
@@ -36,10 +36,10 @@ class Meeting extends Model
     /**
      * Get meeting end
      * 
-     * @param string $value
+     * @param App\Models\DateTime $value
      * @return string
      */
-    public function getMeetingEndAttribute(string $value)
+    public function getMeetingEndAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
