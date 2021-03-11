@@ -174,6 +174,9 @@ class AttendEventController extends Controller
         \DB::commit();
 
         // Currently redirects to homepage
+        // Probably should redirect to a success page that would allow the user to access the form again
+        $request->session()->flash('flash.banner', 'Feedback Submitted Successfully');
+        $request->session()->flash('flash.bannerStyle', 'success');
         if (auth()->id()) {
             return redirect()->route('dashboard');
         }
