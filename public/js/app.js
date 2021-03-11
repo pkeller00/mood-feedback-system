@@ -94188,7 +94188,7 @@ var render = function() {
                   "inertia-link",
                   { attrs: { href: _vm.route("meetings.edit", _vm.meeting) } },
                   [
-                    _vm.event_started
+                    _vm.event_started === false
                       ? _c(
                           "jet-button",
                           {

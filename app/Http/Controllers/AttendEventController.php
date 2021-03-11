@@ -103,57 +103,77 @@ class AttendEventController extends Controller
         }
 
         $response_object = new ResponseInformation(request(['name', 'email']));
-        $response_object->meeting_id = $meeting->id;
+        
+        \DB::beginTransaction();
+        try{
+            $response_object->meeting_id = $meeting->id;
 
-        $response_object->save();
+            $response_object->save();
 
-        $projectId = 'mood-feedback-sy-1614713095205';
+            $projectId = 'mood-feedback-sy-1614713095205';
 
-        $path="../Mood-Feedback-System-729677aa2e6b.json";
+            //dd(base_path());
+            $path="/var/www/html/Mood-Feedback-System-729677aa2e6b.json";
 
-        # Instantiates a client
-        $language = new LanguageClient([
-            'projectId' => $projectId,
-            'keyFile' => json_decode(file_get_contents($path), true),
-        ]);
+            # Instantiates a client
+            $language = new LanguageClient([
+                'projectId' => $projectId,
+                'keyFile' => json_decode(file_get_contents($path), true),
+            ]);
 
-        foreach ($responses as $key => $response) {
-            $feedback_object = new FeedbackResponse;
-            $feedback_object->response_information_id = $response_object->id;
-            $feedback_object->feedback_question_id = $questions[$key]['id'];
+            foreach ($responses as $key => $response) {
+                $feedback_object = new FeedbackResponse;
+                $feedback_object->response_information_id = $response_object->id;
+                $feedback_object->feedback_question_id = $questions[$key]['id'];
 
-            if ($questions[$key]['question_type'] === 0 || $questions[$key]['question_type'] === 1) {
-                // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
-                $feedback_object->response = json_encode(['value' => $response]);
+                if(ctype_digit($questions[$key]['question_type'])){
+                    $questions[$key]['question_type'] = (int)($questions[$key]['question_type']);
+                    if($questions[$key]['question_type'] < 0 || $questions[$key]['question_type'] > 4){
+                        throw new \Exception('Type not in range');
+                    }
+                }
+                else if(!(is_numeric($questions[$key]['question_type']))){
+                    throw new \Exception('Type not string');
+                }
 
-                $annotation = $language->analyzeSentiment($response);
-                $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want
+                if ($questions[$key]['question_type'] === 0 || $questions[$key]['question_type'] === 1) {
+                    // Probably need to change the format of how it is stored in the JSON format dependent on how we call it in the front end
+                    $feedback_object->response = json_encode(['value' => $response]);
 
-                // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
-                $feedback_object->score = $sentiment['score'];
+                    $annotation = $language->analyzeSentiment($response);
+                    $sentiment = $annotation->sentiment();//This gives us both magnitude and score so not sure which one we want
 
-            } elseif ($questions[$key]['question_type'] === 2) {
-                // rating slider
-                $feedback_object->response = json_encode(['rating' => $response]);
+                    // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
+                    $feedback_object->score = $sentiment['score'];
 
-                $feedback_object->score = $response;
-            } elseif ($questions[$key]['question_type'] === 3) {
-                // emoji picker
-                $feedback_object->response = json_encode(['emoji' => $response]);
+                } elseif ($questions[$key]['question_type'] === 2) {
+                    // rating slider
+                    $feedback_object->response = json_encode(['rating' => $response]);
 
-                $feedback_object->score = $response;
-            } elseif ($questions[$key]['question_type'] === 4) {
-                // multiple choice question
-                $feedback_object->response = json_encode(['value' => $response]);
+                    $feedback_object->score = $response;
+                } elseif ($questions[$key]['question_type'] === 3) {
+                    // emoji picker
+                    $feedback_object->response = json_encode(['emoji' => $response]);
 
-                // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
-                $feedback_object->score = 0;
+                    $feedback_object->score = $response;
+                } elseif ($questions[$key]['question_type'] === 4) {
+                    // multiple choice question
+                    $feedback_object->response = json_encode(['value' => $response]);
+
+                    // Sentiment score should be calculated and stored here - Google Cloud Natural Language API
+                    $feedback_object->score = 0;
+                }
+                $feedback_object->save();
             }
-            $feedback_object->save();
         }
+        catch(\Exception $e)
+        {
+            \DB::rollback();
+            return redirect(route('home'));
+        }
+        \DB::commit();
 
         // Currently redirects to homepage
-        // Probably should redirect to a success page that would allow the user to access the form again
         if (auth()->id()) {
             return redirect()->route('dashboard');
         }

@@ -48,29 +48,29 @@ class ShowMeetingDetailsTest extends TestCase
         
     }
 
-    public function testIfToBeShownMeetingNotInDatabaseThenRedirectToIndex()
-    {   
+    // public function testIfToBeShownMeetingNotInDatabaseThenRedirectToIndex()
+    // {   
 
-        $this->actingAs($user = User::factory()->create());
+    //     $this->actingAs($user = User::factory()->create());
 
-        //$this->withoutExceptionHandling();
+    //     //$this->withoutExceptionHandling();
 
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2020-01-01T00:00';
-        $meeting->meeting_end ='2020-01-09T00:00';
-        $meeting->user_id =$user->id;
-        $meeting->meeting_reference ='QWERTYU';
+    //     $meeting = new Meeting();
+    //     $meeting->name ='workshop';
+    //     $meeting->meeting_start ='2020-01-01T00:00';
+    //     $meeting->meeting_end ='2020-01-09T00:00';
+    //     $meeting->user_id =$user->id;
+    //     $meeting->meeting_reference ='QWERTYU';
 
-        $question = new FeedbackQuestion();
-        $question->question = '‘Lorem’';
-        $question->question_type = '3';
-        $question->meeting_id = $meeting->id;
+    //     $question = new FeedbackQuestion();
+    //     $question->question = '‘Lorem’';
+    //     $question->question_type = '3';
+    //     $question->meeting_id = $meeting->id;
 
-        $response = $this->get(route('meetings.show', $meeting));
+    //     $response = $this->get(route('meetings.show', $meeting));
 
-        $response->assertRedirect(route('meetings.index'));
+    //     $response->assertRedirect(route('meetings.index'));
         
-    }
+    // }
 
 }

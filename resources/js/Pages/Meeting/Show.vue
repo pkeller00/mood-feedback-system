@@ -46,7 +46,7 @@
           <inertia-link :href="route('meetings.edit', meeting)">
             <jet-button
               class="mr-4 sm:mr-0 bg-green-800 hover:bg-green-700 active:bg-green-900 focus:border-green-900"
-              v-if="event_started"
+              v-if="event_started === false"
               >Edit Event</jet-button
             >
           </inertia-link>

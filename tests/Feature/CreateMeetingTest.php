@@ -21,7 +21,7 @@ class CreateMeetingTest extends TestCase
 
     public function testCanStoreMeetingIfValidMeetingAndValidForm()
     {   
-
+        $this->withoutExceptionHandling();
         $meeting = new Meeting();
         $meeting->name ='workshop';
         $meeting->meeting_start ='2020-01-01T00:00';
