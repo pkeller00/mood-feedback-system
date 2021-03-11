@@ -2,7 +2,7 @@
   <app-layout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Create Meeting
+        Create Event
       </h2>
     </template>
 
@@ -13,7 +13,7 @@
         >
           <form @submit.prevent="submit">
             <div class="mt-4">
-              <jet-label for="name" value="Meeting Name" />
+              <jet-label for="name" value="Event Name" />
               <jet-input
                 id="name"
                 type="text"
@@ -28,7 +28,7 @@
             </div>
 
             <div class="mt-4">
-              <jet-label for="meeting-start" value="Meeting Start" />
+              <jet-label for="meeting-start" value="Event Start" />
               <jet-input
                 id="meeting-start"
                 type="datetime-local"
@@ -47,7 +47,7 @@
             </div>
 
             <div class="mt-4">
-              <jet-label for="meeting-end" value="Meeting End" />
+              <jet-label for="meeting-end" value="Event End" />
               <jet-input
                 id="meeting-end"
                 type="datetime-local"
