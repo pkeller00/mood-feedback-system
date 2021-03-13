@@ -24,7 +24,7 @@ class FeedbackQuestionFactory extends Factory
     {
         return [
             'question' => $this->faker->sentence,
-            'question_type' => '3',
+            'question_type' => 0,
             'meeting_id' => Meeting::factory()
         ];
     }

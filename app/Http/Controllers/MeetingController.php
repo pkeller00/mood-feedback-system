@@ -90,20 +90,29 @@ class MeetingController extends Controller
             $isUnique = Meeting::where('meeting_reference', $code)->doesntExist();
         } while ($isUnique == false);
 
-        // Get meeting object from session
         $meeting = request()->session()->pull('meeting');
-        $meeting->meeting_reference = $code;
-        $meeting->user_id = auth()->id();
-        $meeting->save();
+        \DB::beginTransaction();
+        try{
+            $meeting->meeting_reference = $code;
+            $meeting->user_id = auth()->id();
+            $meeting->save();
 
-        // Add each question to the meeting
-        foreach (request('questions') as $item) {
-            $question = new FeedbackQuestion();
-            $question->question = $item['question'];
-            $question->question_type = $item['question_type'];
-            $question->meeting_id = $meeting->id;
-            $question->save();
+            foreach (request('questions') as $item) {
+                $question = new FeedbackQuestion();
+                $question->question = $item['question'];
+                $question->question_type = $item['question_type'];
+                $question->meeting_id = $meeting->id;
+                $question->save();
+            }
+
         }
+        catch(\Exception $e)
+        {
+            \DB::rollback();
+            return redirect(route('meetings.index'));
+        }
+
+        \DB::commit();
         return redirect(route('meetings.show', compact('meeting')));
     }
 
@@ -128,7 +137,7 @@ class MeetingController extends Controller
         return Inertia::render('Meeting/Show', [
             'meeting' => $meeting,
             'questions' => $questions,
-            'event_started' => ($meeting_date > $current_date),
+            'event_started' => !($meeting_date > $current_date),
         ]);
     }
 
