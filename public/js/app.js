@@ -88717,7 +88717,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "mt-6 text-gray-500" }, [
           _vm._v(
-            "\n      Use the Mood Feedback System to host your next meeting. Receive live\n      analysis of your audience and improve your engagement levels. With live\n      feedback you can now tailor your sessions to your audience. Feedback is\n      guaranteed to be better quality than traditional methods.\n    "
+            "\n      Use the Mood Feedback System to host your next event. Receive live\n      analysis of your audience and improve your engagement levels. With live\n      feedback you can now tailor your sessions to your audience. Feedback is\n      guaranteed to be better quality than traditional methods.\n    "
           )
         ])
       ]
@@ -88732,7 +88732,7 @@ var staticRenderFns = [
       { staticClass: "ml-4 text-lg text-gray-600 leading-7 font-semibold" },
       [
         _c("a", { attrs: { href: "https://laracasts.com" } }, [
-          _vm._v("Host a meeting")
+          _vm._v("Host an event")
         ])
       ]
     )
@@ -92833,7 +92833,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n      Create Meeting\n    ")]
+                [_vm._v("\n      Create Event\n    ")]
               )
             ]
           },
@@ -92868,7 +92868,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "name", value: "Meeting Name" }
+                        attrs: { for: "name", value: "Event Name" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
@@ -92910,7 +92910,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "meeting-start", value: "Meeting Start" }
+                        attrs: { for: "meeting-start", value: "Event Start" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
@@ -92954,7 +92954,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "meeting-end", value: "Meeting End" }
+                        attrs: { for: "meeting-end", value: "Event End" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
@@ -93721,7 +93721,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n      Edit Meeting\n    ")]
+                [_vm._v("\n      Edit Event\n    ")]
               )
             ]
           },
@@ -93757,7 +93757,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "name", value: "Meeting Name" }
+                        attrs: { for: "name", value: "Event Name" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
@@ -93800,7 +93800,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "meeting-start", value: "Meeting Start" }
+                        attrs: { for: "meeting-start", value: "Event Start" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {
@@ -93843,7 +93843,7 @@ var render = function() {
                     { staticClass: "mt-4" },
                     [
                       _c("jet-label", {
-                        attrs: { for: "meeting-end", value: "Meeting End" }
+                        attrs: { for: "meeting-end", value: "Event End" }
                       }),
                       _vm._v(" "),
                       _c("jet-input", {

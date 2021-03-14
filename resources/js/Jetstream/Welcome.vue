@@ -10,7 +10,7 @@
       </div>
 
       <div class="mt-6 text-gray-500">
-        Use the Mood Feedback System to host your next meeting. Receive live
+        Use the Mood Feedback System to host your next event. Receive live
         analysis of your audience and improve your engagement levels. With live
         feedback you can now tailor your sessions to your audience. Feedback is
         guaranteed to be better quality than traditional methods.
@@ -91,7 +91,7 @@
             <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
           </svg>
           <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">
-            <a href="https://laracasts.com">Host a meeting</a>
+            <a href="https://laracasts.com">Host an event</a>
           </div>
         </div>
 
