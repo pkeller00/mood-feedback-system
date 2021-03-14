@@ -85,11 +85,16 @@ class ShowQuestionFeedbackTest extends TestCase
 
     public function testUserRedirectedIfQuestionNumberIsForANonWordedResponseQuestion()
     {   
-        $question = FeedbackQuestion::factory()->create();
-        $meeting = Meeting::find($question->meeting_id);
+        $meeting = Meeting::factory()->create();
         $user = User::find($meeting->user_id);
 
         $this->actingAs($user);
+
+        $question = new FeedbackQuestion();
+        $question->question = 'What would you change about the meeting?';
+        $question->question_type = '3';
+        $question->meeting_id = $meeting->id;
+        $question->save();
         
         $response = $this->get(route('meetings.feedback', [$meeting,1]));
 

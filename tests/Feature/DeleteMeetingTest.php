@@ -86,21 +86,21 @@ class DeleteMeetingTest extends TestCase
         $response->assertRedirect(route('meetings.index'));
     }
 
-    public function testIfToBeDeletedMeetingNotInDatabaseThenRedirectToIndex()
-    {   $this->withoutExceptionHandling();
+    // public function testIfToBeDeletedMeetingNotInDatabaseThenRedirectToIndex()
+    // {   $this->withoutExceptionHandling();
         
-        $this->actingAs($user = User::factory()->create());;
+    //     $this->actingAs($user = User::factory()->create());;
         
-        $meeting = new Meeting();
-        $meeting->name ='workshop';
-        $meeting->meeting_start ='2020-01-01T00:00';
-        $meeting->meeting_end ='2020-01-09T00:00';
-        $meeting->user_id = $user->id;
-        $meeting->meeting_reference ='QWERTYU';
+    //     $meeting = new Meeting();
+    //     $meeting->name ='workshop';
+    //     $meeting->meeting_start ='2020-01-01T00:00';
+    //     $meeting->meeting_end ='2020-01-09T00:00';
+    //     $meeting->user_id = $user->id;
+    //     $meeting->meeting_reference ='QWERTYU';
 
-        $response = $this->delete(route('meetings.destroy', $meeting));
+    //     $response = $this->delete(route('meetings.destroy', $meeting));
 
-        $response->assertRedirect(route('meetings.index'));
-    }
+    //     $response->assertRedirect(route('meetings.index'));
+    // }
 
 }
